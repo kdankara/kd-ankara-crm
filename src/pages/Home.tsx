@@ -2,7 +2,7 @@ import { useSEO } from '@/hooks/useSEO';
 import { motion } from 'framer-motion';
 import {
     Building2, ArrowRight, CheckCircle, BarChart3, Users,
-    Shield, FileSearch, Phone
+    Shield, FileSearch
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
@@ -290,19 +290,17 @@ export default function Home() {
                 <div className="container mx-auto px-4 text-center">
                     <h2 className="text-3xl font-bold mb-6">Aklınızda Soru İşareti Kalmasın</h2>
                     <p className="text-accent-100 mb-8 max-w-2xl mx-auto text-lg">
-                        Uzman ekibimizle görüşerek sürecin tüm detaylarını öğrenebilirsiniz.
-                        İlk görüşme ve ön analiz tamamen ücretsizdir.
+                        Binanızın mevcut durumu, dönüşüm potansiyeli veya teklif süreciyle ilgili ön değerlendirme almak için bizimle iletişime geçin.
                     </p>
                     <div className="flex flex-col sm:flex-row justify-center gap-4">
-                        <a href="https://wa.me/905336820942" target="_blank" rel="noopener noreferrer">
+                        <Link to="/on-analiz">
                             <Button size="lg" className="bg-white text-accent hover:bg-gray-100 font-bold h-14 px-8 w-full sm:w-auto">
-                                WhatsApp'tan Yazın
+                                Ücretsiz Ön Analiz Al
                             </Button>
-                        </a>
-                        <a href="tel:03122361017">
+                        </Link>
+                        <a href="https://wa.me/905336820942" target="_blank" rel="noopener noreferrer">
                             <Button size="lg" className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-accent transition-colors h-14 px-8 w-full sm:w-auto font-bold">
-                                <Phone className="w-4 h-4 mr-2" />
-                                0312 236 10 17
+                                WhatsApp’tan Bilgi Al
                             </Button>
                         </a>
                     </div>
