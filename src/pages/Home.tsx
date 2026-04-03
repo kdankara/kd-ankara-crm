@@ -123,25 +123,33 @@ export default function Home() {
                 <div className="container mx-auto px-4">
                     <motion.div {...fadeInUp} className="text-center mb-16">
                         <span className="text-accent font-semibold tracking-wide uppercase text-sm">Süreç Nasıl İşliyor?</span>
-                        <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mt-2 mb-4">3 Adımda Dönüşüm Yol Haritası</h2>
+                        <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mt-2 mb-4">5 Adımda Güvenli Kentsel Dönüşüm Yol Haritası</h2>
                         <p className="text-gray-600 max-w-2xl mx-auto">
-                            Karmaşık görünen kentsel dönüşüm sürecini, sizin için yönetilebilir adımlara bölüyoruz.
+                            KD Ankara olarak, kentsel dönüşüm sürecini teknik, hukuki ve stratejik açıdan değerlendirerek daha kontrollü ilerlemenize yardımcı oluyoruz.
                         </p>
                     </motion.div>
 
-                    <div className="grid md:grid-cols-3 gap-8">
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {[
                             {
-                                step: '01', title: 'Bilgi Talep',
-                                desc: 'Web sitemiz üzerinden binanız veya arsanız için ücretsiz ön analiz talebi oluşturun.'
+                                step: '01', title: 'Mevcut Durum Analizi ve Risk Tespiti',
+                                desc: 'Süreç, binanızın mevcut durumu ve risklerinin değerlendirilmesiyle başlar. İmar durumu, yapı yaşı, teknik koşullar ve bölgesel veriler birlikte ele alınarak ilk tablo netleştirilir.'
                             },
                             {
-                                step: '02', title: '72 Saatte Analiz',
-                                desc: 'Uzmanlarımız imar ve piyasa verilerini inceleyerek size özel ön rapor hazırlasın.'
+                                step: '02', title: 'Stratejik Planlama ve Uygun Modelin Belirlenmesi',
+                                desc: 'Binanızın bulunduğu bölge, mevcut yapı özellikleri ve beklentiler doğrultusunda en uygun dönüşüm yaklaşımı belirlenir.'
                             },
                             {
-                                step: '03', title: 'Strateji Belirleme',
-                                desc: 'Rapor üzerinden en uygun dönüşüm modelini (müteahhit/kendin yap) birlikte belirleyelim.'
+                                step: '03', title: 'Teknik Şartname ve Müteahhit Seçimi',
+                                desc: 'Tekliflerin sağlıklı değerlendirilebilmesi için teknik çerçeve netleştirilir, uygun müteahhit yapısı ve seçim kriterleri belirlenir.'
+                            },
+                            {
+                                step: '04', title: 'Hukuki Sözleşme ve Süreç Güvencesi',
+                                desc: 'Hak kaybı yaşamamak için sözleşme yapısı, yükümlülükler ve kritik maddeler dikkatle değerlendirilir.'
+                            },
+                            {
+                                step: '05', title: 'Yapım Denetimi ve Anahtar Teslim Takibi',
+                                desc: 'Uygulama aşamasında işin planlanan kalite, zaman ve teknik şartlara uygun ilerlemesi takip edilir.'
                             },
                         ].map((item, index) => (
                             <motion.div
