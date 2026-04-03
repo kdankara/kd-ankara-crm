@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { MapPin, ArrowRight, CheckCircle } from 'lucide-react';
+import { MapPin, CheckCircle } from 'lucide-react';
 
 export default function Land() {
     return (

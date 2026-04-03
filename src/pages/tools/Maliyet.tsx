@@ -26,8 +26,8 @@ import type { MaliyetInputs, MaliyetResults, EmsalResults, KaliteSeviyesi } from
 
 export default function Maliyet() {
     useSEO(
-        'İnşaat Maliyet Bandı Tahmini',
-        '2024 güncel verileriyle metrekare bazlı inşaat maliyeti ve toplam proje bedeli tahmini yapın.'
+        '2026 Kentsel Dönüşüm İnşaat Maliyeti Hesaplama | KD Ankara',
+        '2026 güncel verileriyle metrekare bazlı inşaat maliyeti ve toplam proje bedeli tahmini yapın. Bakanlık birim maliyetleri bazlı hesaplayıcı.'
     );
     const [showLeadModal, setShowLeadModal] = useState(false);
     const [errors, setErrors] = useState<string[]>([]);
@@ -96,6 +96,13 @@ export default function Maliyet() {
                 requiredInfo={['Toplam inşaat alanı', 'Kalite seviyesi']}
                 estimatedTime="1 dakika"
             />
+
+            <div className="mb-12">
+                <h2 className="text-2xl font-bold text-gray-900 mb-4">2026 Kentsel Dönüşüm İnşaat Maliyeti Hesaplama</h2>
+                <p className="text-gray-600 leading-relaxed max-w-4xl">
+                    KD Ankara Kentsel Dönüşüm Strateji Merkezi olarak hazırladığımız bu araç sayesinde, binanızın güncel yeniden yapım maliyetlerini tahmini olarak hesaplayabilirsiniz. Çevre, Şehircilik ve İklim Değişikliği Bakanlığı'nın 2026 yılı yapı yaklaşık birim maliyetleri ve güncel piyasa koşulları baz alınarak hazırlanan bu hesaplayıcı, mülk sahipleri ve müteahhitler için ön fizibilite yapma imkanı sunar. Kesin maliyet analizi, şerefiye hesabı ve profesyonel uzlaşma yönetimi için Ankara'daki uzman ekibimizden danışmanlık alabilirsiniz.
+                </p>
+            </div>
 
             <div className="grid lg:grid-cols-2 gap-8">
                 {/* Left: Form Inputs */}

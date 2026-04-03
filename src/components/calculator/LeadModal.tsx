@@ -85,7 +85,7 @@ export default function LeadModal({
 
         try {
             await submitToGoogleSheets({
-                formType: `hesaplama-${calculatorType}`,
+                formType: `hesaplama-${calculatorType}` as any,
                 ...formData,
                 telefon: formatPhoneNumber(formData.telefon),
                 calculatorData: JSON.stringify(calculatorData),

@@ -27,7 +27,7 @@ export default function Daire() {
     const [results, setResults] = useState<DaireResults | null>(null);
 
     // Initialize calculator state
-    const { values, updateField, updateFields, loadFromCalculator } = useCalculatorState<DaireInputs>({
+    const { values, updateField, loadFromCalculator } = useCalculatorState<DaireInputs>({
         formType: 'daire',
         initialValues: {
             toplamInsaatAlani: 0,

@@ -6,7 +6,7 @@ import type { EmsalInputs, EmsalResults } from '@/types/calculator';
  * Calculate construction area from KAKS/Emsal
  */
 export function calculateEmsal(inputs: EmsalInputs): EmsalResults {
-    const { arsaAlani, kaks, taks, katYuksekligi } = inputs;
+    const { arsaAlani, kaks, taks } = inputs;
 
     // Total construction area = Land area × KAKS
     const toplamInsaatAlani = kaks ? arsaAlani * kaks : 0;

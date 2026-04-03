@@ -1,5 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { AuthProvider } from './contexts/AuthContext';
 import Layout from './components/layout/Layout';
+import AdminLayout from './components/layout/AdminLayout';
+import ClientLayout from './components/layout/ClientLayout';
 import Home from './pages/Home';
 import Services from './pages/Services';
 import Process from './pages/Process';
@@ -9,6 +12,9 @@ import LeadPool from './pages/LeadPool';
 import Contact from './pages/Contact';
 import ScrollToTop from './components/layout/ScrollToTop';
 import OnAnalizWizard from './components/forms/OnAnalizWizard';
+import About from './pages/About';
+import Blog from './pages/Blog';
+import BlogPost from './pages/BlogPost';
 import ToolsHub from './pages/tools/ToolsHub';
 import Emsal from './pages/tools/Emsal';
 import Daire from './pages/tools/Daire';
@@ -18,6 +24,14 @@ import Destek from './pages/tools/Destek';
 import Takvim from './pages/tools/Takvim';
 import ArsaPayi from './pages/tools/ArsaPayi';
 import MuteahhitMini from './pages/tools/MuteahhitMini';
+
+// Admin Pages
+import AdminLogin from './pages/admin/AdminLogin';
+import AdminDashboard from './pages/admin/AdminDashboard';
+
+// Client Pages
+import ClientLogin from './pages/client/ClientLogin';
+import ClientDashboard from './pages/client/ClientDashboard';
 
 import { Toaster } from 'sonner';
 
@@ -31,17 +45,22 @@ const OnAnalizPage = () => (
 
 function App() {
     return (
-        <Router>
-            <ScrollToTop />
-            <Routes>
-                <Route path="/" element={<Layout />}>
-                    <Route index element={<Home />} />
+        <AuthProvider>
+            <Router>
+                <ScrollToTop />
+                <Routes>
+                    {/* Public Routes */}
+                    <Route path="/" element={<Layout />}>
+                        <Route index element={<Home />} />
+                    <Route path="hakkimizda" element={<About />} />
                     <Route path="on-analiz" element={<OnAnalizPage />} />
                     <Route path="hizmetler" element={<Services />} />
                     <Route path="surec" element={<Process />} />
                     <Route path="arsa" element={<Land />} />
                     <Route path="muteahhit" element={<Contractors />} />
                     <Route path="firsatlar" element={<LeadPool />} />
+                    <Route path="blog" element={<Blog />} />
+                    <Route path="blog/:slug" element={<BlogPost />} />
                     <Route path="iletisim" element={<Contact />} />
                     {/* Calculator Tools */}
                     <Route path="tools" element={<ToolsHub />} />
@@ -53,10 +72,26 @@ function App() {
                     <Route path="tools/takvim" element={<Takvim />} />
                     <Route path="tools/arsapayi" element={<ArsaPayi />} />
                     <Route path="tools/muteahhit-mini" element={<MuteahhitMini />} />
-                </Route>
-            </Routes>
-            <Toaster />
-        </Router>
+                    </Route>
+
+                    {/* Authentication Routes (Public) */}
+                    <Route path="/admin/login" element={<AdminLogin />} />
+                    <Route path="/giris" element={<ClientLogin />} />
+
+                    {/* Protected Admin Routes */}
+                    <Route path="/admin" element={<AdminLayout />}>
+                        <Route index element={<AdminDashboard />} />
+                    </Route>
+
+                    {/* Protected Client Routes */}
+                    <Route path="/panel" element={<ClientLayout />}>
+                        <Route index element={<ClientDashboard />} />
+                        <Route path="raporlar" element={<div className="p-8 bg-white rounded-xl shadow-sm text-center">Raporlarınız yakında burada olacak.</div>} />
+                    </Route>
+                </Routes>
+                <Toaster />
+            </Router>
+        </AuthProvider>
     );
 }
 

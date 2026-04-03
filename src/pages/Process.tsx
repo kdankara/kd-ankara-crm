@@ -1,4 +1,4 @@
-import { CheckCircle, ArrowRight } from 'lucide-react';
+import { CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 
@@ -6,27 +6,33 @@ export default function Process() {
     const steps = [
         {
             no: '01',
-            title: 'Analiz & Karar',
-            desc: 'Mülkün mevcut durumu, imar hakları ve dönüşüm potansiyeli raporlanır. Hak sahipleri ile paylaşım modeli ve beklentiler netleştirilir.',
-            details: ['İmar Durumu Sorgulama', 'Emsal Hesaplaması', 'Riskli Yapı Tespiti']
+            title: 'Mevcut Durum Analizi ve Risk Tespiti',
+            desc: 'Süreç, binanızın teknik ve hukuki röntgeninin çekilmesiyle başlar. İmar durumu sorgulama, emsal hesaplaması ve resmi riskli yapı tespiti (karot testi) raporlanır. Amacımız, dönüşümün ekonomik ve teknik potansiyelini en baştan netleştirmektir.',
+            details: ['Teknik & Hukuki Analiz', 'İmar Durumu Sorgulama', 'Resmi Risk Tespiti']
         },
         {
             no: '02',
-            title: 'Proje & Teklif',
-            desc: 'Belirlenen kriterlere uygun avan proje hazırlatılır ve teknik şartname oluşturulur. Seçkin müteahhit firmalardan teklifler toplanır.',
-            details: ['Mimari Etüt', 'Teknik Şartname', 'Müteahhit İhalesi']
+            title: 'Stratejik Planlama ve Uzlaşma Yönetimi',
+            desc: "Kentsel dönüşümün en zor aşaması hak sahipleri arasındaki uzlaşmadır. SPK lisanslı uzmanlarımızla 'Şerefiye Analizi' yapıyor, adil bir paylaşım modeli oluşturuyoruz. Toplantı yönetimi ile tüm maliklerin haklarını koruyan bir süreç işletiyoruz.",
+            details: ['Şerefiye Analizi', 'Adil Paylaşım Modeli', 'Toplantı & Uzlaşma']
         },
         {
             no: '03',
-            title: 'Sözleşme & Ruhsat',
-            desc: 'En uygun teklifi veren firma ile hukuki koruyuculuğu yüksek bir sözleşme imzalanır. Belediye proje onayı ve ruhsat süreçleri takip edilir.',
-            details: ['Hukuki Sözleşme Kontrolü', 'Noter Onayı', 'Ruhsat Alımı']
+            title: 'Teknik Şartname ve Müteahhit Seçimi',
+            desc: "Belirlenen kriterlere uygun avan projeler hazırlanır ve ödün vermeyeceğimiz 'Demirbaş Teknik Şartname' oluşturulur. Ankara genelindeki seçkin müteahhit firmalardan teklifler toplanır; mali ve teknik yeterlilik analizi ile en güvenli yüklenici seçilir.",
+            details: ['Teknik Şartname', 'Müteahhit Analizi', 'Güvenli Seçim']
         },
         {
             no: '04',
-            title: 'Yapım & Teslim',
-            desc: 'İnşaat süreci düzenli olarak denetlenir, teknik şartnameye uygunluk kontrol edilir. İskan alımı ile süreç tamamlanır.',
-            details: ['İnşaat Denetimi', 'Malzeme Kontrolü', 'İskan & Teslim']
+            title: 'Hukuki Sözleşme ve Ruhsat Süreci',
+            desc: "Müteahhit ile hukuki koruyuculuğu yüksek 'Kat Karşılığı İnşaat Sözleşmesi' imzalanır. Kira yardımı ve taşınma desteği başvuruları takip edilirken, belediye proje onayı ve ruhsat süreçleri hızla sonuçlandırılır.",
+            details: ['İnşaat Sözleşmesi', 'Devlet Destekleri', 'Ruhsat Alımı']
+        },
+        {
+            no: '05',
+            title: 'Yapım Denetimi ve Anahtar Teslim',
+            desc: 'İnşaat süreci boyunca teknik şartnameye ve projeye uygunluk düzenli olarak denetlenir. Malzeme kalitesi ve ilerleme raporları hak sahipleriyle paylaşılır. İskan (Yapı Kullanım İzin Belgesi) alımı ile değerlenen mülkünüz güvenle teslim edilir.',
+            details: ['İnşaat Denetimi', 'İlerleme Raporları', 'İskan & Teslim']
         }
     ];
 
@@ -34,9 +40,9 @@ export default function Process() {
         <div className="py-16 bg-white min-h-screen">
             <div className="container mx-auto px-4">
                 <div className="text-center max-w-3xl mx-auto mb-16">
-                    <h1 className="text-4xl font-bold text-gray-900 mb-4">Kentsel Dönüşüm Süreci</h1>
+                    <h1 className="text-4xl font-bold text-gray-900 mb-4">5 Adımda Güvenli Kentsel Dönüşüm Yol Haritası</h1>
                     <p className="text-xl text-gray-600">
-                        Adım adım güvenli dönüşüm rehberi. Sürecin her aşamasında yanınızdayız.
+                        KD Ankara olarak, kentsel dönüşümü sadece bir bina yenileme işi değil, mülkünüzün değerini koruyan stratejik bir süreç olarak yönetiyoruz.
                     </p>
                 </div>
 

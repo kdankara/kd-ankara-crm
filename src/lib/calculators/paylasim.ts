@@ -17,13 +17,10 @@ export function calculatePaylasim(
     // Total additional costs
     const toplamMaliyetler = arsaDegeri + yikim + geciciKonut + diger;
 
-    // Convert percentage to decimal
-    const malikPayOranDecimal = malikPayOrani / 100;
     const muteahhitPayOrani = 100 - malikPayOrani;
-    const muteahhitPayOranDecimal = muteahhitPayOrani / 100;
 
     // Calculate unit distribution
-    const malikDaireAdedi = Math.floor(toplamDaireAdedi * malikPayOranDecimal);
+    const malikDaireAdedi = Math.floor(toplamDaireAdedi * (malikPayOrani / 100));
     const muteahhitDaireAdedi = toplamDaireAdedi - malikDaireAdedi;
 
     // Calculate monetary values

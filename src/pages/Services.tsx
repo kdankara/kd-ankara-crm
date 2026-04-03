@@ -1,4 +1,4 @@
-import { ArrowRight, CheckCircle, FileText, HardHat, Shield } from 'lucide-react';
+import { ArrowRight, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
@@ -126,6 +126,29 @@ export default function Services() {
                             </Link>
                         </CardFooter>
                     </Card>
+                </div>
+
+                <div className="mt-20 grid md:grid-cols-3 gap-12 max-w-7xl mx-auto border-t border-gray-200 pt-16">
+                    <div className="space-y-4">
+                        <h2 className="text-2xl font-bold text-gray-900">Ankara'da Güvenilir Kentsel Dönüşüm Hizmetleri</h2>
+                        <p className="text-gray-600 leading-relaxed">
+                            KD Ankara olarak, Başkentimizin tüm ilçelerinde (Çankaya, Yenimahalle, Keçiören, Mamak vb.) kentsel dönüşüm süreçlerinizi baştan sona yönetiyoruz. Amacımız, mülk sahipleri ve müteahhitler arasında şeffaf, güvenilir ve yasalara tam uyumlu bir köprü kurmaktır.
+                        </p>
+                    </div>
+
+                    <div className="space-y-4">
+                        <h2 className="text-2xl font-bold text-gray-900">Riskli Yapı Tespiti ve Raporlama</h2>
+                        <p className="text-gray-600 leading-relaxed">
+                            Binanızın deprem riskine karşı dayanıklılığını ölçmek için resmi 'Riskli Yapı Tespiti' sürecini alanında uzman mühendislerimizle yürütüyoruz. Bakanlık onaylı laboratuvar testleri ve karot alımı ile binanızın gerçek durumunu raporluyor, kentsel dönüşüm kredisi ve kira yardımı gibi devlet desteklerinden faydalanmanızı sağlıyoruz.
+                        </p>
+                    </div>
+
+                    <div className="space-y-4">
+                        <h2 className="text-2xl font-bold text-gray-900">Emsal Hesaplama ve Müteahhit Seçimi</h2>
+                        <p className="text-gray-600 leading-relaxed">
+                            Arsanızın gerçek değerini ve maksimum inşaat alanını 'Emsal Hesaplama' uzmanlığımızla belirliyoruz. Mülk sahiplerinin haklarını koruyan adil sözleşmeler hazırlıyor ve projeniz için en doğru, güvenilir müteahhit firmayı seçmenize stratejik danışmanlık yapıyoruz.
+                        </p>
+                    </div>
                 </div>
 
                 <div className="mt-20 max-w-4xl mx-auto bg-white rounded-2xl p-8 shadow-sm border border-gray-100 flex flex-col md:flex-row items-center justify-between gap-8">

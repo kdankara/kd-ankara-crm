@@ -2,7 +2,7 @@ import { useSEO } from '@/hooks/useSEO';
 import { motion } from 'framer-motion';
 import {
     Building2, ArrowRight, CheckCircle, BarChart3, Users,
-    Shield, FileSearch, HardHat, Phone
+    Shield, FileSearch, Phone
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
@@ -43,33 +43,32 @@ export default function Home() {
                         >
                             <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full text-sm font-medium text-accent-100 mb-8 border border-white/10">
                                 <span className="w-2 h-2 bg-accent rounded-full animate-pulse" />
-                                Ankara'nın Dönüşüm Uzmanı
+                                Ücretsiz Kentsel Dönüşüm Ön Analizi
                             </div>
 
-                            <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight mb-6 text-white">
-                                Duygusal Değil, <br />
+                            <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight mb-6 text-white max-w-2xl">
+                                Binanız için en doğru <br />
                                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-400 to-accent-200">
-                                    Veriye Dayalı
-                                </span> <br />
-                                Dönüşüm Analizi.
+                                    kentsel dönüşüm
+                                </span> <br className="md:hidden" />
+                                {" "}kararını verin.
                             </h1>
 
                             <p className="text-lg text-primary-200 mb-10 max-w-xl leading-relaxed">
-                                KD Ankara olarak, kentsel dönüşüm sürecinde mülk sahiplerinin haklarını koruyor,
-                                gerçek verilerle en yüksek getiriyi sağlıyoruz.
+                                Duygusal değil, veriyle dayalı ön analizle hareket edin.
                             </p>
 
                             <div className="flex flex-col sm:flex-row gap-4">
                                 <Link to="/on-analiz">
                                     <Button size="lg" className="bg-accent hover:bg-accent-600 text-white font-bold h-14 px-8 shadow-xl shadow-accent/20">
-                                        Ücretsiz Ön Analiz Başlat
+                                        Ücretsiz Ön Analiz Al
                                     </Button>
                                 </Link>
-                                <Link to="/hizmetler">
-                                    <Button size="lg" variant="outline" className="border-primary-700 bg-primary-900/50 hover:bg-primary-800 text-white h-14 px-8">
-                                        Hizmet Paketlerini Gör
+                                <a href="https://wa.me/905336820942" target="_blank" rel="noopener noreferrer">
+                                    <Button size="lg" variant="outline" className="w-full sm:w-auto border-primary-700 bg-primary-900/50 hover:bg-primary-800 text-white h-14 px-8">
+                                        WhatsApp'tan Bilgi Al
                                     </Button>
-                                </Link>
+                                </a>
                             </div>
 
                             <div className="mt-12 flex items-center gap-8 text-sm text-primary-300">
@@ -100,7 +99,7 @@ export default function Home() {
             </section>
 
             {/* Methodology Strip */}
-            <div className="bg-white border-b border-gray-100 py-12 relative z-20 -mt-8 mx-4 lg:mx-auto container lg:rounded-xl shadow-lg lg:max-w-6xl">
+            <div className="bg-white border-b border-gray-100 py-12 relative z-20 -mt-8 mx-auto w-[calc(100%-2rem)] md:w-[calc(100%-4rem)] max-w-6xl rounded-xl shadow-lg">
                 <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
                     {[
                         { icon: FileSearch, title: 'İmar & Emsal' },
@@ -169,85 +168,58 @@ export default function Home() {
             <section className="py-24">
                 <div className="container mx-auto px-4">
                     <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
-                        <motion.div {...fadeInUp} className="max-w-2xl">
-                            <h2 className="text-3xl font-bold text-gray-900 mb-4">Profesyonel Hizmet Paketleri</h2>
-                            <p className="text-gray-600">
-                                İhtiyacınıza uygun danışmanlık paketini seçin, süreci risk almadan yönetin.
+                        <motion.div {...fadeInUp} className="max-w-3xl">
+                            <h2 className="text-3xl font-bold text-gray-900 mb-4">Size Hangi Aşamada Destek Oluyoruz?</h2>
+                            <p className="text-gray-600 text-lg">
+                                Kentsel dönüşüm sürecinin her aşamasında, ihtiyacınıza uygun doğru adımı birlikte netleştiriyoruz.
                             </p>
                         </motion.div>
                         <Link to="/hizmetler">
-                            <Button variant="outline" className="gap-2">
-                                Tüm Paketleri İncele <ArrowRight className="w-4 h-4" />
+                            <Button variant="outline" className="gap-2 shrink-0 border-gray-300">
+                                Tüm Hizmetleri İncele <ArrowRight className="w-4 h-4" />
                             </Button>
                         </Link>
                     </div>
 
-                    <div className="grid lg:grid-cols-3 gap-8">
-                        <div className="border border-gray-200 rounded-2xl p-8 hover:border-accent/50 transition-colors">
-                            <h3 className="text-xl font-bold text-gray-900 mb-2">Ön Uygunluk & Yol Haritası</h3>
-                            <p className="text-gray-500 text-sm mb-6">Başlangıç seviyesi analiz</p>
-                            <ul className="space-y-3 mb-8">
-                                <li className="flex items-start gap-2 text-sm text-gray-700">
-                                    <CheckCircle className="w-4 h-4 text-green-500 mt-0.5" />
-                                    <span>Temel İmar Kontrolü</span>
-                                </li>
-                                <li className="flex items-start gap-2 text-sm text-gray-700">
-                                    <CheckCircle className="w-4 h-4 text-green-500 mt-0.5" />
-                                    <span>Bölgesel Emsal Verileri</span>
-                                </li>
-                                <li className="flex items-start gap-2 text-sm text-gray-700">
-                                    <CheckCircle className="w-4 h-4 text-green-500 mt-0.5" />
-                                    <span>Risk Değerlendirmesi</span>
-                                </li>
-                            </ul>
-                            <Button className="w-full bg-gray-100 text-gray-900 hover:bg-gray-200">Hemen Başvur</Button>
-                        </div>
-
-                        <div className="border-2 border-accent rounded-2xl p-8 relative shadow-lg bg-white">
-                            <div className="absolute top-0 right-0 bg-accent text-white text-xs font-bold px-3 py-1 rounded-bl-lg rounded-tr-lg">
-                                ÖNERİLEN
+                    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div className="bg-white border border-gray-200 rounded-2xl p-8 hover:border-accent hover:shadow-xl transition-all group flex flex-col h-full">
+                            <div className="w-12 h-12 bg-primary-50 rounded-xl flex items-center justify-center text-primary-600 mb-6 group-hover:bg-accent/10 group-hover:text-accent transition-colors">
+                                <FileSearch className="w-6 h-6" />
                             </div>
-                            <h3 className="text-xl font-bold text-gray-900 mb-2">Detaylı Dönüşüm Analizi</h3>
-                            <p className="text-gray-500 text-sm mb-6">Kapsamlı teknik & mali rapor</p>
-                            <ul className="space-y-3 mb-8">
-                                <li className="flex items-start gap-2 text-sm text-gray-700">
-                                    <CheckCircle className="w-4 h-4 text-accent mt-0.5" />
-                                    <span>Mimari Etüt & Tasarım</span>
-                                </li>
-                                <li className="flex items-start gap-2 text-sm text-gray-700">
-                                    <CheckCircle className="w-4 h-4 text-accent mt-0.5" />
-                                    <span>Detaylı Maliyet Projeksiyonu</span>
-                                </li>
-                                <li className="flex items-start gap-2 text-sm text-gray-700">
-                                    <CheckCircle className="w-4 h-4 text-accent mt-0.5" />
-                                    <span>Kar/Zarar ve Paylaşım Senaryoları</span>
-                                </li>
-                                <li className="flex items-start gap-2 text-sm text-gray-700">
-                                    <CheckCircle className="w-4 h-4 text-accent mt-0.5" />
-                                    <span>Hukuki Risk Analizi</span>
-                                </li>
-                            </ul>
-                            <Button className="w-full bg-accent hover:bg-accent-600 text-white font-bold">Teklif Al</Button>
+                            <h3 className="text-xl font-bold text-gray-900 mb-3">Ön Analiz</h3>
+                            <p className="text-gray-600 text-sm leading-relaxed grow">
+                                Binanızın mevcut durumu, potansiyeli ve sürecin ilk değerlendirmesi için ön analiz desteği sunuyoruz.
+                            </p>
                         </div>
 
-                        <div className="border border-gray-200 rounded-2xl p-8 hover:border-accent/50 transition-colors">
-                            <h3 className="text-xl font-bold text-gray-900 mb-2">Tam Süreç Yönetimi</h3>
-                            <p className="text-gray-500 text-sm mb-6">Uçtan uca danışmanlık</p>
-                            <ul className="space-y-3 mb-8">
-                                <li className="flex items-start gap-2 text-sm text-gray-700">
-                                    <CheckCircle className="w-4 h-4 text-green-500 mt-0.5" />
-                                    <span>Müteahhit İhalesi Yönetimi</span>
-                                </li>
-                                <li className="flex items-start gap-2 text-sm text-gray-700">
-                                    <CheckCircle className="w-4 h-4 text-green-500 mt-0.5" />
-                                    <span>Sözleşme Hazırlığı & Kontrol</span>
-                                </li>
-                                <li className="flex items-start gap-2 text-sm text-gray-700">
-                                    <CheckCircle className="w-4 h-4 text-green-500 mt-0.5" />
-                                    <span>İnşaat Süreci Denetimi</span>
-                                </li>
-                            </ul>
-                            <Button className="w-full bg-gray-100 text-gray-900 hover:bg-gray-200">İletişime Geç</Button>
+                        <div className="bg-white border border-gray-200 rounded-2xl p-8 hover:border-accent hover:shadow-xl transition-all group flex flex-col h-full flex-col">
+                            <div className="w-12 h-12 bg-primary-50 rounded-xl flex items-center justify-center text-primary-600 mb-6 group-hover:bg-accent/10 group-hover:text-accent transition-colors">
+                                <BarChart3 className="w-6 h-6" />
+                            </div>
+                            <h3 className="text-xl font-bold text-gray-900 mb-3">Teklif Değerlendirme</h3>
+                            <p className="text-gray-600 text-sm leading-relaxed grow">
+                                Mevcut müteahhit tekliflerini birlikte değerlendirerek avantajları, riskleri ve dikkat edilmesi gereken noktaları netleştiriyoruz.
+                            </p>
+                        </div>
+
+                        <div className="bg-white border border-gray-200 rounded-2xl p-8 hover:border-accent hover:shadow-xl transition-all group flex flex-col h-full flex-col">
+                            <div className="w-12 h-12 bg-primary-50 rounded-xl flex items-center justify-center text-primary-600 mb-6 group-hover:bg-accent/10 group-hover:text-accent transition-colors">
+                                <Users className="w-6 h-6" />
+                            </div>
+                            <h3 className="text-xl font-bold text-gray-900 mb-3">Malik Toplantısı Hazırlığı</h3>
+                            <p className="text-gray-600 text-sm leading-relaxed grow">
+                                Toplantı öncesinde sorulması gereken kritik soruları, dikkat edilmesi gereken başlıkları ve karar sürecini birlikte hazırlıyoruz.
+                            </p>
+                        </div>
+
+                        <div className="bg-white border border-gray-200 rounded-2xl p-8 hover:border-accent hover:shadow-xl transition-all group flex flex-col h-full flex-col">
+                            <div className="w-12 h-12 bg-primary-50 rounded-xl flex items-center justify-center text-primary-600 mb-6 group-hover:bg-accent/10 group-hover:text-accent transition-colors">
+                                <Shield className="w-6 h-6" />
+                            </div>
+                            <h3 className="text-xl font-bold text-gray-900 mb-3">Süreç Danışmanlığı</h3>
+                            <p className="text-gray-600 text-sm leading-relaxed grow">
+                                Kentsel dönüşüm sürecinin başından karar aşamasına kadar daha kontrollü ve bilinçli ilerlemeniz için yol haritası oluşturuyoruz.
+                            </p>
                         </div>
                     </div>
                 </div>
