@@ -238,10 +238,9 @@ export default function Home() {
                 <div className="container mx-auto px-4">
                     <div className="grid lg:grid-cols-2 gap-16 items-center">
                         <div>
-                            <h2 className="text-3xl font-bold mb-6">Riskleri Şansa Bırakmayın.<br /><span className="text-accent">Neleri Kontrol Ediyoruz?</span></h2>
+                            <h2 className="text-3xl font-bold mb-6">Kararı Şansa Bırakmıyoruz,<br /><span className="text-accent">Bunları Kontrol Ediyoruz</span></h2>
                             <p className="text-primary-200 mb-8 leading-relaxed">
-                                Kentsel dönüşümde yapılan en büyük hata, sürece sadece "m² pazarlığı" olarak bakmaktır.
-                                Biz ise süreci teknik, hukuki ve finansal bir bütün olarak ele alıyoruz.
+                                Kentsel dönüşüm sürecinde yalnızca teklif değil; haklarınızı, potansiyelinizi ve olası riskleri birlikte değerlendiriyoruz.
                             </p>
                             <Link to="/on-analiz">
                                 <Button className="bg-white text-primary-900 hover:bg-gray-100 font-bold">
@@ -252,14 +251,33 @@ export default function Home() {
 
                         <div className="grid sm:grid-cols-2 gap-4">
                             {[
-                                'Güncel İmar Durumu', 'Mülkiyet Yapısı & Hissedarlar',
-                                'Bölgesel Rayiç Değerler', 'İnşaat Maliyet Endeksleri',
-                                'Müteahhit Güvenilirliği', 'Teknik Şartname Standartları',
-                                'Sözleşme Hukuki Açıkları', 'Teslimat Süreçleri'
+                                {
+                                    title: 'Arsa Payı ve Mevcut Durum',
+                                    desc: 'Binanın mevcut yapısı, arsa payı dağılımı ve mevcut durumun karar sürecine etkisi değerlendirilir.'
+                                },
+                                {
+                                    title: 'Bölgesel Potansiyel',
+                                    desc: 'Bulunduğunuz bölgenin imar yapısı, emsal durumu ve dönüşüm potansiyeli birlikte ele alınır.'
+                                },
+                                {
+                                    title: 'Teklif Yapısı Analizi',
+                                    desc: 'Müteahhit tekliflerinde görünen ve görünmeyen farklar, gerçek avantaj ve riskler açısından değerlendirilir.'
+                                },
+                                {
+                                    title: 'Süreç Riskleri',
+                                    desc: 'Zaman, uygulama, sözleşme ve iletişim kaynaklı risk başlıkları önceden görünür hale getirilir.'
+                                },
+                                {
+                                    title: 'Hak Kaybı İhtimali',
+                                    desc: 'Yanlış karar, eksik sözleşme veya yetersiz değerlendirme nedeniyle oluşabilecek hak kaybı ihtimalleri kontrol edilir.'
+                                }
                             ].map((item, i) => (
-                                <div key={i} className="flex items-center gap-3 bg-primary-800/50 p-4 rounded-lg border border-primary-700">
-                                    <CheckCircle className="w-5 h-5 text-accent shrink-0" />
-                                    <span className="text-sm font-medium">{item}</span>
+                                <div key={i} className={`flex items-start gap-4 bg-primary-800/50 p-5 rounded-lg border border-primary-700 hover:bg-primary-800 transition-all group ${i === 4 ? 'sm:col-span-2' : ''}`}>
+                                    <CheckCircle className="w-6 h-6 text-accent shrink-0 mt-0.5 group-hover:scale-110 transition-transform" />
+                                    <div>
+                                        <h4 className="text-base font-semibold text-white mb-1.5">{item.title}</h4>
+                                        <p className="text-sm text-primary-200 leading-relaxed">{item.desc}</p>
+                                    </div>
                                 </div>
                             ))}
                         </div>
