@@ -1,9 +1,13 @@
-import { Link, Outlet } from 'react-router-dom';
-import { Menu, Phone, MessageCircle, MapPin, Facebook, Instagram, Linkedin, X } from 'lucide-react';
+"use client";
+
+import Link from 'next/link';
+import { Menu, Phone, MessageCircle, MapPin, Facebook, Instagram, Linkedin, Mail, X } from 'lucide-react';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
+import { trackWhatsAppClick } from '@/lib/gtag';
 
-export default function Layout() {
+
+export default function Layout({ children }: { children: React.ReactNode }) {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     return (
@@ -24,9 +28,9 @@ export default function Layout() {
                     <div className="flex items-center gap-4">
                         <span className="opacity-75">Takip Edin:</span>
                         <div className="flex gap-3">
-                            <a href="#" className="hover:text-accent transition-colors"><Instagram className="w-3 h-3" /></a>
-                            <a href="#" className="hover:text-accent transition-colors"><Linkedin className="w-3 h-3" /></a>
-                            <a href="#" className="hover:text-accent transition-colors"><Facebook className="w-3 h-3" /></a>
+                            <a href="https://www.instagram.com/kentsel_donusum_ankara/" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors"><Instagram className="w-3 h-3" /></a>
+                            <a href="https://www.linkedin.com/in/g%C3%B6ktu%C4%9F-usta-2007993a8/" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors"><Linkedin className="w-3 h-3" /></a>
+                            <a href="https://www.facebook.com/profile.php?id=61587153058423" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors"><Facebook className="w-3 h-3" /></a>
                         </div>
                     </div>
                 </div>
@@ -36,7 +40,7 @@ export default function Layout() {
             <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm">
                 <div className="container mx-auto px-4">
                     <div className="flex items-center justify-between h-20">
-                        <Link to="/" className="flex items-center gap-2 xl:gap-3 shrink-0">
+                        <Link href="/" className="flex items-center gap-2 xl:gap-3 shrink-0">
                             <img src="/assets/logo.png" alt="KD Ankara Logo" className="h-10 xl:h-12 w-auto" />
                             <div className="flex flex-col">
                                 <span className="text-lg xl:text-xl font-bold text-primary-900 leading-none">KD Ankara</span>
@@ -46,26 +50,26 @@ export default function Layout() {
 
                         {/* Desktop Navigation */}
                         <nav className="hidden xl:flex items-center gap-0.5 2xl:gap-2">
-                            <Link to="/hakkimizda" className="text-[12px] 2xl:text-sm font-medium text-gray-700 hover:text-primary-900 hover:bg-gray-50 px-1.5 2xl:px-3 py-2 rounded-md transition-all whitespace-nowrap">Hakkımızda</Link>
-                            <Link to="/hizmetler" className="text-[12px] 2xl:text-sm font-medium text-gray-700 hover:text-primary-900 hover:bg-gray-50 px-1.5 2xl:px-3 py-2 rounded-md transition-all whitespace-nowrap">Hizmetler</Link>
-                            <Link to="/surec" className="text-[12px] 2xl:text-sm font-medium text-gray-700 hover:text-primary-900 hover:bg-gray-50 px-1.5 2xl:px-3 py-2 rounded-md transition-all whitespace-nowrap">Dönüşüm Süreci</Link>
-                            <Link to="/arsa" className="text-[12px] 2xl:text-sm font-medium text-gray-700 hover:text-primary-900 hover:bg-gray-50 px-1.5 2xl:px-3 py-2 rounded-md transition-all whitespace-nowrap">Arsa Projeleri</Link>
-                            <Link to="/tools" className="text-[12px] 2xl:text-sm font-medium text-gray-700 hover:text-primary-900 hover:bg-gray-50 px-1.5 2xl:px-3 py-2 rounded-md transition-all whitespace-nowrap">Hesaplama Merkezi</Link>
-                            <Link to="/muteahhit" className="text-[12px] 2xl:text-sm font-medium text-gray-700 hover:text-primary-900 hover:bg-gray-50 px-1.5 2xl:px-3 py-2 rounded-md transition-all whitespace-nowrap">Müteahhitler</Link>
-                            <Link to="/blog" className="text-[12px] 2xl:text-sm font-medium text-gray-700 hover:text-primary-900 hover:bg-gray-50 px-1.5 2xl:px-3 py-2 rounded-md transition-all whitespace-nowrap">Bilgi Bankası</Link>
+                            <Link href="/hakkimizda" className="text-[12px] 2xl:text-sm font-medium text-gray-700 hover:text-primary-900 hover:bg-gray-50 px-1.5 2xl:px-3 py-2 rounded-md transition-all whitespace-nowrap">Hakkımızda</Link>
+                            <Link href="/hizmetler" className="text-[12px] 2xl:text-sm font-medium text-gray-700 hover:text-primary-900 hover:bg-gray-50 px-1.5 2xl:px-3 py-2 rounded-md transition-all whitespace-nowrap">Hizmetler</Link>
+                            <Link href="/surec" className="text-[12px] 2xl:text-sm font-medium text-gray-700 hover:text-primary-900 hover:bg-gray-50 px-1.5 2xl:px-3 py-2 rounded-md transition-all whitespace-nowrap">Dönüşüm Süreci</Link>
+                            <Link href="/arsa" className="text-[12px] 2xl:text-sm font-medium text-gray-700 hover:text-primary-900 hover:bg-gray-50 px-1.5 2xl:px-3 py-2 rounded-md transition-all whitespace-nowrap">Arsa Projeleri</Link>
+                            <Link href="/tools" className="text-[12px] 2xl:text-sm font-medium text-gray-700 hover:text-primary-900 hover:bg-gray-50 px-1.5 2xl:px-3 py-2 rounded-md transition-all whitespace-nowrap">Hesaplama Merkezi</Link>
+                            <Link href="/muteahhit" className="text-[12px] 2xl:text-sm font-medium text-gray-700 hover:text-primary-900 hover:bg-gray-50 px-1.5 2xl:px-3 py-2 rounded-md transition-all whitespace-nowrap">Müteahhitler</Link>
+                            <Link href="/blog" className="text-[12px] 2xl:text-sm font-medium text-gray-700 hover:text-primary-900 hover:bg-gray-50 px-1.5 2xl:px-3 py-2 rounded-md transition-all whitespace-nowrap">Bilgi Bankası</Link>
                         </nav>
 
                         {/* Desktop CTA */}
                         <div className="hidden xl:flex items-center gap-1.5 2xl:gap-3 shrink-0">
-                            <Link to="/iletisim">
+                            <Link href="/iletisim">
                                 <Button variant="ghost" className="text-gray-600 px-2 2xl:px-4 text-[13px] 2xl:text-sm whitespace-nowrap">İletişim</Button>
                             </Link>
-                            <Link to="/on-analiz">
+                            <Link href="/on-analiz">
                                 <Button className="bg-accent hover:bg-accent-600 text-white font-semibold shadow-lg shadow-accent/20 px-3 2xl:px-4 text-[13px] 2xl:text-sm whitespace-nowrap">
                                     <span className="hidden 2xl:inline">Ücretsiz&nbsp;</span>Ön Analiz
                                 </Button>
                             </Link>
-                            <Link to="/giris">
+                            <Link href="/giris">
                                 <Button variant="outline" className="text-primary-900 border-primary-200 font-medium hover:bg-primary-50 px-3 2xl:px-4 text-[13px] 2xl:text-sm whitespace-nowrap">Üyelik</Button>
                             </Link>
                         </div>
@@ -83,21 +87,21 @@ export default function Layout() {
                 {/* Mobile Menu */}
                 {isMobileMenuOpen && (
                     <div className="absolute top-full left-0 right-0 bg-white border-b border-gray-100 shadow-xl p-4 xl:hidden flex flex-col gap-2 animate-in slide-in-from-top-2">
-                        <Link to="/hakkimizda" className="p-3 rounded-lg hover:bg-gray-50 font-medium text-gray-700" onClick={() => setIsMobileMenuOpen(false)}>Hakkımızda</Link>
-                        <Link to="/hizmetler" className="p-3 rounded-lg hover:bg-gray-50 font-medium text-gray-700" onClick={() => setIsMobileMenuOpen(false)}>Hizmetler</Link>
-                        <Link to="/surec" className="p-3 rounded-lg hover:bg-gray-50 font-medium text-gray-700" onClick={() => setIsMobileMenuOpen(false)}>Dönüşüm Süreci</Link>
-                        <Link to="/arsa" className="p-3 rounded-lg hover:bg-gray-50 font-medium text-gray-700" onClick={() => setIsMobileMenuOpen(false)}>Arsa Projeleri</Link>
-                        <Link to="/tools" className="p-3 rounded-lg hover:bg-gray-50 font-medium text-gray-700" onClick={() => setIsMobileMenuOpen(false)}>Hesaplama Merkezi</Link>
-                        <Link to="/muteahhit" className="p-3 rounded-lg hover:bg-gray-50 font-medium text-gray-700" onClick={() => setIsMobileMenuOpen(false)}>Müteahhitler</Link>
-                        <Link to="/blog" className="p-3 rounded-lg hover:bg-gray-50 font-medium text-gray-700" onClick={() => setIsMobileMenuOpen(false)}>Bilgi Bankası</Link>
-                        <Link to="/iletisim" className="p-3 rounded-lg hover:bg-gray-50 font-medium text-gray-700" onClick={() => setIsMobileMenuOpen(false)}>İletişim</Link>
+                        <Link href="/hakkimizda" className="p-3 rounded-lg hover:bg-gray-50 font-medium text-gray-700" onClick={() => setIsMobileMenuOpen(false)}>Hakkımızda</Link>
+                        <Link href="/hizmetler" className="p-3 rounded-lg hover:bg-gray-50 font-medium text-gray-700" onClick={() => setIsMobileMenuOpen(false)}>Hizmetler</Link>
+                        <Link href="/surec" className="p-3 rounded-lg hover:bg-gray-50 font-medium text-gray-700" onClick={() => setIsMobileMenuOpen(false)}>Dönüşüm Süreci</Link>
+                        <Link href="/arsa" className="p-3 rounded-lg hover:bg-gray-50 font-medium text-gray-700" onClick={() => setIsMobileMenuOpen(false)}>Arsa Projeleri</Link>
+                        <Link href="/tools" className="p-3 rounded-lg hover:bg-gray-50 font-medium text-gray-700" onClick={() => setIsMobileMenuOpen(false)}>Hesaplama Merkezi</Link>
+                        <Link href="/muteahhit" className="p-3 rounded-lg hover:bg-gray-50 font-medium text-gray-700" onClick={() => setIsMobileMenuOpen(false)}>Müteahhitler</Link>
+                        <Link href="/blog" className="p-3 rounded-lg hover:bg-gray-50 font-medium text-gray-700" onClick={() => setIsMobileMenuOpen(false)}>Bilgi Bankası</Link>
+                        <Link href="/iletisim" className="p-3 rounded-lg hover:bg-gray-50 font-medium text-gray-700" onClick={() => setIsMobileMenuOpen(false)}>İletişim</Link>
                         <div className="h-px bg-gray-100 my-2" />
-                        <Link to="/on-analiz" className="w-full mt-2" onClick={() => setIsMobileMenuOpen(false)}>
+                        <Link href="/on-analiz" className="w-full mt-2" onClick={() => setIsMobileMenuOpen(false)}>
                             <Button className="w-full bg-accent hover:bg-accent-600 text-white justify-center">
                                 Ücretsiz Ön Analiz Başlat
                             </Button>
                         </Link>
-                        <Link to="/giris" className="w-full mt-2 text-center" onClick={() => setIsMobileMenuOpen(false)}>
+                        <Link href="/giris" className="w-full mt-2 text-center" onClick={() => setIsMobileMenuOpen(false)}>
                             <Button variant="outline" className="w-full text-primary-900 border-primary-200 font-medium hover:bg-primary-50 justify-center">
                                 Üyelik
                             </Button>
@@ -108,7 +112,7 @@ export default function Layout() {
 
             {/* Main Content */}
             <main className="flex-grow">
-                <Outlet />
+                {children}
             </main>
 
             {/* Footer */}
@@ -128,8 +132,9 @@ export default function Layout() {
                                 Ankara'nın kentsel dönüşüm sürecinde veriye dayalı, şeffaf ve güvenilir çözüm ortağı.
                             </p>
                             <div className="flex gap-4">
-                                <a href="#" className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center hover:bg-accent transition-colors"><Instagram className="w-4 h-4" /></a>
-                                <a href="#" className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center hover:bg-accent transition-colors"><Linkedin className="w-4 h-4" /></a>
+                                <a href="https://www.instagram.com/kentsel_donusum_ankara/" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center hover:bg-accent transition-colors"><Instagram className="w-4 h-4" /></a>
+                                <a href="https://www.linkedin.com/in/g%C3%B6ktu%C4%9F-usta-2007993a8/" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center hover:bg-accent transition-colors"><Linkedin className="w-4 h-4" /></a>
+                                <a href="https://www.facebook.com/profile.php?id=61587153058423" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center hover:bg-accent transition-colors"><Facebook className="w-4 h-4" /></a>
                             </div>
                         </div>
 
@@ -137,11 +142,11 @@ export default function Layout() {
                         <div>
                             <h4 className="font-semibold text-lg mb-6">Hızlı Erişim</h4>
                             <ul className="space-y-3 text-sm text-gray-400">
-                                <li><Link to="/hizmetler" className="hover:text-accent transition-colors">Hizmet Paketleri</Link></li>
-                                <li><Link to="/surec" className="hover:text-accent transition-colors">Dönüşüm Süreci</Link></li>
-                                <li><Link to="/arsa" className="hover:text-accent transition-colors">Arsa Karşılığı</Link></li>
-                                <li><Link to="/on-analiz" className="hover:text-accent transition-colors">Ücretsiz Analiz</Link></li>
-                                <li><Link to="/blog" className="hover:text-accent transition-colors">Bilgi Bankası</Link></li>
+                                <li><Link href="/hizmetler" className="hover:text-accent transition-colors">Hizmet Paketleri</Link></li>
+                                <li><Link href="/surec" className="hover:text-accent transition-colors">Dönüşüm Süreci</Link></li>
+                                <li><Link href="/arsa" className="hover:text-accent transition-colors">Arsa Karşılığı</Link></li>
+                                <li><Link href="/on-analiz" className="hover:text-accent transition-colors">Ücretsiz Analiz</Link></li>
+                                <li><Link href="/blog" className="hover:text-accent transition-colors">Bilgi Bankası</Link></li>
                             </ul>
                         </div>
 
@@ -149,10 +154,10 @@ export default function Layout() {
                         <div>
                             <h4 className="font-semibold text-lg mb-6">Kurumsal</h4>
                             <ul className="space-y-3 text-sm text-gray-400">
-                                <li><Link to="/hakkimizda" className="hover:text-accent transition-colors">Hakkımızda</Link></li>
-                                <li><Link to="/kvkk" className="hover:text-accent transition-colors">KVKK Aydınlatma</Link></li>
-                                <li><Link to="/gizlilik" className="hover:text-accent transition-colors">Gizlilik Politikası</Link></li>
-                                <li><Link to="/iletisim" className="hover:text-accent transition-colors">İletişim</Link></li>
+                                <li><Link href="/hakkimizda" className="hover:text-accent transition-colors">Hakkımızda</Link></li>
+                                <li><Link href="/kvkk" className="hover:text-accent transition-colors">KVKK Aydınlatma</Link></li>
+                                <li><Link href="/gizlilik" className="hover:text-accent transition-colors">Gizlilik Politikası</Link></li>
+                                <li><Link href="/iletisim" className="hover:text-accent transition-colors">İletişim</Link></li>
                             </ul>
                         </div>
 
@@ -172,6 +177,10 @@ export default function Layout() {
                                     <Phone className="w-5 h-5 text-accent shrink-0" />
                                     <span>0533 682 09 42</span>
                                 </li>
+                                <li className="flex items-center gap-3">
+                                    <Mail className="w-5 h-5 text-accent shrink-0" />
+                                    <a href="mailto:info@kdankara.com" className="hover:text-accent transition-colors">info@kdankara.com</a>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -189,12 +198,13 @@ export default function Layout() {
                     href="https://wa.me/905336820942"
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => trackWhatsAppClick()}
                     className="flex-1 bg-[#25D366] text-white rounded-lg flex items-center justify-center gap-2 font-semibold py-3"
                 >
                     <MessageCircle className="w-5 h-5" />
                     WhatsApp
                 </a>
-                <Link to="/on-analiz" className="flex-1">
+                <Link href="/on-analiz" className="flex-1">
                     <Button className="w-full h-full bg-accent hover:bg-accent-600 text-white font-bold py-3">
                         Ön Analiz
                     </Button>

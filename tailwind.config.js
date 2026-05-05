@@ -46,6 +46,12 @@ export default {
           800: '#9a3412',
           900: '#7c2d12',
           950: '#431407',
+        },
+        navy: {
+          DEFAULT: '#0B192C',
+        },
+        gold: {
+          DEFAULT: '#D4AF37',
         }
       },
       fontFamily: {

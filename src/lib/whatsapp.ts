@@ -1,6 +1,8 @@
 // WhatsApp Deep Linking Utilities
 
 import type { WhatsAppMessageData } from '@/types/calculator';
+import { trackWhatsAppClick } from './gtag';
+
 
 /**
  * Generate WhatsApp deep link with pre-filled message
@@ -43,6 +45,7 @@ function generateWhatsAppMessage(data: WhatsAppMessageData): string {
  */
 export function openWhatsApp(data: WhatsAppMessageData): void {
     const link = generateWhatsAppLink(data);
+    trackWhatsAppClick();
     window.open(link, '_blank');
 }
 

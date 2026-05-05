@@ -1,3 +1,5 @@
+"use client";
+
 // Lead Capture Modal Component for Calculator Tools
 
 import { useState } from 'react';
@@ -11,6 +13,8 @@ import { submitToGoogleSheets } from '@/lib/googleSheets';
 import { toast } from 'sonner';
 import { validatePhoneNumber, formatPhoneNumber } from '@/lib/calculators/utils';
 import type { FormType } from '@/types/calculator';
+import { trackFormSubmission } from '@/lib/gtag';
+
 
 interface LeadModalProps {
     isOpen: boolean;
@@ -35,6 +39,7 @@ export default function LeadModal({
         telefon: '',
         ilce: preFilledData?.ilce || '',
         mahalle: preFilledData?.mahalle || '',
+        adaParsel: '',
         tapuImarBelgesi: 'hayir' as 'evet' | 'hayir',
         notlar: '',
         kvkkOnay: false,
@@ -84,13 +89,32 @@ export default function LeadModal({
         setIsSubmitting(true);
 
         try {
+            const calculatorNameMap: Record<string, string> = {
+                emsal: 'Emsal',
+                daire: 'Daire Adedi',
+                'firsat-havuzu': 'Fırsat Havuzu',
+                maliyet: 'Maliyet',
+                'muteahhit-mini': 'Müteahhit Mini',
+                paylasim: 'Paylaşım',
+                takvim: 'Takvim',
+                arsapayi: 'Arsa Payı',
+                destek: 'Kira/Destek'
+            };
+
+            const calculatorName = calculatorNameMap[calculatorType] || calculatorType;
+
             await submitToGoogleSheets({
                 formType: `hesaplama-${calculatorType}` as any,
                 ...formData,
                 telefon: formatPhoneNumber(formData.telefon),
                 calculatorData: JSON.stringify(calculatorData),
+                source: `Web ${calculatorName} Aracından Geldi`,
                 timestamp: new Date().toISOString(),
             });
+
+            // Track conversion in Google Ads
+            trackFormSubmission();
+
 
             toast.success('Talebiniz alındı! 72 saat içinde detaylı rapor hazırlayacağız.');
             onClose();
@@ -101,6 +125,7 @@ export default function LeadModal({
                 telefon: '',
                 ilce: preFilledData?.ilce || '',
                 mahalle: preFilledData?.mahalle || '',
+                adaParsel: '',
                 tapuImarBelgesi: 'hayir',
                 notlar: '',
                 kvkkOnay: false,
@@ -124,7 +149,7 @@ export default function LeadModal({
                 {/* Header */}
                 <div className="flex items-center justify-between p-6 border-b border-gray-200">
                     <div>
-                        <h3 className="text-xl font-bold text-primary-900">72 Saatte Detaylı Rapor</h3>
+                        <h3 className="text-xl font-bold text-primary-900">Raporu Almak İçin Numaranızı Bırakın</h3>
                         <p className="text-sm text-gray-600 mt-1">
                             Bilgilerinizi bırakın, size özel rapor hazırlayalım
                         </p>
@@ -210,6 +235,18 @@ export default function LeadModal({
                                 <p className="text-xs text-red-500 mt-1">{errors.mahalle}</p>
                             )}
                         </div>
+                    </div>
+
+                    {/* Ada / Parsel */}
+                    <div>
+                        <Label htmlFor="adaParsel">Ada / Parsel (Opsiyonel)</Label>
+                        <Input
+                            id="adaParsel"
+                            type="text"
+                            placeholder="1234 / 5"
+                            value={formData.adaParsel}
+                            onChange={(e) => setFormData({ ...formData, adaParsel: e.target.value })}
+                        />
                     </div>
 
                     {/* Tapu/İmar Belgesi */}

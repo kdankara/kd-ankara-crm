@@ -1,0 +1,17 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/(main)/layout,_N_T_/(main)/tools/layout,_N_T_/(main)/tools/takvim/layout,_N_T_/(main)/tools/takvim/page,_N_T_/tools/takvim"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/!KG1haW4p/tools/takvim/__PAGE__",
+    "/!KG1haW4p/tools/takvim",
+    "/!KG1haW4p/tools",
+    "/!KG1haW4p",
+    "/_index",
+    "/_head"
+  ]
+}

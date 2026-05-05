@@ -1,0 +1,6 @@
+1:"$Sreact.fragment"
+2:I[37593,["/_next/static/chunks/15xr2gt2bm4ci.js","/_next/static/chunks/07m-xlwsuz0ob.js","/_next/static/chunks/0p1_2_y7w2gn~.js","/_next/static/chunks/02zr~ye7_ybzo.js","/_next/static/chunks/0aa2fuxci.sid.js","/_next/static/chunks/0a-kyst4_b2vn.js"],"default"]
+3:I[11166,["/_next/static/chunks/15xr2gt2bm4ci.js","/_next/static/chunks/07m-xlwsuz0ob.js"],"OutletBoundary"]
+4:"$Sreact.suspense"
+0:{"rsc":["$","$1","c",{"children":[["$","div",null,{"className":"h-full flex flex-col","children":[["$","div",null,{"className":"mb-6 flex items-center justify-between","children":["$","div",null,{"children":[["$","h2",null,{"className":"text-2xl font-bold text-navy","children":"Müşteri Talepleri Panosu"}],["$","p",null,{"className":"text-sm text-gray-500 mt-1","children":"Gelen talepleri durumlarına göre sürükleyip bırakarak yönetin."}]]}]}],["$","div",null,{"className":"flex-1 overflow-hidden min-h-[600px]","children":["$","$L2",null,{}]}]]}],[["$","script","script-0",{"src":"/_next/static/chunks/0aa2fuxci.sid.js","async":true}],["$","script","script-1",{"src":"/_next/static/chunks/0a-kyst4_b2vn.js","async":true}]],["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"qWZqCHCn4owWV8WCT9ikU"}
+5:null

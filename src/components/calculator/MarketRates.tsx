@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useEffect } from 'react';
 import { TrendingUp, DollarSign, Euro, Coins, Landmark, RefreshCcw, AlertCircle } from 'lucide-react';
 import { motion } from 'framer-motion';

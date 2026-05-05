@@ -1,5 +1,7 @@
-import { Outlet, Navigate } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+"use client";
+
+
+import Link from 'next/link';
 import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@/components/ui/button';
 import { LogOut, ArrowLeft, Home, FileText } from 'lucide-react';
@@ -38,7 +40,7 @@ export default function ClientLayout() {
                         <span className="font-bold text-lg hidden sm:inline">Müşteri Paneli</span>
                     </div>
                     <div className="flex items-center gap-4">
-                        <Link to="/" className="text-gray-300 hover:text-white flex items-center gap-2 text-sm hidden sm:flex">
+                        <Link href="/" className="text-gray-300 hover:text-white flex items-center gap-2 text-sm hidden sm:flex">
                             <ArrowLeft className="w-4 h-4" /> Siteye Dön
                         </Link>
                         <div className="w-px h-6 bg-white/20 hidden sm:block"></div>
@@ -58,11 +60,11 @@ export default function ClientLayout() {
                             <p className="text-sm text-gray-500 truncate">{profile?.displayName || 'Değerli Müşterimiz'}</p>
                         </div>
                         <nav className="p-2 space-y-1">
-                            <Link to="/panel" className="flex items-center gap-3 px-3 py-2.5 bg-accent/10 text-primary-900 rounded-lg font-medium transition-colors">
+                            <Link href="/panel" className="flex items-center gap-3 px-3 py-2.5 bg-accent/10 text-primary-900 rounded-lg font-medium transition-colors">
                                 <Home className="w-5 h-5 text-accent" />
                                 Süreç Takibi
                             </Link>
-                            <Link to="/panel/raporlar" className="flex items-center gap-3 px-3 py-2.5 text-gray-600 hover:bg-gray-50 hover:text-primary-900 rounded-lg font-medium transition-colors">
+                            <Link href="/panel/raporlar" className="flex items-center gap-3 px-3 py-2.5 text-gray-600 hover:bg-gray-50 hover:text-primary-900 rounded-lg font-medium transition-colors">
                                 <FileText className="w-5 h-5" />
                                 Raporlarım
                             </Link>

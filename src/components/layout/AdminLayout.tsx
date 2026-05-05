@@ -1,5 +1,7 @@
-import { Outlet, Navigate } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+"use client";
+
+
+import Link from 'next/link';
 import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@/components/ui/button';
 import { Shield, LogOut, ArrowLeft } from 'lucide-react';
@@ -58,7 +60,7 @@ export default function AdminLayout() {
                         <span className="font-bold text-lg">KD Ankara Yönetim Paneli</span>
                     </div>
                     <div className="flex items-center gap-4">
-                        <Link to="/" className="text-gray-300 hover:text-white flex items-center gap-2 text-sm">
+                        <Link href="/" className="text-gray-300 hover:text-white flex items-center gap-2 text-sm">
                             <ArrowLeft className="w-4 h-4" /> Siteye Dön
                         </Link>
                         <div className="w-px h-6 bg-white/20"></div>
@@ -73,7 +75,7 @@ export default function AdminLayout() {
             <div className="flex-1 flex">
                 <aside className="w-64 bg-white border-r border-gray-200 hidden md:block">
                     <nav className="p-4 space-y-2">
-                        <Link to="/admin" className="flex items-center gap-3 px-4 py-3 bg-accent/10 text-primary-900 rounded-lg font-medium">
+                        <Link href="/admin" className="flex items-center gap-3 px-4 py-3 bg-accent/10 text-primary-900 rounded-lg font-medium">
                             <span className="w-2 h-2 rounded-full bg-accent"></span>
                             Fırsat Havuzu Ana
                         </Link>

@@ -1,3 +1,5 @@
+"use client";
+
 // Custom hook for calculator state management with localStorage persistence
 
 import { useState, useEffect, useCallback } from 'react';

@@ -1,3 +1,5 @@
+"use client";
+'use client';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import {
@@ -9,7 +11,7 @@ import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import ankaraData from '@/data/ankara-locations.json';
-import { submitToGoogleSheets } from '@/lib/googleSheets';
+
 
 // Get sorted districts from JSON
 const districts = Object.keys(ankaraData).sort((a, b) => a.localeCompare(b, 'tr'));
@@ -47,12 +49,27 @@ export default function OnAnalizWizard() {
 
         setIsSubmitting(true);
         try {
-            await submitToGoogleSheets({
-                formType: 'simple-on-analiz',
-                ...formData,
-                timestamp: new Date().toISOString(),
+            const [ada, parsel] = formData.adaParsel ? formData.adaParsel.split('/') : [null, null];
+            const payload = {
+                isim: formData.name,
+                telefon: formData.phone,
+                ilce: formData.district,
+                mahalle: formData.neighborhood,
+                ada: ada?.trim() || null,
+                parsel: parsel?.trim() || null,
+                daire_sayisi: null,
+                talep_turu: formData.requestType,
+            };
+            const response = await fetch('/api/leads', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload),
             });
-
+            if (!response.ok) {
+                const err = await response.json();
+                console.error('Error from API:', err);
+                return;
+            }
             setIsSubmitted(true);
         } catch (error) {
             console.error('Error submitting form', error);
@@ -73,35 +90,10 @@ export default function OnAnalizWizard() {
                         <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm">
                             <CheckCircle className="w-10 h-10 text-green-600" />
                         </div>
-                        <h3 className="text-2xl font-bold text-gray-900 mb-3">Talebiniz bize ulaştı.</h3>
+                        <h3 className="text-2xl font-bold text-gray-900 mb-3">Talebiniz başarıyla alındı.</h3>
                         <p className="text-gray-600 mb-4 max-w-sm mx-auto leading-relaxed">
-                            Ön analiz talebiniz alınmıştır. Ekibimiz paylaştığınız bilgiler doğrultusunda değerlendirme yaparak sizinle en kısa sürede iletişime geçecektir.
+                            KD Ankara Strateji ekibimiz, bölgenizin imar durumunu inceleyip 24 saat içinde sizinle iletişime geçecektir.
                         </p>
-                        <p className="text-gray-500 text-sm mb-8 max-w-sm mx-auto">
-                            Dilerseniz süreci hızlandırmak için bize WhatsApp üzerinden de yazabilirsiniz.
-                        </p>
-                        <div className="space-y-3">
-                            <a
-                                href={`https://wa.me/905336820942?text=Merhaba,%20${formData.district}%20${formData.neighborhood}%20bölgesindeki%20talebim%20hakkında%20bilgi%20almak%20istiyorum.`}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="block w-full"
-                            >
-                                <Button className="w-full bg-[#25D366] hover:bg-[#128C7E] text-white h-12 font-medium">
-                                    WhatsApp'tan Yaz
-                                </Button>
-                            </a>
-                            <Button
-                                onClick={() => {
-                                    setIsSubmitted(false);
-                                    setFormData(initialData);
-                                }}
-                                variant="outline"
-                                className="w-full h-12"
-                            >
-                                Yeni Talep Oluştur
-                            </Button>
-                        </div>
                     </motion.div>
                 </CardContent>
             </Card>
@@ -113,7 +105,7 @@ export default function OnAnalizWizard() {
             <CardHeader className="bg-slate-50 border-b border-gray-100 p-4 shrink-0">
                 <CardTitle className="flex items-center gap-2 text-lg text-primary-900">
                     <Building2 className="w-5 h-5 text-accent" />
-                    Ön Analiz Talep Formu
+                    Ücretsiz Ön Danışmanlık ve Analiz
                 </CardTitle>
             </CardHeader>
 
@@ -214,7 +206,8 @@ export default function OnAnalizWizard() {
                                 <SelectValue placeholder="Talebinizi Seçin" />
                             </SelectTrigger>
                             <SelectContent>
-                                <SelectItem value="Ücretsiz Ön Analiz">Ücretsiz Ön Analiz</SelectItem>
+                                <SelectItem value="Ücretsiz Ön Danışmanlık">Ücretsiz Ön Danışmanlık</SelectItem>
+                                <SelectItem value="Riskli Yapı Analizi">Riskli Yapı Analizi</SelectItem>
                                 <SelectItem value="Teklif Değerlendirme">Teklif Değerlendirme</SelectItem>
                                 <SelectItem value="Genel Bilgi Talebi">Genel Bilgi Talebi</SelectItem>
                             </SelectContent>
