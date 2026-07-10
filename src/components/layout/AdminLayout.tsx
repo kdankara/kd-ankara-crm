@@ -2,11 +2,12 @@
 
 
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
 import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@/components/ui/button';
 import { Shield, LogOut, ArrowLeft } from 'lucide-react';
 
-export default function AdminLayout() {
+export default function AdminLayout({ children }: { children: React.ReactNode }) {
     const { user, profile, loading, signOut } = useAuth();
 
     // Profil + auth yüklenene kadar bekle
@@ -21,7 +22,7 @@ export default function AdminLayout() {
 
     // Giriş yapılmamışsa login'e yönlendir
     if (!user) {
-        return <Navigate to="/admin/login" replace />;
+        redirect('/admin/login');
     }
 
     // Giriş yapılmış ama rol admin değilse yetkisiz
@@ -83,7 +84,7 @@ export default function AdminLayout() {
                 </aside>
 
                 <main className="flex-1 p-6 md:p-8 overflow-auto">
-                    <Outlet />
+                    {children}
                 </main>
             </div>
         </div>

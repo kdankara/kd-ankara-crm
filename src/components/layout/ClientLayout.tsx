@@ -2,11 +2,12 @@
 
 
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
 import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@/components/ui/button';
 import { LogOut, ArrowLeft, Home, FileText } from 'lucide-react';
 
-export default function ClientLayout() {
+export default function ClientLayout({ children }: { children: React.ReactNode }) {
     const { user, profile, loading, signOut } = useAuth();
 
     // Profil + auth yüklenene kadar bekle
@@ -21,12 +22,12 @@ export default function ClientLayout() {
 
     // Giriş yapılmamışsa login'e yönlendir
     if (!user) {
-        return <Navigate to="/giris" replace />;
+        redirect('/giris');
     }
 
     // Admin ise admin paneline yönlendir
     if (profile?.role === 'admin') {
-        return <Navigate to="/admin" replace />;
+        redirect('/admin');
     }
 
     // Profil yoksa ya da müşteri -- paneli göster
@@ -73,7 +74,7 @@ export default function ClientLayout() {
                 </aside>
 
                 <main className="flex-1">
-                    <Outlet />
+                    {children}
                 </main>
             </div>
         </div>
