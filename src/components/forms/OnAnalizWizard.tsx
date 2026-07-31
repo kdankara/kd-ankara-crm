@@ -11,6 +11,7 @@ import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import ankaraData from '@/data/ankara-locations.json';
+import { submitToGoogleSheets } from '@/lib/googleSheets';
 
 
 // Get sorted districts from JSON
@@ -70,6 +71,16 @@ export default function OnAnalizWizard() {
                 console.error('Error from API:', err);
                 return;
             }
+
+            submitToGoogleSheets({
+                formType: 'on-analiz',
+                name: formData.name,
+                phone: formData.phone,
+                requestType: formData.requestType,
+                source: `İlçe: ${formData.district} | Mahalle: ${formData.neighborhood}${formData.adaParsel ? ` | Ada/Parsel: ${formData.adaParsel}` : ''}`,
+                timestamp: new Date().toISOString(),
+            });
+
             setIsSubmitted(true);
         } catch (error) {
             console.error('Error submitting form', error);
