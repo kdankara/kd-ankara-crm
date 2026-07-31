@@ -1,5 +1,4 @@
 "use client";
-'use client';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import {
@@ -50,29 +49,7 @@ export default function OnAnalizWizard() {
 
         setIsSubmitting(true);
         try {
-            const [ada, parsel] = formData.adaParsel ? formData.adaParsel.split('/') : [null, null];
-            const payload = {
-                isim: formData.name,
-                telefon: formData.phone,
-                ilce: formData.district,
-                mahalle: formData.neighborhood,
-                ada: ada?.trim() || null,
-                parsel: parsel?.trim() || null,
-                daire_sayisi: null,
-                talep_turu: formData.requestType,
-            };
-            const response = await fetch('/api/leads', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload),
-            });
-            if (!response.ok) {
-                const err = await response.json();
-                console.error('Error from API:', err);
-                return;
-            }
-
-            submitToGoogleSheets({
+            const ok = await submitToGoogleSheets({
                 formType: 'on-analiz',
                 name: formData.name,
                 phone: formData.phone,
@@ -80,6 +57,8 @@ export default function OnAnalizWizard() {
                 source: `İlçe: ${formData.district} | Mahalle: ${formData.neighborhood}${formData.adaParsel ? ` | Ada/Parsel: ${formData.adaParsel}` : ''}`,
                 timestamp: new Date().toISOString(),
             });
+
+            if (!ok) return;
 
             setIsSubmitted(true);
         } catch (error) {
