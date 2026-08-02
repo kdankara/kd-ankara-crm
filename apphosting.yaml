@@ -1,0 +1,16 @@
+env:
+  - variable: GOOGLE_SERVICE_ACCOUNT_EMAIL
+    secret: google-service-account-email
+    availability:
+      - BUILD
+      - RUNTIME
+  - variable: GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY
+    secret: google-service-account-private-key
+    availability:
+      - BUILD
+      - RUNTIME
+  - variable: GOOGLE_SHEET_ID
+    secret: google-sheet-id
+    availability:
+      - BUILD
+      - RUNTIME
