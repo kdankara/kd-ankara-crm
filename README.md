@@ -1,73 +1,191 @@
-# React + TypeScript + Vite
+# KD Ankara CRM
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Ankara kentsel dönüşüm danışmanlığı hizmetleri için Next.js + TypeScript tabanlı web uygulaması. İletişim formları, ön analiz sihirbazı ve müteahhit yönetim paneli içerir.
 
-Currently, two official plugins are available:
+**Live:** https://kd-ankara-crm.vercel.app
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Kurulum
 
-## React Compiler
+### Gereksinimler
+- Node.js 20+
+- npm veya yarn
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Adımlar
 
-## Expanding the ESLint configuration
+```bash
+# Repo'yu klonlayın
+git clone https://github.com/kdankara/kd-ankara-crm.git
+cd kd-ankara-crm
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+# Bağımlılıkları kurun
+npm install
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# Environment variables'ları ayarlayın
+cp .env.example .env.local
+# .env.local dosyasını düzenleyin ve değerleri girin
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🔐 Environment Variables
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+`.env.local` dosyasında aşağıdaki değişkenleri tanımlayın:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```env
+# Google Sheets Integration
+GOOGLE_SERVICE_ACCOUNT_EMAIL=your-service-account@project.iam.gserviceaccount.com
+GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY="-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----\n"
+GOOGLE_SHEET_ID=your-google-sheet-id-here
 ```
+
+### Google Sheets Kurulumu
+
+1. [Google Cloud Console](https://console.cloud.google.com) açın
+2. Yeni proje oluşturun veya mevcut projeyi seçin
+3. **IAM & Admin** → **Service Accounts** gidin
+4. Yeni Service Account oluşturun
+5. **Keys** sekmesinde JSON türünde key oluşturun
+6. İndirilen JSON dosyasından:
+   - `client_email` → `GOOGLE_SERVICE_ACCOUNT_EMAIL`
+   - `private_key` → `GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY`
+7. Google Sheets'te form verilerini tutacak bir sheet oluşturun
+8. Sheet ID'sini `.env.local`'a ekleyin
+9. **Paylaş** butonundan Service Account e-postasını Düzenleyici olarak ekleyin
+
+## 📦 Teknoloji Stack
+
+- **Framework:** Next.js 16.2.4
+- **Language:** TypeScript 5.9
+- **Styling:** Tailwind CSS 3.4.19
+- **UI Components:** shadcn/ui + Radix UI
+- **Form Handling:** React Hook Form + Zod
+- **Google APIs:** googleapis 173.0.0
+- **Deployment:** Vercel / Firebase Hosting
+
+## 📁 Proje Yapısı
+
+```
+src/
+  ├── app/                    # Next.js App Router
+  │   ├── api/
+  │   │   └── submit-form/   # Form submission API endpoint
+  │   └── (main)/            # Ana uygulama sayfaları
+  │       ├── iletisim/      # İletişim formu sayfası
+  │       ├── on-analiz/     # Ön analiz sihirbazı
+  │       ├── panel/         # Yönetim paneli
+  │       └── ...
+  ├── components/            # React bileşenleri
+  │   ├── ui/               # shadcn UI bileşenleri
+  │   └── forms/            # Form bileşenleri
+  ├── lib/                   # Utility fonksiyonları
+  │   ├── googleSheets.ts   # Google Sheets integration
+  │   ├── firebase.ts       # Firebase configuration
+  │   ├── whatsapp.ts       # WhatsApp integration
+  │   └── gtag.ts           # Google Analytics
+  ├── hooks/                # Custom React hooks
+  ├── types/                # TypeScript type definitions
+  └── contexts/             # React Context providers
+```
+
+## 🏃 Geliştirme
+
+```bash
+# Development server başlatın (hot reload ile)
+npm run dev
+
+# TypeScript type check
+npm run type-check
+
+# Linting
+npm run lint
+
+# Production build
+npm run build
+
+# Production build'i test edin
+npm run start
+```
+
+Geliştirme sunucusu `http://localhost:3000` adresinde çalışacaktır.
+
+## 🔗 Form Gönderimi (Google Sheets)
+
+### İletişim Formu (`/iletisim`)
+
+```typescript
+{
+  formType: "iletisim",
+  name: string,
+  email: string,
+  phone: string,
+  message: string,
+  timestamp: ISO 8601 datetime
+}
+```
+
+### Ön Analiz Formu (`/on-analiz`)
+
+```typescript
+{
+  formType: "on-analiz",
+  propertyAddress: string,
+  landArea: number,
+  buildingArea: number,
+  yearBuilt: number,
+  // ... diğer alanlar
+  timestamp: ISO 8601 datetime
+}
+```
+
+Veriler otomatik olarak Google Sheets'teki `Sayfa1` isimli sayfaya eklenir.
+
+## 📋 Sorun Giderme
+
+Form gönderimi ile ilgili sorunlar için [TROUBLESHOOTING.md](./TROUBLESHOOTING.md) dosyasını kontrol edin.
+
+**Hızlı Çözüm:**
+1. `.env.local` dosyasında tüm değişkenlerin tanımlandığını kontrol edin
+2. Tarayıcı Console'da (F12) hata mesajlarını kontrol edin
+3. Google Sheet'in Service Account'la paylaşıldığını kontrol edin
+4. Network tab'ında `/api/submit-form` isteğinin yanıtını kontrol edin
+
+## 🚀 Deployment
+
+### Vercel (Önerilen)
+
+```bash
+# Vercel CLI'yi yükleyin (ilk kez)
+npm i -g vercel
+
+# Deploy edin
+vercel
+
+# Environment variables'ları Vercel dashboard'dan ayarlayın
+```
+
+### Firebase Hosting
+
+```bash
+# Firebase CLI'yi yükleyin
+npm i -g firebase-tools
+
+# Firebase init
+firebase init
+
+# Deploy edin
+firebase deploy
+```
+
+## 📝 Lisans
+
+Bu proje özel kullanımdır.
+
+## 📧 İletişim
+
+**KD Ankara**
+- 📞 0312 236 10 17 / 0533 682 09 42
+- 📧 info@kdankara.com
+- 📍 Konutkent Mah. 2987. Sok. No:18, Çankaya, Ankara
+
+---
+
+**Son Güncelleme:** 2024-09-01  
+**Versiyon:** 1.1.0 (Google Sheets error handling iyileştirmeleri)
