@@ -2,13 +2,14 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import {
-    Building2, MapPin, User, Phone, Send, CheckCircle, ShieldCheck
+    Building2, MapPin, User, Phone, Send, CheckCircle, ShieldCheck, AlertCircle
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { toast } from 'sonner';
 import ankaraData from '@/data/ankara-locations.json';
 import { submitToGoogleSheets } from '@/lib/googleSheets';
 
@@ -38,6 +39,8 @@ export default function OnAnalizWizard() {
     const [formData, setFormData] = useState<FormData>(initialData);
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
+    const [submissionId, setSubmissionId] = useState('');
 
     const validateForm = () => {
         return formData.name && formData.phone && formData.district && formData.neighborhood && formData.requestType;
@@ -45,26 +48,61 @@ export default function OnAnalizWizard() {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        if (!validateForm()) return;
+        if (!validateForm()) {
+            toast.error('Lütfen tüm zorunlu alanları doldurun');
+            return;
+        }
 
         setIsSubmitting(true);
+        setErrorMessage('');
+
         try {
-            const ok = await submitToGoogleSheets({
+            const result = await submitToGoogleSheets({
                 formType: 'on-analiz',
                 name: formData.name,
                 phone: formData.phone,
+                email: '', // Optional for this form
+                district: formData.district,
+                neighborhood: formData.neighborhood,
+                adaParsel: formData.adaParsel || 'Belirtilmedi',
                 requestType: formData.requestType,
-                source: `İlçe: ${formData.district} | Mahalle: ${formData.neighborhood}${formData.adaParsel ? ` | Ada/Parsel: ${formData.adaParsel}` : ''}`,
                 timestamp: new Date().toISOString(),
             });
 
-            if (!ok) return;
-
-            setIsSubmitted(true);
+            if (result.success) {
+                setIsSubmitted(true);
+                setSubmissionId(result.submissionId || '');
+                toast.success('Talebiniz başarıyla alındı!');
+                setFormData(initialData);
+            } else {
+                setErrorMessage(getErrorMessage(result.code));
+                toast.error(getErrorMessage(result.code));
+                console.error('Form submission error:', result);
+            }
         } catch (error) {
-            console.error('Error submitting form', error);
+            const errorMsg = 'Bir hata oluştu. Lütfen tekrar deneyin.';
+            setErrorMessage(errorMsg);
+            toast.error(errorMsg);
+            console.error('Unexpected error:', error);
         } finally {
             setIsSubmitting(false);
+        }
+    };
+
+    const getErrorMessage = (code?: string): string => {
+        switch (code) {
+            case 'NETWORK_ERROR':
+                return 'İnternet bağlantınızı kontrol edip tekrar deneyin.';
+            case 'CONFIG_ERROR':
+                return 'Sunucu yapılandırması hatası. Lütfen daha sonra deneyin.';
+            case 'AUTH_ERROR':
+                return 'Yetkilendirme hatası. Lütfen destek ekibine başvurun.';
+            case 'SHEET_NOT_FOUND':
+                return 'Veri tabanı hatası. Lütfen destek ekibine başvurun.';
+            case 'INVALID_RESPONSE':
+                return 'Sunucudan geçersiz yanıt alındı. Lütfen tekrar deneyin.';
+            default:
+                return 'Bir hata oluştu. Lütfen tekrar deneyin.';
         }
     };
 
@@ -84,6 +122,11 @@ export default function OnAnalizWizard() {
                         <p className="text-gray-600 mb-4 max-w-sm mx-auto leading-relaxed">
                             KD Ankara Strateji ekibimiz, bölgenizin imar durumunu inceleyip 24 saat içinde sizinle iletişime geçecektir.
                         </p>
+                        {submissionId && (
+                            <p className="text-xs text-gray-500 mt-6 font-mono bg-gray-50 p-3 rounded">
+                                Talep ID: {submissionId}
+                            </p>
+                        )}
                     </motion.div>
                 </CardContent>
             </Card>
@@ -91,7 +134,7 @@ export default function OnAnalizWizard() {
     }
 
     return (
-        <Card className="w-full bg-white text-gray-900 shadow-2xl border-t-4 border-t-accent overflow-hidden flex flex-col h-full max-h-[650px]">
+        <Card className="w-full bg-white text-gray-900 shadow-2xl border-t-4 border-t-accent overflow-hidden flex flex-col h-full max-h-[700px]">
             <CardHeader className="bg-slate-50 border-b border-gray-100 p-4 shrink-0">
                 <CardTitle className="flex items-center gap-2 text-lg text-primary-900">
                     <Building2 className="w-5 h-5 text-accent" />
@@ -100,6 +143,17 @@ export default function OnAnalizWizard() {
             </CardHeader>
 
             <CardContent className="p-6 overflow-y-auto grow custom-scrollbar">
+                {/* Error Message */}
+                {errorMessage && (
+                    <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg flex items-start gap-3">
+                        <AlertCircle className="w-5 h-5 text-red-600 mt-0.5 shrink-0" />
+                        <div>
+                            <h3 className="font-semibold text-red-900">Hata</h3>
+                            <p className="text-sm text-red-700">{errorMessage}</p>
+                        </div>
+                    </div>
+                )}
+
                 <form onSubmit={handleSubmit} className="space-y-5">
                     
                     <div className="space-y-1.5">
@@ -112,6 +166,7 @@ export default function OnAnalizWizard() {
                                 className="pl-10 h-11"
                                 value={formData.name}
                                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                                disabled={isSubmitting}
                                 required
                             />
                         </div>
@@ -128,6 +183,7 @@ export default function OnAnalizWizard() {
                                 className="pl-10 h-11"
                                 value={formData.phone}
                                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                                disabled={isSubmitting}
                                 required
                             />
                         </div>
@@ -139,7 +195,7 @@ export default function OnAnalizWizard() {
                             <Select
                                 value={formData.district}
                                 onValueChange={(value) => setFormData({ ...formData, district: value, neighborhood: '' })}
-                                required
+                                disabled={isSubmitting}
                             >
                                 <SelectTrigger className="h-11 ring-offset-0 focus:ring-accent">
                                     <SelectValue placeholder="İlçe Seç" />
@@ -156,8 +212,7 @@ export default function OnAnalizWizard() {
                             <Select
                                 value={formData.neighborhood}
                                 onValueChange={(value) => setFormData({ ...formData, neighborhood: value })}
-                                disabled={!formData.district}
-                                required
+                                disabled={!formData.district || isSubmitting}
                             >
                                 <SelectTrigger className="h-11 ring-offset-0 focus:ring-accent">
                                     <SelectValue placeholder="Mahalle Seç" />
@@ -181,6 +236,7 @@ export default function OnAnalizWizard() {
                                 className="pl-10 h-11 border-gray-200"
                                 value={formData.adaParsel}
                                 onChange={(e) => setFormData({ ...formData, adaParsel: e.target.value })}
+                                disabled={isSubmitting}
                             />
                         </div>
                     </div>
@@ -190,7 +246,7 @@ export default function OnAnalizWizard() {
                         <Select
                             value={formData.requestType}
                             onValueChange={(value) => setFormData({ ...formData, requestType: value })}
-                            required
+                            disabled={isSubmitting}
                         >
                             <SelectTrigger className="h-11">
                                 <SelectValue placeholder="Talebinizi Seçin" />
