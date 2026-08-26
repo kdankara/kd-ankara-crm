@@ -5,8 +5,18 @@ export interface FormSubmission {
     [key: string]: any;
 }
 
-export async function submitToGoogleSheets(data: FormSubmission): Promise<boolean> {
+export interface SubmitResponse {
+    success: boolean;
+    submissionId?: string;
+    error?: string;
+    code?: string;
+    message?: string;
+}
+
+export async function submitToGoogleSheets(data: FormSubmission): Promise<SubmitResponse> {
     try {
+        console.log('[GoogleSheets] Submitting form:', { formType: data.formType, timestamp: new Date().toISOString() });
+
         const response = await fetch('/api/submit-form', {
             method: 'POST',
             headers: {
@@ -15,15 +25,38 @@ export async function submitToGoogleSheets(data: FormSubmission): Promise<boolea
             body: JSON.stringify(data),
         });
 
+        const responseData: SubmitResponse = await response.json().catch(() => ({
+            success: false,
+            error: 'Invalid server response',
+            code: 'INVALID_RESPONSE',
+        }));
+
         if (!response.ok) {
-            const err = await response.json().catch(() => ({}));
-            console.error('Error submitting to Google Sheets:', err);
-            return false;
+            console.error('[GoogleSheets] Submission failed:', {
+                status: response.status,
+                error: responseData.error,
+                code: responseData.code,
+            });
+            return responseData;
         }
 
-        return true;
+        console.log('[GoogleSheets] Submission successful:', {
+            submissionId: responseData.submissionId,
+            message: responseData.message,
+        });
+
+        return responseData;
     } catch (error) {
-        console.error('Error submitting to Google Sheets:', error);
-        return false;
+        const errorMessage = error instanceof Error ? error.message : String(error);
+        console.error('[GoogleSheets] Network error:', {
+            message: errorMessage,
+            timestamp: new Date().toISOString(),
+        });
+
+        return {
+            success: false,
+            error: 'Network error. Please check your internet connection and try again.',
+            code: 'NETWORK_ERROR',
+        };
     }
 }
