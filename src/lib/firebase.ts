@@ -19,7 +19,7 @@ let app;
 try {
     if (firebaseConfig.apiKey && firebaseConfig.projectId) {
         app = getApps().length > 0 ? getApp() : initializeApp(firebaseConfig);
-    } else {
+    } else if (typeof window !== 'undefined') {
         console.warn("Firebase ayarları eksik. Lütfen .env dosyasını oluşturup API anahtarlarını girin.");
     }
 } catch (error) {

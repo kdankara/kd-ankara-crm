@@ -22,7 +22,24 @@ function getSheetsClient() {
 
 export async function POST(request: Request) {
   try {
-    const body = await request.json();
+    let body: Record<string, unknown>;
+    try {
+      const parsedBody = await request.json();
+
+      if (!parsedBody || typeof parsedBody !== 'object' || Array.isArray(parsedBody)) {
+        return NextResponse.json(
+          { error: 'Invalid request body', success: false, code: 'INVALID_BODY' },
+          { status: 400 }
+        );
+      }
+
+      body = parsedBody as Record<string, unknown>;
+    } catch {
+      return NextResponse.json(
+        { error: 'Invalid JSON body', success: false, code: 'INVALID_JSON' },
+        { status: 400 }
+      );
+    }
     
     // Validate required fields
     if (!body.formType) {
@@ -33,7 +50,7 @@ export async function POST(request: Request) {
     }
 
     const submissionId = `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
-    const row = { submissionId, timestamp: new Date().toISOString(), ...body };
+    const row: Record<string, unknown> = { submissionId, timestamp: new Date().toISOString(), ...body };
 
     // Check if Google Sheet ID is configured
     const spreadsheetId = process.env.GOOGLE_SHEET_ID;

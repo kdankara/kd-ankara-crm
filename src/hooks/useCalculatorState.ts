@@ -2,7 +2,7 @@
 
 // Custom hook for calculator state management with localStorage persistence
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { saveCalculatorData, loadCalculatorData } from '@/lib/calculators/utils';
 import type { FormType } from '@/types/calculator';
 
@@ -17,18 +17,26 @@ export function useCalculatorState<T extends Record<string, any>>({
     initialValues,
     autoSave = true,
 }: UseCalculatorStateOptions<T>) {
-    // Load saved data or use initial values
-    const [values, setValues] = useState<T>(() => {
+    const initialValuesRef = useRef(initialValues);
+    const [values, setValues] = useState<T>(initialValues);
+    const [hasLoaded, setHasLoaded] = useState(false);
+
+    useEffect(() => {
+        initialValuesRef.current = initialValues;
+    }, [initialValues]);
+
+    useEffect(() => {
         const saved = loadCalculatorData<T>(formType);
-        return saved || initialValues;
-    });
+        setValues(saved || initialValuesRef.current);
+        setHasLoaded(true);
+    }, [formType]);
 
     // Auto-save to localStorage when values change
     useEffect(() => {
-        if (autoSave) {
+        if (autoSave && hasLoaded) {
             saveCalculatorData(formType, values);
         }
-    }, [values, formType, autoSave]);
+    }, [values, formType, autoSave, hasLoaded]);
 
     // Update a single field
     const updateField = useCallback(<K extends keyof T>(field: K, value: T[K]) => {
@@ -48,8 +56,8 @@ export function useCalculatorState<T extends Record<string, any>>({
 
     // Reset to initial values
     const reset = useCallback(() => {
-        setValues(initialValues);
-    }, [initialValues]);
+        setValues(initialValuesRef.current);
+    }, []);
 
     // Load data from another calculator (cross-calculator flow)
     const loadFromCalculator = useCallback(<U extends Record<string, any>>(

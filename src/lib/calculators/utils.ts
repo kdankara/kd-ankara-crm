@@ -63,6 +63,10 @@ export function debounce<T extends (...args: any[]) => any>(
  * Save calculator data to localStorage
  */
 export function saveCalculatorData(key: string, data: any): void {
+    if (typeof window === 'undefined' || typeof window.localStorage === 'undefined') {
+        return;
+    }
+
     try {
         localStorage.setItem(`kd_calculator_${key}`, JSON.stringify(data));
     } catch (error) {
@@ -74,6 +78,10 @@ export function saveCalculatorData(key: string, data: any): void {
  * Load calculator data from localStorage
  */
 export function loadCalculatorData<T>(key: string): T | null {
+    if (typeof window === 'undefined' || typeof window.localStorage === 'undefined') {
+        return null;
+    }
+
     try {
         const data = localStorage.getItem(`kd_calculator_${key}`);
         return data ? JSON.parse(data) : null;
@@ -87,6 +95,10 @@ export function loadCalculatorData<T>(key: string): T | null {
  * Clear calculator data from localStorage
  */
 export function clearCalculatorData(key: string): void {
+    if (typeof window === 'undefined' || typeof window.localStorage === 'undefined') {
+        return;
+    }
+
     try {
         localStorage.removeItem(`kd_calculator_${key}`);
     } catch (error) {
@@ -99,7 +111,7 @@ export function clearCalculatorData(key: string): void {
  */
 export function validatePhoneNumber(phone: string): boolean {
     // Remove spaces and special characters
-    const cleaned = phone.replace(/[\s\-\(\)]/g, '');
+    const cleaned = phone.replace(/[\s-()]/g, '');
 
     // Check if it's a valid Turkish phone number
     // Formats: 05XXXXXXXXX or 5XXXXXXXXX or +905XXXXXXXXX
@@ -111,7 +123,7 @@ export function validatePhoneNumber(phone: string): boolean {
  * Format phone number for display
  */
 export function formatPhoneNumber(phone: string): string {
-    const cleaned = phone.replace(/[\s\-\(\)]/g, '');
+    const cleaned = phone.replace(/[\s-()]/g, '');
 
     if (cleaned.startsWith('+90')) {
         const number = cleaned.substring(3);

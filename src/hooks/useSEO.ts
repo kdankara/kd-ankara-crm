@@ -80,9 +80,9 @@ export function useSEO(title: string, description?: string, schema?: object) {
             'about': { '@id': `${SITE_URL}/#organization` }
         };
 
-        let finalSchema: any = {
+        const finalSchema = {
             '@context': 'https://schema.org',
-            '@graph': [webpageSchema]
+            '@graph': [webpageSchema] as object[]
         };
 
         if (schema) {
