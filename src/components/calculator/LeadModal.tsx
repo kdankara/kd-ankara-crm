@@ -27,6 +27,8 @@ interface LeadModalProps {
     };
 }
 
+type CalculatorLeadFormType = `hesaplama-${FormType}`;
+
 export default function LeadModal({
     isOpen,
     onClose,
@@ -103,14 +105,19 @@ export default function LeadModal({
 
             const calculatorName = calculatorNameMap[calculatorType] || calculatorType;
 
-            await submitToGoogleSheets({
-                formType: `hesaplama-${calculatorType}` as any,
+            const response = await submitToGoogleSheets({
+                formType: `hesaplama-${calculatorType}` as CalculatorLeadFormType,
                 ...formData,
                 telefon: formatPhoneNumber(formData.telefon),
                 calculatorData: JSON.stringify(calculatorData),
                 source: `Web ${calculatorName} Aracından Geldi`,
                 timestamp: new Date().toISOString(),
             });
+
+            if (!response.success) {
+                toast.error(response.error || 'Talebiniz gönderilemedi. Lütfen tekrar deneyin.');
+                return;
+            }
 
             // Track conversion in Google Ads
             trackFormSubmission();
@@ -130,7 +137,7 @@ export default function LeadModal({
                 notlar: '',
                 kvkkOnay: false,
             });
-        } catch (error) {
+        } catch {
             toast.error('Bir hata oluştu. Lütfen tekrar deneyin.');
         } finally {
             setIsSubmitting(false);

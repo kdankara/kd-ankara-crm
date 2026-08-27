@@ -24,6 +24,10 @@ export default function MarketRates() {
 
             // Use Truncgil Financial API (more stable and CORS friendly)
             const response = await fetch('https://finans.truncgil.com/v3/today.json');
+            if (!response.ok) {
+                throw new Error(`Unexpected market data response: ${response.status}`);
+            }
+
             const data = await response.json();
 
             if (!data) throw new Error('No data received');

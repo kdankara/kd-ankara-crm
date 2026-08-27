@@ -38,17 +38,28 @@ export default function LeadPool() {
         const form = e.target as HTMLFormElement;
         const formData = new FormData(form);
 
-        await submitToGoogleSheets({
+        if (!selectedLead) {
+            toast.error('Lütfen önce bir proje seçin.');
+            return;
+        }
+
+        const response = await submitToGoogleSheets({
             formType: 'firsat-havuzu',
             leadId: selectedLead,
-            companyName: formData.get('companyName'),
-            phone: formData.get('phone'),
-            notes: formData.get('notes'),
+            companyName: String(formData.get('companyName') || ''),
+            phone: String(formData.get('phone') || ''),
+            notes: String(formData.get('notes') || ''),
             timestamp: new Date().toISOString(),
         });
 
+        if (!response.success) {
+            toast.error(response.error || 'Talebiniz gönderilemedi. Lütfen tekrar deneyin.');
+            return;
+        }
+
         toast.success(`Fırsat #${selectedLead} için talebiniz alındı. Detaylar e-posta adresinize gönderildi.`);
         setIsDialogOpen(false);
+        form.reset();
     };
 
     return (

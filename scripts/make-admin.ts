@@ -15,7 +15,9 @@ if (!fs.existsSync(SERVICE_ACCOUNT_PATH)) {
   process.exit(1);
 }
 
-initializeApp({ credential: cert(require(SERVICE_ACCOUNT_PATH)) });
+const serviceAccount = JSON.parse(fs.readFileSync(SERVICE_ACCOUNT_PATH, 'utf8'));
+
+initializeApp({ credential: cert(serviceAccount) });
 const db = getFirestore();
 const auth = getAuth();
 

@@ -21,19 +21,27 @@ export function calculateDaire(inputs: DaireInputs): DaireResults {
         // Mix mode
         const totalOran = tipler.reduce((sum, tip) => sum + tip.oran, 0);
 
-        // Calculate weighted average unit size
-        const weightedAvgM2 = tipler.reduce((sum, tip) => {
-            return sum + (tip.brutM2 * tip.oran / totalOran);
-        }, 0);
+        if (totalOran <= 0) {
+            tipBazliAdetler = tipler.map((tip) => ({
+                tip: tip.name,
+                adet: 0,
+                brutM2: tip.brutM2,
+            }));
+        } else {
+            // Calculate weighted average unit size
+            const weightedAvgM2 = tipler.reduce((sum, tip) => {
+                return sum + (tip.brutM2 * tip.oran / totalOran);
+            }, 0);
 
-        tahminiDaireAdedi = Math.floor(satilabilirBrutAlan / weightedAvgM2);
+            tahminiDaireAdedi = Math.floor(satilabilirBrutAlan / weightedAvgM2);
 
-        // Calculate units per type
-        tipBazliAdetler = tipler.map(tip => ({
-            tip: tip.name,
-            adet: Math.floor(tahminiDaireAdedi * (tip.oran / totalOran)),
-            brutM2: tip.brutM2,
-        }));
+            // Calculate units per type
+            tipBazliAdetler = tipler.map(tip => ({
+                tip: tip.name,
+                adet: Math.floor(tahminiDaireAdedi * (tip.oran / totalOran)),
+                brutM2: tip.brutM2,
+            }));
+        }
     }
 
     return {
