@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /giris
+Disallow: /panel
+Disallow: /api/
 
 Sitemap: https://kdankara.com/sitemap.xml
