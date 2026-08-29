@@ -15,6 +15,24 @@
        <priority>0.9000</priority>
   </url>
   <url>
+       <loc>https://kdankara.com/yenimahalle-kentsel-donusum</loc>
+       <lastmod>2026-08-30T12:00:00+00:00</lastmod>
+       <changefreq>weekly</changefreq>
+       <priority>0.9000</priority>
+  </url>
+  <url>
+       <loc>https://kdankara.com/kecioren-kentsel-donusum</loc>
+       <lastmod>2026-08-30T12:00:00+00:00</lastmod>
+       <changefreq>weekly</changefreq>
+       <priority>0.9000</priority>
+  </url>
+  <url>
+       <loc>https://kdankara.com/sincan-kentsel-donusum</loc>
+       <lastmod>2026-08-30T12:00:00+00:00</lastmod>
+       <changefreq>weekly</changefreq>
+       <priority>0.9000</priority>
+  </url>
+  <url>
        <loc>https://kdankara.com/hakkimizda</loc>
        <lastmod>2026-08-27T19:47:56+00:00</lastmod>
        <changefreq>daily</changefreq>
