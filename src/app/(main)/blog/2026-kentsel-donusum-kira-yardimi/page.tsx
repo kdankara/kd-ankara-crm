@@ -1,22 +1,16 @@
 import { Metadata } from 'next';
 import OnAnalizWizard from '@/components/forms/OnAnalizWizard';
 import { 
-  FileText, CheckCircle, PhoneCall, Calendar, HelpCircle, 
-  AlertTriangle, Building2, UserCheck, CreditCard, ShieldAlert 
+  FileText, CheckCircle2, PhoneCall, Calendar, HelpCircle, 
+  AlertCircle, Building2, Wallet, Landmark, ArrowRight, ShieldCheck, Info
 } from 'lucide-react';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Ankara Kentsel Dönüşüm Kira Yardımı Rehberi (2025-2026 Güncel Tutarlar) | KD Ankara',
-  description: 'Ankara 2025-2026 kentsel dönüşüm kira yardımı ne kadar? Malikler için 6.500 TL, kiracılar için 13.000 TL destek başvuru şartları, gerekli belgeler ve e-Devlet başvuru rehberi.',
+  title: 'Ankara Kentsel Dönüşüm Kira Yardımı Rehberi (2025-2026) | KD Ankara',
+  description: 'Ankara 2025-2026 kentsel dönüşüm kira yardımı ne kadar? Malikler için 6.500 TL, kiracılar için 13.000 TL başvuru şartları, belgeler ve e-Devlet başvuru rehberi.',
   alternates: {
-    canonical: 'https://kdankara.com/blog/2026-kentsel-donusum-kira-yardimi',
-  },
-  openGraph: {
-    title: 'Ankara Kentsel Dönüşüm Kira Yardımı Rehberi | KD Ankara',
-    description: "Ankara'da kentsel dönüşüm kira yardımı başvuru adımları, evrak listesi ve güncel destek miktarları.",
-    url: 'https://kdankara.com/blog/2026-kentsel-donusum-kira-yardimi',
-    type: 'article',
+    canonical: 'https://kdankara.com/blog/2026-kentsel-donusum-kira-yardimi/',
   },
 };
 
@@ -28,19 +22,9 @@ export default function KiraYardimiPage() {
         "@type": "Article",
         "@id": "https://kdankara.com/blog/2026-kentsel-donusum-kira-yardimi/#article",
         "headline": "Ankara Kentsel Dönüşüm Kira Yardımı Rehberi: Adım Adım Başvuru ve Güncel Tutarlar",
-        "description": "Ankara iline özel kentsel dönüşüm kira yardımı başvuru koşulları, malik ve kiracı destek tutarları ve 6306 sayılı kanun kapsamındaki haklar.",
-        "author": {
-          "@type": "Organization",
-          "name": "KD Ankara"
-        },
-        "publisher": {
-          "@type": "Organization",
-          "name": "KD Ankara",
-          "logo": {
-            "@type": "ImageObject",
-            "url": "https://kdankara.com/logo.png"
-          }
-        },
+        "description": "Ankara iline özel kentsel dönüşüm kira yardımı başvuru koşulları, malik ve kiracı destek tutarları.",
+        "author": { "@type": "Organization", "name": "KD Ankara" },
+        "publisher": { "@type": "Organization", "name": "KD Ankara" },
         "datePublished": "2026-08-30"
       },
       {
@@ -49,26 +33,12 @@ export default function KiraYardimiPage() {
           {
             "@type": "Question",
             "name": "Kira yardımı geri ödemeli mi?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Hayır, kentsel dönüşüm kira yardımı tamamen hibe niteliğindedir ve devlet tarafından geri talep edilmez."
-            }
+            "acceptedAnswer": { "@type": "Answer", "text": "Hayır, tamamen hibe niteliğindedir ve geri talep edilmez." }
           },
           {
             "@type": "Question",
-            "name": "Ödemeler ne zaman ve hangi bankaya yatıyor?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Ödemelerin tamamı Ziraat Bankası vadesiz TL hesaplarına yatırılır. Genellikle her ayın 15'inde hesaplara aktarılmaktadır."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "İskanı olmayan binalar kira yardımı alabilir mi?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Evet alabilir. Ancak arsa paylı tapularda belediyeden alınacak emlak vergi beyannamesinin mutlaka 'bina' türünde düzenlenmiş olması şarttır."
-            }
+            "name": "Ödemeler hangi bankaya yatıyor?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Tüm ödemeler Ziraat Bankası vadesiz TL hesaplarına her ayın 15'inde aktarılır." }
           }
         ]
       }
@@ -77,169 +47,210 @@ export default function KiraYardimiPage() {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }} />
 
-      <main className="min-h-screen bg-slate-50 py-12">
-        <article className="container mx-auto px-4 max-w-4xl">
-          {/* Header */}
-          <div className="mb-10 text-center">
-            <div className="inline-flex items-center gap-2 bg-amber-500/10 text-amber-600 px-3 py-1 rounded-full text-sm mb-4 font-semibold border border-amber-500/20">
-              <Calendar className="w-4 h-4" /> 2025 - 2026 Güncel Mevzuat Rehberi
+      <main className="min-h-screen bg-slate-50 pb-20">
+        {/* Header / Hero */}
+        <section className="bg-slate-900 text-white pt-12 pb-20 border-b border-slate-800">
+          <div className="container mx-auto px-4 max-w-5xl">
+            <div className="flex items-center gap-2 text-xs text-slate-400 mb-6">
+              <Link href="/" className="hover:text-amber-400 transition">Anasayfa</Link>
+              <span>/</span>
+              <Link href="/blog" className="hover:text-amber-400 transition">Blog</Link>
+              <span>/</span>
+              <span className="text-amber-400">Kira Yardımı Rehberi</span>
             </div>
-            <h1 className="text-3xl md:text-5xl font-bold text-slate-900 mb-4 tracking-tight leading-tight">
-              Ankara Kentsel Dönüşüm Kira Yardımı Rehberi: Adım Adım Başvuru ve Tutarlar
+
+            <div className="inline-flex items-center gap-2 bg-amber-500/10 text-amber-400 px-3 py-1 rounded-full text-xs font-semibold mb-6 border border-amber-500/20">
+              <Calendar className="w-3.5 h-3.5" /> 2025 - 2026 Güncel Mevzuat
+            </div>
+
+            <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-6 leading-tight">
+              Ankara Kentsel Dönüşüm Kira Yardımı Rehberi
             </h1>
-            <p className="text-slate-600 text-lg max-w-3xl mx-auto">
-              İnşaat süresince kira maliyetlerinizi nasıl karşılayacaksınız? Ankara özelinde güncel destek tutarları, ikamet şartları ve e-Devlet başvuru adımları.
+            <p className="text-slate-300 text-base md:text-lg max-w-3xl leading-relaxed">
+              İnşaat süresince devlet tarafından sağlanan 18 aylık karşılıksız kira desteği, başvuru evrakları ve dikkat edilmesi gereken kritik detaylar.
             </p>
           </div>
+        </section>
 
-          <div className="bg-white rounded-2xl p-6 md:p-12 shadow-sm border border-slate-200 text-slate-700 space-y-8">
+        {/* Ana İçerik Konteyneri */}
+        <div className="container mx-auto px-4 max-w-5xl -mt-10">
+          
+          {/* Özet KPI Kartları */}
+          <div className="grid md:grid-cols-3 gap-4 mb-8">
+            <div className="bg-white p-6 rounded-2xl shadow-lg border border-slate-100 flex flex-col justify-between">
+              <div>
+                <span className="text-xs font-bold text-amber-600 uppercase tracking-wider block mb-1">Ev ve İşyeri Sahipleri</span>
+                <div className="text-3xl font-black text-slate-900 mb-1">6.500 ₺ <span className="text-sm font-normal text-slate-500">/ Ay</span></div>
+              </div>
+              <p className="text-xs text-slate-600 mt-3 pt-3 border-t border-slate-100">18 ay boyunca düzenli ödenir (Toplam 117.000 ₺).</p>
+            </div>
+
+            <div className="bg-white p-6 rounded-2xl shadow-lg border border-slate-100 flex flex-col justify-between">
+              <div>
+                <span className="text-xs font-bold text-amber-600 uppercase tracking-wider block mb-1">Konut Kiracıları</span>
+                <div className="text-3xl font-black text-slate-900 mb-1">13.000 ₺</div>
+              </div>
+              <p className="text-xs text-slate-600 mt-3 pt-3 border-t border-slate-100">Taşınma desteği olarak tek seferlik ödenir.</p>
+            </div>
+
+            <div className="bg-white p-6 rounded-2xl shadow-lg border border-slate-100 flex flex-col justify-between">
+              <div>
+                <span className="text-xs font-bold text-amber-600 uppercase tracking-wider block mb-1">Ayni Hak Sahipleri</span>
+                <div className="text-3xl font-black text-slate-900 mb-1">32.500 ₺</div>
+              </div>
+              <p className="text-xs text-slate-600 mt-3 pt-3 border-t border-slate-100">İkamet etme şartıyla tek seferlik ödenir.</p>
+            </div>
+          </div>
+
+          {/* Makale Gövdesi */}
+          <div className="bg-white rounded-3xl p-6 md:p-12 shadow-sm border border-slate-200 text-slate-700 space-y-10">
             
-            {/* Bölüm 1: Güncel Tutarlar */}
+            {/* Karşılaştırma Tablosu */}
             <section>
-              <h2 className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-2">
-                <CreditCard className="w-6 h-6 text-amber-500" />
-                1. Ankara Kentsel Dönüşüm Kira Yardımı Tutarları Ne Kadar?
+              <h2 className="text-xl md:text-2xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+                <Wallet className="w-6 h-6 text-amber-500" /> Ankara Güncel Destek Tablosu
               </h2>
-              <p className="mb-4">
-                Çevre, Şehircilik ve İklim Değişikliği Bakanlığı sınıflandırmasında Ankara ikinci grupta yer almaktadır. Hak sahiplerinin statüsüne göre ödenen güncel tutarlar şu şekildedir:
-              </p>
+              <div className="overflow-x-auto">
+                <table className="w-full text-left text-sm border-collapse">
+                  <thead>
+                    <tr className="bg-slate-100 text-slate-900">
+                      <th className="p-3 font-bold rounded-l-lg">Hak Sahibi Statüsü</th>
+                      <th className="p-3 font-bold">Ödeme Tutarı</th>
+                      <th className="p-3 font-bold">Ödeme Periyodu</th>
+                      <th className="p-3 font-bold rounded-r-lg">İkamet Şartı</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-100">
+                    <tr>
+                      <td className="p-3 font-semibold text-slate-900">Malik (Ev / İşyeri Sahibi)</td>
+                      <td className="p-3 text-amber-600 font-bold">6.500 TL</td>
+                      <td className="p-3">18 Ay Düzenli</td>
+                      <td className="p-3 text-slate-500">Aranmaz</td>
+                    </tr>
+                    <tr>
+                      <td className="p-3 font-semibold text-slate-900">Konut Kiracısı</td>
+                      <td className="p-3 text-amber-600 font-bold">13.000 TL</td>
+                      <td className="p-3">Tek Seferlik (Defaten)</td>
+                      <td className="p-3 text-emerald-600 font-semibold">Zorunlu (Son 3 ay)</td>
+                    </tr>
+                    <tr>
+                      <td className="p-3 font-semibold text-slate-900">Sınırlı Ayni Hak Sahibi</td>
+                      <td className="p-3 text-amber-600 font-bold">32.500 TL</td>
+                      <td className="p-3">Tek Seferlik (Defaten)</td>
+                      <td className="p-3 text-emerald-600 font-semibold">Zorunlu</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+
+            {/* Temel Şartlar */}
+            <section className="space-y-4">
+              <h2 className="text-xl md:text-2xl font-bold text-slate-900 flex items-center gap-2">
+                <ShieldCheck className="w-6 h-6 text-amber-500" /> Kira Yardımı Başvuru Şartları
+              </h2>
               
-              <div className="grid md:grid-cols-3 gap-4 my-6">
-                <div className="bg-slate-50 p-5 rounded-xl border border-slate-200">
-                  <span className="text-xs font-bold text-amber-600 uppercase tracking-wider">Ev ve İşyeri Sahipleri</span>
-                  <div className="text-2xl font-extrabold text-slate-900 my-1">6.500 TL / Ay</div>
-                  <p className="text-xs text-slate-500">18 ay boyunca düzenli ödenir (Toplam 117.000 TL destek).</p>
+              <div className="grid md:grid-cols-2 gap-4">
+                <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                  <h3 className="font-bold text-slate-900 mb-1 flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-amber-500" /> Riskli Yapı Tescili
+                  </h3>
+                  <p className="text-xs text-slate-600 leading-relaxed">Binanız için 6306 sayılı kanun kapsamında resmi Riskli Yapı Raporu alınmış ve kesinleşmiş olmalıdır.</p>
                 </div>
-                <div className="bg-slate-50 p-5 rounded-xl border border-slate-200">
-                  <span className="text-xs font-bold text-amber-600 uppercase tracking-wider">Kiracılar</span>
-                  <div className="text-2xl font-extrabold text-slate-900 my-1">13.000 TL</div>
-                  <p className="text-xs text-slate-500">Taşınma desteği olarak tek seferlik ödenir.</p>
-                </div>
-                <div className="bg-slate-50 p-5 rounded-xl border border-slate-200">
-                  <span className="text-xs font-bold text-amber-600 uppercase tracking-wider">Sınırlı Ayni Hak Sahipleri</span>
-                  <div className="text-2xl font-extrabold text-slate-900 my-1">32.500 TL</div>
-                  <p className="text-xs text-slate-500">İkamet etme şartıyla tek seferlik ödenir.</p>
-                </div>
-              </div>
 
-              <div className="bg-amber-50 border-l-4 border-amber-500 p-4 rounded-r-xl text-sm text-slate-700">
-                <strong>📌 Alan Bazlı İstisna:</strong> Yapınız tek bir riskli bina yerine ilan edilmiş bir <em>Riskli Alan</em> veya <em>Rezerv Yapı Alanı</em> sınırları içindeyse, kira yardımı süresi projenin durumuna göre <strong>48 aya kadar</strong> uzatılabilmektedir.
+                <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                  <h3 className="font-bold text-slate-900 mb-1 flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-amber-500" /> 1 Yıllık Hak Düşürücü Süre
+                  </h3>
+                  <p className="text-xs text-slate-600 leading-relaxed">Başvuruların, binanın tahliye edildiği veya yıkıldığı tarihten itibaren en geç 1 yıl içinde yapılması şarttır.</p>
+                </div>
+
+                <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                  <h3 className="font-bold text-slate-900 mb-1 flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-amber-500" /> Kredi & Yardım Engeli
+                  </h3>
+                  <p className="text-xs text-slate-600 leading-relaxed">Aynı bağımsız bölüm için hem faiz destekli dönüşüm kredisi hem de kira yardımı kullanılamaz.</p>
+                </div>
+
+                <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                  <h3 className="font-bold text-slate-900 mb-1 flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-amber-500" /> Ziraat Bankası Hesabı
+                  </h3>
+                  <p className="text-xs text-slate-600 leading-relaxed">Ödemeler Çevre Bakanlığı tarafından doğrudan hak sahibinin Ziraat Bankası vadesiz TL hesabına aktarılır.</p>
+                </div>
               </div>
             </section>
 
-            {/* Bölüm 2: Temel Şartlar */}
-            <section>
-              <h2 className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-2">
-                <ShieldAlert className="w-6 h-6 text-amber-500" />
-                2. Kira Yardımı Alabilmenin 6 Temel Şartı
+            {/* Evrak Listesi */}
+            <section className="bg-slate-900 text-white p-6 md:p-8 rounded-2xl space-y-6">
+              <h2 className="text-xl font-bold text-amber-400 flex items-center gap-2">
+                <FileText className="w-5 h-5" /> Başvuru İçin Gerekli Belgeler
               </h2>
-              <ul className="space-y-3 list-none p-0">
-                <li className="flex items-start gap-3 bg-slate-50 p-3 rounded-lg border border-slate-100">
-                  <CheckCircle className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
-                  <div><strong>Riskli Yapı Tescili:</strong> 6306 sayılı Kanun kapsamında resmi "Riskli Yapı Raporu" alınmış ve kesinleşmiş olmalıdır.</div>
-                </li>
-                <li className="flex items-start gap-3 bg-slate-50 p-3 rounded-lg border border-slate-100">
-                  <CheckCircle className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
-                  <div><strong>Tahliye ve Yıkım:</strong> Binanın fiilen tahliye edilmiş veya yıkılmış olması şarttır. Ödemeler yıkım teyidiyle başlar.</div>
-                </li>
-                <li className="flex items-start gap-3 bg-slate-50 p-3 rounded-lg border border-slate-100">
-                  <CheckCircle className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
-                  <div><strong>Kredi vs Kira Yardımı Engeli:</strong> Aynı bağımsız bölüm için hem devlet destekli kentsel dönüşüm kredisi (faiz desteği) hem de kira yardımı alınamaz. İkisinden biri seçilmelidir.</div>
-                </li>
-                <li className="flex items-start gap-3 bg-slate-50 p-3 rounded-lg border border-slate-100">
-                  <CheckCircle className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
-                  <div><strong>1 Yıllık Hak Düşürücü Süre:</strong> Başvuru, tahliye veya yıkım tarihinden itibaren en geç 1 yıl içinde yapılmalıdır.</div>
-                </li>
-                <li className="flex items-start gap-3 bg-slate-50 p-3 rounded-lg border border-slate-100">
-                  <CheckCircle className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
-                  <div><strong>Tek Taşınmaz İlkesi:</strong> Aynı malik aynı türden (örneğin iki ayrı konut için) mükerrer yardım alamaz. Ancak bir konut ve bir işyeri için ayrı ayrı başvurulabilir.</div>
-                </li>
-                <li className="flex items-start gap-3 bg-slate-50 p-3 rounded-lg border border-slate-100">
-                  <CheckCircle className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
-                  <div><strong>İkamet Belgeleme:</strong> Kiracılar ve ayni hak sahipleri tahliye öncesi yapıda ikamet ettiklerini fatura ile belgelemelidir. Maliklerde ikamet şartı aranmaz.</div>
-                </li>
-              </ul>
-            </section>
 
-            {/* Bölüm 3: Başvuru Kanalları & Belgeler */}
-            <section>
-              <h2 className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-2">
-                <Building2 className="w-6 h-6 text-amber-500" />
-                3. Adım Adım Başvuru ve Gerekli Belgeler
-              </h2>
-              <p className="mb-4">
-                Başvurularınızı <strong>e-Devlet Kapısı</strong> (6306 Sayılı Kanun Kapsamında Riskli Yapı Kira Yardımı Başvurusu), <strong>Ankara Çevre, Şehircilik ve İklim Değişikliği İl Müdürlüğü</strong> veya yetkili ilçe belediyeleri üzerinden yapabilirsiniz.
-              </p>
-
-              <div className="grid md:grid-cols-2 gap-6 my-6">
-                <div className="border border-slate-200 p-5 rounded-xl bg-slate-50">
-                  <h3 className="font-bold text-slate-900 mb-3 text-lg border-b border-slate-200 pb-2">Ev ve İşyeri Sahipleri (Malikler)</h3>
-                  <ul className="text-sm space-y-2 list-disc list-inside text-slate-600">
-                    <li>Kira yardımı müracaat dilekçesi</li>
-                    <li>Nüfus cüzdanı fotokopisi</li>
-                    <li>Tapu belgesi ve güncel taşınmaz kaydı</li>
-                    <li>Tahliye edildiğini gösteren adres bilgileri raporu</li>
-                    <li>A.R.A.A.D. sistemi üzerinden yıkım onay kaydı</li>
-                    <li>Ziraat Bankası vadesiz TL hesap cüzdanı fotokopisi</li>
+              <div className="grid md:grid-cols-2 gap-6 text-sm">
+                <div>
+                  <h3 className="font-semibold text-white mb-3 border-b border-slate-700 pb-2">Malikler (Ev Sahipleri) İçin:</h3>
+                  <ul className="space-y-2 text-slate-300">
+                    <li className="flex items-center gap-2"><ArrowRight className="w-3.5 h-3.5 text-amber-500" /> Başvuru dilekçesi & Kimlik fotokopisi</li>
+                    <li className="flex items-center gap-2"><ArrowRight className="w-3.5 h-3.5 text-amber-500" /> Güncel tapu belgesi & Taşınmaz kaydı</li>
+                    <li className="flex items-center gap-2"><ArrowRight className="w-3.5 h-3.5 text-amber-500" /> Adres bilgileri raporu (Tahliye teyidi)</li>
+                    <li className="flex items-center gap-2"><ArrowRight className="w-3.5 h-3.5 text-amber-500" /> A.R.A.A.D. elektronik yıkım kaydı</li>
+                    <li className="flex items-center gap-2"><ArrowRight className="w-3.5 h-3.5 text-amber-500" /> Ziraat Bankası vadesiz TL IBAN görseli</li>
                   </ul>
                 </div>
 
-                <div className="border border-slate-200 p-5 rounded-xl bg-slate-50">
-                  <h3 className="font-bold text-slate-900 mb-3 text-lg border-b border-slate-200 pb-2">Konut Kiracıları</h3>
-                  <ul className="text-sm space-y-2 list-disc list-inside text-slate-600">
-                    <li>Kira yardımı başvuru dilekçesi</li>
-                    <li>Nüfus cüzdanı fotokopisi</li>
-                    <li>Nüfus Müdürlüğü'nden adres bilgileri raporu</li>
-                    <li>Tahliye öncesi son 3 aya ait kiracı adına fatura</li>
-                    <li>A.R.A.A.D. elektronik yıkım kaydı</li>
-                    <li>Ziraat Bankası vadesiz TL hesap cüzdanı fotokopisi</li>
+                <div>
+                  <h3 className="font-semibold text-white mb-3 border-b border-slate-700 pb-2">Kiracılar İçin:</h3>
+                  <ul className="space-y-2 text-slate-300">
+                    <li className="flex items-center gap-2"><ArrowRight className="w-3.5 h-3.5 text-amber-500" /> Başvuru dilekçesi & Kimlik fotokopisi</li>
+                    <li className="flex items-center gap-2"><ArrowRight className="w-3.5 h-3.5 text-amber-500" /> Nüfus Müdürlüğü adres bilgileri raporu</li>
+                    <li className="flex items-center gap-2"><ArrowRight className="w-3.5 h-3.5 text-amber-500" /> Tahliye öncesi son 3 aya ait fatura</li>
+                    <li className="flex items-center gap-2"><ArrowRight className="w-3.5 h-3.5 text-amber-500" /> A.R.A.A.D. elektronik yıkım kaydı</li>
+                    <li className="flex items-center gap-2"><ArrowRight className="w-3.5 h-3.5 text-amber-500" /> Ziraat Bankası vadesiz TL IBAN görseli</li>
                   </ul>
                 </div>
               </div>
             </section>
 
-            {/* Bölüm 4: SSS */}
-            <section className="border-t border-slate-200 pt-8">
-              <h2 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-2">
-                <HelpCircle className="w-6 h-6 text-amber-500" />
-                4. Sıkça Sorulan Sorular
+            {/* SSS */}
+            <section className="space-y-4">
+              <h2 className="text-xl md:text-2xl font-bold text-slate-900 flex items-center gap-2">
+                <HelpCircle className="w-6 h-6 text-amber-500" /> Sıkça Sorulan Sorular
               </h2>
-              <div className="space-y-4">
-                <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
-                  <h3 className="font-bold text-slate-900 mb-1">Kira yardımı geri ödemeli mi?</h3>
-                  <p className="text-sm text-slate-600">Hayır, kentsel dönüşüm kira yardımı tamamen hibe niteliğindedir ve devlet tarafından geri talep edilmez.</p>
+
+              <div className="space-y-3">
+                <div className="border border-slate-200 p-4 rounded-xl">
+                  <h3 className="font-bold text-slate-900 text-sm mb-1">Kira yardımı geri ödemeli mi?</h3>
+                  <p className="text-xs text-slate-600">Hayır. Kentsel dönüşüm kira yardımı tamamen hibe niteliğindedir, devlet tarafından geri talep edilmez.</p>
                 </div>
-                <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
-                  <h3 className="font-bold text-slate-900 mb-1">Ödemeler ne zaman ve hangi bankaya yatıyor?</h3>
-                  <p className="text-sm text-slate-600">Ödemelerin tamamı Ziraat Bankası hesaplarına yatırılır. Genellikle her ayın 15'inde hesaplara aktarılmaktadır.</p>
-                </div>
-                <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
-                  <h3 className="font-bold text-slate-900 mb-1">İskanı (yapı kullanma izni) olmayan binalar kira yardımı alabilir mi?</h3>
-                  <p className="text-sm text-slate-600">Evet alabilir. Ancak arsa paylı tapularda belediyeden alınacak emlak vergi beyannamesinin mutlaka "bina" türünde düzenlenmiş olması şarttır.</p>
+
+                <div className="border border-slate-200 p-4 rounded-xl">
+                  <h3 className="font-bold text-slate-900 text-sm mb-1">İskansız binalar kira yardımı alabilir mi?</h3>
+                  <p className="text-xs text-slate-600">Evet. Arsa paylı tapularda belediyeden alınacak emlak vergi beyannamesinin "bina" türünde düzenlenmiş olması yeterlidir.</p>
                 </div>
               </div>
             </section>
 
           </div>
 
-          {/* Lead Entegrasyon Bölümü */}
-          <div className="mt-12 bg-slate-900 text-white rounded-2xl p-8 shadow-xl">
+          {/* Dönüşüm / Lead Form Alanı */}
+          <div className="mt-12 bg-slate-900 text-white rounded-3xl p-6 md:p-10 shadow-2xl border border-slate-800">
             <div className="max-w-2xl mx-auto text-center mb-8">
-              <h3 className="text-2xl font-bold mb-2">Binanız İçin En Avantajlı Senaryoyu Belirleyelim</h3>
-              <p className="text-slate-300 text-sm">
-                Kira yardımı mı yoksa devlet destekli faiz indirimi mi sizin için daha karlı? KD Ankara uzmanları 24 saat içinde ücretsiz ön analiz raporunuzu hazırlasın.
+              <span className="text-amber-400 font-bold text-xs uppercase tracking-widest block mb-2">Ücretsiz Teknik Danışmanlık</span>
+              <h3 className="text-2xl md:text-3xl font-extrabold mb-3">Binanız İçin En Doğru Finansal Modeli Belirleyelim</h3>
+              <p className="text-slate-300 text-sm leading-relaxed">
+                Kira yardımı mı yoksa devlet destekli faiz indirimi mi sizin için daha avantajlı? 24 saat içinde ücretsiz ön analiz raporunuzu hazırlayalım.
               </p>
             </div>
-            <div className="bg-white rounded-xl p-6 text-slate-900 max-w-xl mx-auto">
+
+            <div className="bg-white rounded-2xl p-6 text-slate-900 max-w-xl mx-auto shadow-lg">
               <OnAnalizWizard />
             </div>
           </div>
-        </article>
+
+        </div>
       </main>
     </>
   );
