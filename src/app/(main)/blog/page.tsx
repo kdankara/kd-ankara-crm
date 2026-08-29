@@ -1,92 +1,188 @@
-"use client";
-
-import { motion } from 'framer-motion';
-import { useSEO } from '@/hooks/useSEO';
+import { Metadata } from 'next';
+import OnAnalizWizard from '@/components/forms/OnAnalizWizard';
+import { 
+  FileText, CheckCircle2, Calendar, HelpCircle, 
+  Wallet, ShieldCheck, ChevronLeft 
+} from 'lucide-react';
 import Link from 'next/link';
-import { ChevronRight, Calendar, User } from 'lucide-react';
-import { blogPosts } from './posts';
 
-const fadeInUp = {
-    initial: { opacity: 0, y: 20 },
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true },
-    transition: { duration: 0.5 }
-};
+export default function BlogPostPage({ params }: { params: { slug: string } }) {
 
-export default function Blog() {
-    useSEO(
-        'Blog & Bilgi Bankası | Ankara Kentsel Dönüşüm',
-        'Kentsel dönüşüm hakkında güncel haberler, mevzuat rehberleri ve emsal hesaplama detayları için KD Ankara Bilgi Bankası.'
-    );
+  return (
+    <article className="min-h-screen bg-slate-50 pb-16">
+      {/* Sitenin Ana Layout'u (Header/Footer) Aynen Korunur */}
+      
+      {/* Hero Alanı */}
+      <section className="bg-slate-900 text-white py-12 px-4 border-b border-slate-800">
+        <div className="container mx-auto max-w-4xl">
+          <Link href="/blog" className="inline-flex items-center gap-2 text-slate-400 hover:text-amber-400 text-xs mb-6 transition">
+            <ChevronLeft className="w-4 h-4" /> Tüm Blog Yazıları
+          </Link>
 
-    return (
-        <div className="bg-gray-50/50 min-h-screen pb-24">
-            <section className="bg-primary-950 text-white py-20 border-b border-white/10">
-                <div className="container mx-auto px-4 text-center">
-                    <motion.div {...fadeInUp} className="max-w-3xl mx-auto">
-                        <h1 className="text-4xl md:text-5xl font-bold mb-6">Kentsel Dönüşüm Bilgi Bankası</h1>
-                        <p className="text-xl text-gray-300">
-                            Ankara kentsel dönüşüm süreçleri, güncel kira yardımları ve mevzuat hakkında bilmeniz gereken her şey.
-                        </p>
-                    </motion.div>
-                </div>
-            </section>
+          <div className="inline-flex items-center gap-2 bg-amber-500/10 text-amber-400 px-3 py-1 rounded-full text-xs font-semibold mb-4 border border-amber-500/20">
+            <Calendar className="w-3.5 h-3.5" /> MEVZUAT & TEŞVİKLER (2025 - 2026)
+          </div>
 
-            <section className="container mx-auto px-4 mt-16">
-                <h2 className="sr-only">Güncel Kentsel Dönüşüm Yazıları</h2>
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {blogPosts.map((post, i) => (
-                        <motion.div 
-                            key={post.id}
-                            {...fadeInUp} transition={{ delay: i * 0.1 }}
-                            className="bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-xl transition-all flex flex-col group"
-                        >
-                            <div className="relative h-56 overflow-hidden">
-                                <div className="absolute inset-0 bg-primary-900/10 group-hover:bg-transparent transition-colors z-10" />
-                                <img src={post.imageUrl} alt={post.imageAlt} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                                <div className="absolute top-4 left-4 z-20">
-                                    <span className="bg-white/90 backdrop-blur text-primary-900 text-xs font-bold px-4 py-1.5 rounded-full shadow-sm">
-                                        {post.category}
-                                    </span>
-                                </div>
-                            </div>
-                            
-                            <div className="p-8 flex flex-col flex-grow">
-                                <div className="flex items-center gap-4 text-xs text-slate-400 mb-6 font-medium">
-                                    <span className="flex items-center gap-1.5"><Calendar className="w-4 h-4 text-accent" /> {post.date}</span>
-                                    <span className="flex items-center gap-1.5"><User className="w-4 h-4 text-accent" /> {post.author}</span>
-                                </div>
-                                
-                                <h2 className="text-2xl font-bold text-primary-900 mb-4 group-hover:text-accent transition-colors line-clamp-2 leading-tight">
-                                    {post.title}
-                                </h2>
-                                
-                                <p className="text-slate-500 mb-8 line-clamp-3 flex-grow leading-relaxed">
-                                    {post.excerpt}
-                                </p>
-                                
-                                <Link href={`/blog/${post.id}`} className="inline-flex items-center font-bold text-primary-950 hover:text-accent transition-colors mt-auto group/link">
-                                    Devamını Oku <ChevronRight className="w-5 h-5 ml-2 group-hover/link:translate-x-1 transition-transform" />
-                                </Link>
-                            </div>
-                        </motion.div>
-                    ))}
-                </div>
-            </section>
-
-            <section className="container mx-auto px-4 mt-24">
-                <div className="bg-primary-950 rounded-[3rem] p-12 lg:p-20 text-white relative overflow-hidden text-center">
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(202,138,4,0.1),transparent)]"></div>
-                    <div className="max-w-3xl mx-auto relative z-10">
-                        <h2 className="text-3xl font-bold mb-6 text-accent italic">Bültenimize Abone Olun</h2>
-                        <p className="text-primary-200 mb-10 text-lg">Ankara kentsel dönüşüm mevzuatındaki en son değişikliklerden ve güncel kira yardımı rakamlarından anında haberdar olun.</p>
-                        <div className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
-                            <input type="email" placeholder="E-posta adresiniz" className="flex-grow h-14 rounded-2xl px-6 bg-white/10 border border-white/20 text-white placeholder:text-primary-300 outline-none focus:border-accent transition-colors" />
-                            <button className="h-14 px-8 bg-accent hover:bg-accent-600 text-white font-bold rounded-2xl transition-all whitespace-nowrap shadow-lg shadow-accent/20">Kaydol</button>
-                        </div>
-                    </div>
-                </div>
-            </section>
+          <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-4 leading-tight">
+            Ankara Kentsel Dönüşüm Kira Yardımı Rehberi
+          </h1>
+          <p className="text-slate-300 text-sm md:text-base max-w-2xl leading-relaxed">
+            İnşaat süresince devlet tarafından sağlanan 18 aylık karşılıksız kira desteği, başvuru evrakları ve 6306 sayılı kanun kapsamındaki tüm haklarınız.
+          </p>
         </div>
-    );
+      </section>
+
+      {/* Kartlar ve İçerik */}
+      <div className="container mx-auto px-4 max-w-4xl -mt-8 relative z-10">
+        
+        {/* KPI Özet Kartları */}
+        <div className="grid md:grid-cols-3 gap-4 mb-8">
+          <div className="bg-white p-5 rounded-2xl shadow-md border border-slate-100">
+            <span className="text-xs font-bold text-amber-600 uppercase tracking-wider block mb-1">Ev & İşyeri Sahipleri</span>
+            <div className="text-2xl font-black text-slate-900 my-1">6.500 ₺ <span className="text-xs font-normal text-slate-500">/ Ay</span></div>
+            <p className="text-xs text-slate-500 mt-2 pt-2 border-t border-slate-100">18 ay boyunca (Toplam 117.000 ₺)</p>
+          </div>
+
+          <div className="bg-white p-5 rounded-2xl shadow-md border border-slate-100">
+            <span className="text-xs font-bold text-amber-600 uppercase tracking-wider block mb-1">Konut Kiracıları</span>
+            <div className="text-2xl font-black text-slate-900 my-1">13.000 ₺</div>
+            <p className="text-xs text-slate-500 mt-2 pt-2 border-t border-slate-100">Taşınma desteği (Tek seferlik)</p>
+          </div>
+
+          <div className="bg-white p-5 rounded-2xl shadow-md border border-slate-100">
+            <span className="text-xs font-bold text-amber-600 uppercase tracking-wider block mb-1">Ayni Hak Sahipleri</span>
+            <div className="text-2xl font-black text-slate-900 my-1">32.500 ₺</div>
+            <p className="text-xs text-slate-500 mt-2 pt-2 border-t border-slate-100">İkamet şartıyla (Tek seferlik)</p>
+          </div>
+        </div>
+
+        {/* Detay Gövdesi */}
+        <div className="bg-white rounded-2xl p-6 md:p-10 shadow-sm border border-slate-200 space-y-8 text-slate-700">
+          
+          {/* Tablo */}
+          <section>
+            <h2 className="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+              <Wallet className="w-5 h-5 text-amber-500" /> Ankara Güncel Destek Tablosu
+            </h2>
+            <div className="overflow-x-auto">
+              <table className="w-full text-left text-sm border-collapse">
+                <thead>
+                  <tr className="bg-slate-100 text-slate-900">
+                    <th className="p-3 font-bold rounded-l-lg">Hak Sahibi Statüsü</th>
+                    <th className="p-3 font-bold">Ödeme Tutarı</th>
+                    <th className="p-3 font-bold">Ödeme Periyodu</th>
+                    <th className="p-3 font-bold rounded-r-lg">İkamet Şartı</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-100">
+                  <tr>
+                    <td className="p-3 font-semibold text-slate-900">Malik (Ev / İşyeri Sahibi)</td>
+                    <td className="p-3 text-amber-600 font-bold">6.500 TL</td>
+                    <td className="p-3">18 Ay Düzenli</td>
+                    <td className="p-3 text-slate-500">Aranmaz</td>
+                  </tr>
+                  <tr>
+                    <td className="p-3 font-semibold text-slate-900">Konut Kiracısı</td>
+                    <td className="p-3 text-amber-600 font-bold">13.000 TL</td>
+                    <td className="p-3">Tek Seferlik (Defaten)</td>
+                    <td className="p-3 text-emerald-600 font-semibold">Zorunlu (Son 3 ay)</td>
+                  </tr>
+                  <tr>
+                    <td className="p-3 font-semibold text-slate-900">Sınırlı Ayni Hak Sahibi</td>
+                    <td className="p-3 text-amber-600 font-bold">32.500 TL</td>
+                    <td className="p-3">Tek Seferlik (Defaten)</td>
+                    <td className="p-3 text-emerald-600 font-semibold">Zorunlu</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          {/* Şartlar */}
+          <section>
+            <h2 className="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+              <ShieldCheck className="w-5 h-5 text-amber-500" /> Kira Yardımı Başvuru Şartları
+            </h2>
+            <div className="grid md:grid-cols-2 gap-4 text-sm">
+              <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                <strong className="text-slate-900 block mb-1">1. Riskli Yapı Tescili</strong>
+                <p className="text-slate-600">6306 sayılı kanun kapsamında resmi Riskli Yapı Raporu alınmış ve kesinleşmiş olmalıdır.</p>
+              </div>
+              <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                <strong className="text-slate-900 block mb-1">2. 1 Yıllık Hak Düşürücü Süre</strong>
+                <p className="text-slate-600">Başvuruların, binanın tahliye edildiği veya yıkıldığı tarihten itibaren 1 yıl içinde yapılması gerekir.</p>
+              </div>
+              <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                <strong className="text-slate-900 block mb-1">3. Kredi vs Kira Yardımı Engeli</strong>
+                <p className="text-slate-600">Aynı bağımsız bölüm için hem faiz destekli kredi hem de kira yardımı kullanılamaz.</p>
+              </div>
+              <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                <strong className="text-slate-900 block mb-1">4. Ziraat Bankası Hesabı</strong>
+                <p className="text-slate-600">Ödemeler doğrudan hak sahibinin Ziraat Bankası vadesiz TL hesabına aktarılır.</p>
+              </div>
+            </div>
+          </section>
+
+          {/* Evraklar */}
+          <section className="bg-slate-900 text-white p-6 rounded-xl space-y-4">
+            <h2 className="text-lg font-bold text-amber-400 flex items-center gap-2">
+              <FileText className="w-5 h-5" /> Başvuru İçin Gerekli Belgeler
+            </h2>
+            <div className="grid md:grid-cols-2 gap-6 text-xs md:text-sm">
+              <div>
+                <strong className="text-slate-200 block mb-2 border-b border-slate-700 pb-1">Malikler İçin:</strong>
+                <ul className="space-y-1.5 text-slate-300">
+                  <li>• Başvuru dilekçesi & Kimlik fotokopisi</li>
+                  <li>• Güncel tapu belgesi & Taşınmaz kaydı</li>
+                  <li>• Adres bilgileri raporu (Tahliye teyidi)</li>
+                  <li>• A.R.A.A.D. elektronik yıkım kaydı</li>
+                  <li>• Ziraat Bankası vadesiz TL IBAN görseli</li>
+                </ul>
+              </div>
+              <div>
+                <strong className="text-slate-200 block mb-2 border-b border-slate-700 pb-1">Kiracılar İçin:</strong>
+                <ul className="space-y-1.5 text-slate-300">
+                  <li>• Başvuru dilekçesi & Kimlik fotokopisi</li>
+                  <li>• Nüfus Müdürlüğü adres bilgileri raporu</li>
+                  <li>• Tahliye öncesi son 3 aya ait fatura</li>
+                  <li>• A.R.A.A.D. elektronik yıkım kaydı</li>
+                  <li>• Ziraat Bankası vadesiz TL IBAN görseli</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          {/* SSS */}
+          <section className="space-y-3">
+            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
+              <HelpCircle className="w-5 h-5 text-amber-500" /> Sıkça Sorulan Sorular
+            </h2>
+            <div className="border border-slate-200 p-4 rounded-xl text-sm">
+              <strong className="text-slate-900 block mb-1">Kira yardımı geri ödemeli mi?</strong>
+              <p className="text-slate-600">Hayır, kentsel dönüşüm kira yardımı hibe niteliğindedir ve devlet tarafından geri talep edilmez.</p>
+            </div>
+            <div className="border border-slate-200 p-4 rounded-xl text-sm">
+              <strong className="text-slate-900 block mb-1">İskansız binalar kira yardımı alabilir mi?</strong>
+              <p className="text-slate-600">Evet. Arsa paylı tapularda belediyeden alınacak emlak vergi beyannamesinin "bina" türünde olması yeterlidir.</p>
+            </div>
+          </section>
+
+        </div>
+
+        {/* Lead Wizard */}
+        <div className="mt-10 bg-slate-900 text-white rounded-2xl p-6 md:p-8 shadow-xl">
+          <div className="max-w-2xl mx-auto text-center mb-6">
+            <h3 className="text-2xl font-bold mb-2">Binanız İçin En Avantajlı Modeli Belirleyelim</h3>
+            <p className="text-slate-300 text-sm">
+              Kira yardımı mı yoksa faiz indirimi mi sizin için daha karlı? 24 saat içinde ücretsiz ön analiz raporunuzu hazırlayalım.
+            </p>
+          </div>
+          <div className="bg-white rounded-xl p-6 text-slate-900 max-w-xl mx-auto">
+            <OnAnalizWizard />
+          </div>
+        </div>
+
+      </div>
+    </article>
+  );
 }

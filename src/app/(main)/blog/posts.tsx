@@ -12,13 +12,13 @@ export interface BlogPost {
 export const blogPosts: BlogPost[] = [
     {
         id: '2026-kentsel-donusum-kira-yardimi',
-        title: '2026 Kentsel Dönüşüm Kira Yardımı Ne Kadar? (Ankara ve İl İl Güncel Rakamlar)',
-        excerpt: 'Çevre, Şehircilik ve İklim Değişikliği Bakanlığı 2026 kentsel dönüşüm kira yardımı rakamlarını güncelledi. Ankara ve büyükşehirlerdeki yeni tutarlar, başvuru şartları ve tüm detaylar.',
-        date: '21 Mart 2026',
+        title: 'Ankara Kentsel Dönüşüm Kira Yardımı Rehberi (2025-2026)',
+        excerpt: "Ankara'da ev sahipleri için aylık 6.500 TL (18 ay), kiracılar için 13.000 TL tek seferlik kentsel dönüşüm kira yardımı başvuru şartları, gerekli belgeler ve e-Devlet rehberi.",
+        date: '30 Ağustos 2026',
         author: 'KD Ankara Ekibi',
         category: 'Mevzuat & Teşvikler',
         imageUrl: 'https://images.unsplash.com/photo-1574362848149-11496d93a7c7?q=80&w=1984&auto=format&fit=crop',
-        imageAlt: 'Ankara 2026 kentsel dönüşüm kira yardımı ne kadar'
+        imageAlt: 'Ankara kentsel dönüşüm kira yardımı başvuru şartları'
     },
     {
         id: 'emsal-hesaplama-rehberi',
