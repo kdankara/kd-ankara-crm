@@ -18,7 +18,6 @@ interface ToolCard {
 }
 
 const tools: ToolCard[] = [
-    // Property Owner Tools
     {
         id: 'emsal',
         title: 'Emsal Hesaplama',
@@ -89,7 +88,6 @@ const tools: ToolCard[] = [
         estimatedTime: '2 dk',
         category: 'owner',
     },
-    // Contractor Tools
     {
         id: 'muteahhit-mini',
         title: 'Mini Fizibilite',
@@ -218,16 +216,17 @@ export default function ToolsHub() {
                                 </ol>
 
                                 <div className="bg-primary-950 text-white p-10 md:p-14 rounded-[3rem] my-16 text-center">
-                                    <h4 className="text-2xl font-bold text-accent mb-4 italic italic">Sadece Bir Rakam Değil, Bir Strateji Alın</h4>
+                                    <h4 className="text-2xl font-bold text-accent mb-4 italic">Sadece Bir Rakam Değil, Bir Strateji Alın</h4>
                                     <p className="text-primary-100 mb-10 max-w-2xl mx-auto leading-relaxed">
                                         Burada yaptığınız hesaplamalar ön bilgilendirme amaçlıdır. Net bir yol haritası ve resmi rapor için KD Ankara uzmanları 72 saat içinde binanıza özel <strong>Profesyonel Fizibilite Dosyası</strong> hazırlar.
                                     </p>
-                                    <Button 
-                                        onClick={() => window.location.href = '/on-analiz'}
-                                        className="bg-accent hover:bg-accent-600 text-white px-12 h-14 rounded-2xl font-bold text-lg shadow-xl shadow-accent/20 transition-all"
-                                    >
-                                        Detaylı Rapor Talep Et
-                                    </Button>
+                                    <Link href="/on-analiz">
+                                        <Button 
+                                            className="bg-accent hover:bg-accent-600 text-white px-12 h-14 rounded-2xl font-bold text-lg shadow-xl shadow-accent/20 transition-all"
+                                        >
+                                            Detaylı Rapor Talep Et
+                                        </Button>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
@@ -259,7 +258,6 @@ export default function ToolsHub() {
     );
 }
 
-// Tool Card Component
 function ToolCardComponent({ tool }: { tool: ToolCard }) {
     return (
         <Link href={tool.path}>
