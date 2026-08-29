@@ -1,19 +1,13 @@
 {
   "hosting": {
     "site": "kdankara-efcb4",
-    "public": "dist",
+    "public": "out",
     "cleanUrls": true,
     "trailingSlash": false,
     "ignore": [
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
-    ],
-    "rewrites": [
-      {
-        "source": "**",
-        "destination": "/index.html"
-      }
     ]
   }
 }

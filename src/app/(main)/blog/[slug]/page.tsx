@@ -1,31 +1,16 @@
-"use client";
-
 import Link from 'next/link';
-import { useParams } from 'next/navigation';
-import { useSEO } from '@/hooks/useSEO';
 import { ArrowLeft, Calendar, User } from 'lucide-react';
-import { blogPosts } from '../page'; // Import static data for now
+import { blogPosts } from '../posts';
 
-export default function BlogPost() {
-    const { slug } = useParams();
+export async function generateStaticParams() {
+  return blogPosts.map((post) => ({
+    slug: post.id,
+  }));
+}
+
+export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
+    const { slug } = await params;
     const post = blogPosts.find(p => p.id === slug);
-
-    useSEO(
-        post ? post.title : 'Makale Bulunamadı',
-        post?.excerpt || '',
-        post ? {
-            '@type': 'Article',
-            'headline': post.title,
-            'description': post.excerpt,
-            'image': post.imageUrl,
-            'datePublished': post.date,
-            'author': {
-                '@type': 'Person',
-                'name': post.author
-            },
-            'publisher': { '@id': 'https://kdankara.com/#organization' }
-        } : undefined
-    );
 
     if (!post) {
         return (
@@ -36,8 +21,26 @@ export default function BlogPost() {
         );
     }
 
+    const jsonLd = {
+        '@context': 'https://schema.org',
+        '@type': 'Article',
+        'headline': post.title,
+        'description': post.excerpt,
+        'image': post.imageUrl,
+        'datePublished': post.date,
+        'author': {
+            '@type': 'Person',
+            'name': post.author
+        },
+        'publisher': { '@id': 'https://kdankara.com/#organization' }
+    };
+
     return (
         <article className="pb-24 bg-gray-50/50 min-h-screen">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
             {/* Header / Hero */}
             <header className="relative pt-32 pb-24 text-white overflow-hidden">
                 <div className="absolute inset-0 bg-primary-950" />
