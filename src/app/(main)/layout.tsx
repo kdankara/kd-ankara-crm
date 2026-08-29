@@ -2,6 +2,10 @@ import type { Metadata } from 'next';
 import Script from 'next/script';
 import '../globals.css';
 
+// Header ve Footer bileşenlerini içe aktarıyoruz
+import Header from '@/components/layout/Header'; // veya '@/components/Header'
+import Footer from '@/components/layout/Footer'; // veya '@/components/Footer'
+
 export const metadata: Metadata = {
   title: 'KD Ankara | Kentsel Dönüşüm Strateji ve Danışmanlık Merkezi',
   description: 'Ankara kentsel dönüşüm süreçleri, arsa payı analizi, müteahhit uzlaşması ve güncel kira yardımı rehberi.',
@@ -37,7 +41,18 @@ export default function RootLayout({
             style={{ display: 'none', visibility: 'hidden' }}
           />
         </noscript>
-        {children}
+        
+        {/* Site Geneli Üst Menü */}
+        <Header />
+        
+        {/* Sayfa İçerikleri */}
+        <main>
+          {children}
+        </main>
+
+        {/* Site Geneli Alt Bilgi */}
+        <Footer />
+        
       </body>
     </html>
   );
