@@ -23,8 +23,8 @@ const fadeInUp = {
 
 export default function Home() {
     useSEO(
-        'Ankara Kentsel Dönüşüm Danışmanlığı & Strateji Merkezi',
-        'KD Ankara: Ankara kentsel dönüşüm danışmanlığı, Çankaya riskli yapı tespiti ve Yenimahalle kira yardımı süreçlerinde güvenilir adresiniz.',
+        'Ankara Kentsel Dönüşüm Danışmanlığı & Emsal Hesaplama | KD Ankara',
+        'Ankara kentsel dönüşüm danışmanlığı, Çankaya riskli yapı tespiti, ücretsiz emsal ve arsa payı hesaplama ile müteahhit uzlaşma süreçlerinde güvenilir adresiniz.',
         {
             "@context": "https://schema.org",
             "@type": "FAQPage",
@@ -338,7 +338,7 @@ export default function Home() {
                             </div>
                             <h3 className="text-xl font-bold text-gray-900 mb-3">Malik Uzlaşma Yönetimi</h3>
                             <p className="text-gray-600 text-sm leading-relaxed grow">
-                                Malikler arasındaki güven sorunlarını ve iletişim kopukluklarını profesyonel bir ara bulucu kimliğiyle yönetiyor, 2/3 (artık salt çoğunluk) karar sürecini hızlandırıyoruz.
+                                Malikler arasındaki güven sorunlarını ve iletişim kopukluklarını profesyonel bir ara bulucu kimliğiyle yönetiyor, 50% + 1 karar sürecini hızlandırıyoruz.
                             </p>
                         </div>
 
