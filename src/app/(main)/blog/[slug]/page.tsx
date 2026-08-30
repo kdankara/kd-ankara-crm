@@ -1,11 +1,14 @@
 import { Metadata } from 'next';
 import OnAnalizWizard from '@/components/forms/OnAnalizWizard';
 import { 
-  FileText, CheckCircle2, Calendar, HelpCircle, 
-  Building2, Wallet, ShieldCheck, ArrowRight, ChevronLeft
+  FileText, Calendar, HelpCircle, 
+  Wallet, ShieldCheck, ChevronLeft
 } from 'lucide-react';
 import Link from 'next/link';
-import { notFound } from 'next/navigation';
+
+type Props = {
+  params: Promise<{ slug: string }>;
+};
 
 export async function generateStaticParams() {
   return [
@@ -18,8 +21,10 @@ export async function generateStaticParams() {
   ];
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  if (params.slug === '2026-kentsel-donusum-kira-yardimi') {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+
+  if (slug === '2026-kentsel-donusum-kira-yardimi') {
     return {
       title: 'Ankara Kentsel Dönüşüm Kira Yardımı Rehberi (2025-2026) | KD Ankara',
       description: 'Ankara 2025-2026 kentsel dönüşüm kira yardımı ne kadar? Malikler için 6.500 TL, kiracılar için 13.000 TL başvuru şartları ve belgeler.',
@@ -31,18 +36,15 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   return { title: 'Blog | KD Ankara' };
 }
 
-export default function BlogPostPage({ params }: { params: { slug: string } }) {
-  if (params.slug !== '2026-kentsel-donusum-kira-yardimi') {
-    // Diğer slug'lar için mevcut yapınız çalışmaya devam eder
-  }
+export default async function BlogPostPage({ params }: Props) {
+  const { slug } = await params;
 
   return (
     <div className="min-h-screen bg-slate-50">
-      {/* Hero Bölümü - Header ile Uyumlu */}
+      {/* Hero Bölümü */}
       <section className="relative bg-slate-900 text-white pt-10 pb-20 overflow-hidden">
         <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:16px_16px]"></div>
         <div className="container mx-auto px-4 max-w-5xl relative z-10">
-          
           <Link href="/blog" className="inline-flex items-center gap-2 text-slate-300 hover:text-amber-400 text-sm mb-6 transition">
             <ChevronLeft className="w-4 h-4" /> Blog'a Dön
           </Link>
