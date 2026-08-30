@@ -1,7 +1,6 @@
 import { initializeApp, getApps, getApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
-import { getDatabase } from 'firebase/database';
 
 const firebaseConfig = {
     apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -14,20 +13,33 @@ const firebaseConfig = {
     databaseURL: process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL,
 };
 
-// Initialize Firebase only if config is available
 let app;
+
 try {
-    if (firebaseConfig.apiKey && firebaseConfig.projectId) {
-        app = getApps().length > 0 ? getApp() : initializeApp(firebaseConfig);
+    if (
+        firebaseConfig.apiKey &&
+        firebaseConfig.projectId
+    ) {
+        app = getApps().length > 0
+            ? getApp()
+            : initializeApp(firebaseConfig);
     } else {
-        console.warn("Firebase ayarları eksik. Lütfen .env dosyasını oluşturup API anahtarlarını girin.");
+        console.warn(
+            'Firebase ayarları eksik. .env.local dosyasını kontrol edin.'
+        );
     }
 } catch (error) {
-    console.error("Firebase başlatılırken bir hata oluştu:", error);
+    console.error(
+        'Firebase başlatılırken hata oluştu:',
+        error
+    );
 }
 
 const auth = app ? getAuth(app) : null;
 const db = app ? getFirestore(app) : null;
-const realtimeDb = app ? getDatabase(app) : null;
 
-export { app, auth, db, realtimeDb };
+export {
+    app,
+    auth,
+    db,
+};

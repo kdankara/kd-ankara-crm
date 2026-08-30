@@ -69,9 +69,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                                     <span className="hidden 2xl:inline">Ücretsiz&nbsp;</span>Ön Analiz
                                 </Button>
                             </Link>
-                            <Link href="/giris">
-                                <Button variant="outline" className="text-primary-900 border-primary-200 font-medium hover:bg-primary-50 px-3 2xl:px-4 text-[13px] 2xl:text-sm whitespace-nowrap">Üyelik</Button>
-                            </Link>
                         </div>
 
                         {/* Mobile Menu Button */}
@@ -99,11 +96,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                         <Link href="/on-analiz" className="w-full mt-2" onClick={() => setIsMobileMenuOpen(false)}>
                             <Button className="w-full bg-accent hover:bg-accent-600 text-white justify-center">
                                 Ücretsiz Ön Analiz Başlat
-                            </Button>
-                        </Link>
-                        <Link href="/giris" className="w-full mt-2 text-center" onClick={() => setIsMobileMenuOpen(false)}>
-                            <Button variant="outline" className="w-full text-primary-900 border-primary-200 font-medium hover:bg-primary-50 justify-center">
-                                Üyelik
                             </Button>
                         </Link>
                     </div>

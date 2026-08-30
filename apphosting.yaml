@@ -4,13 +4,27 @@ env:
     availability:
       - BUILD
       - RUNTIME
+
   - variable: GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY
     secret: google-service-account-private-key
     availability:
       - BUILD
       - RUNTIME
+
   - variable: GOOGLE_SHEET_ID
     secret: google-sheet-id
+    availability:
+      - BUILD
+      - RUNTIME
+
+  - variable: NEXT_PUBLIC_FIREBASE_PROJECT_ID
+    value: kdankara-efcb4
+    availability:
+      - BUILD
+      - RUNTIME
+
+  - variable: NEXT_PUBLIC_FIREBASE_DATABASE_URL
+    value: https://kdankara-efcb4-default-rtdb.firebaseio.com
     availability:
       - BUILD
       - RUNTIME
