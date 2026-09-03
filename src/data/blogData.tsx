@@ -204,5 +204,58 @@ export const BLOG_POSTS = [
         </div>
       </div>
     )
+  },
+
+  // --- 4. MAKALE: KAT KARŞILIĞI VE ŞEREFİYE ---
+  {
+    slug: 'ankara-kat-karsiligi-oranlari-serefiye-hesaplama',
+    category: 'Piyasa & Emsal Analizi',
+    title: 'Ankara Kat Karşılığı Oranları ve Şerefiye Adaleti (2026 Rehberi)',
+    description: "Ankara'da Çankaya, Keçiören ve Yenimahalle bölgesel kat karşılığı paylaşım oranları, şerefiye hesaplama kriterleri ve mülk sahiplerinin arsa payı hakkaniyeti.",
+    date: '4 Eylül 2026',
+    readTime: '6 dk okuma',
+    isFeatured: false,
+    badgeColor: 'bg-blue-500/10 text-blue-600 border-blue-500/20',
+    icon: Calculator,
+    content: (
+      <div className="space-y-6 text-slate-700 leading-relaxed text-lg">
+        <p>
+          Ankara kentsel dönüşüm pazarında kat maliklerinin en sık karşı karşıya kaldığı ihtilaf, müteahhitler ile yapılan kat karşılığı paylaşım oranları ve daire dağılımındaki şerefiye dengesizliğidir.
+        </p>
+        <p>
+          Gerek Çankaya'nın yüksek değerli arsalarında gerekse Keçiören ve Yenimahalle'nin yoğun konut dokusunda, doğru analiz edilmeyen paylaşım oranları mülk sahiplerine ciddi mali kayıplar yaşatmaktadır. <strong>KD Ankara Strateji Merkezi</strong> olarak, bölgesel emsal oranlarını ve bilimsel şerefiye kriterlerini mercek altına alıyoruz.
+        </p>
+
+        <h3 className="text-2xl font-bold text-slate-900 mt-8 mb-4">1. Bölgesel Ankara Kat Karşılığı Paylaşım Oranları</h3>
+        <p>
+          Arsa rayiç bedelleri, imar durumları ve lokasyonel alım gücüne göre Ankara’daki paylaşım oranları bölgesel bazda değişiklik göstermektedir:
+        </p>
+        <ul className="list-disc pl-6 space-y-3">
+          <li><strong>Çankaya (Ayrancı, Bahçelievler, Gaziosmanpaşa):</strong> Yüksek arsa rayiç değerleri ve yüksek metrekare satış fiyatları nedeniyle kat karşılığı paylaşım oranları %50 - %55 bandında seyretmektedir.</li>
+          <li><strong>Keçiören (Etlik, İncirli, Subayevleri):</strong> Yoğun yapılaşma ve parsel ölçeğindeki sınırlamalardan dolayı paylaşım oranları ortalama %45 - %50 seviyesindedir.</li>
+          <li><strong>Yenimahalle & Batıkent:</strong> Geniş parsel ve site bazlı dönüşüm alanlarında kat karşılığı paylaşımları %45 - %52 aralığında şekillenmektedir.</li>
+        </ul>
+
+        <h3 className="text-2xl font-bold text-slate-900 mt-8 mb-4">2. Şerefiye Hesaplamasında Yapılan Hukuki ve Teknik Hatalar</h3>
+        <p>
+          Sadece kat numarasına ve cepheye bakılarak yapılan yüzeysel paylaşımlar, dönüşüm sonrasında mülk sahipleri arasında hukuki uzlaşmazlıklara yol açar. Bilimsel bir şerefiye raporunda şu parametreler mutlaka yer almalıdır:
+        </p>
+        <ul className="list-disc pl-6 space-y-3">
+          <li><strong>Manzara ve Cephe Açısı:</strong> Güney/Doğu cephe avantajları, gün ışığı alma süreleri ve kapanmaz ön cephe değer katsayıları.</li>
+          <li><strong>Kat Yüksekliği ve Gürültü İndeksi:</strong> Alt katlar ile üst katlar arasındaki bağımsız bölüm değerleme farkları.</li>
+          <li><strong>Net Kullanım Alanı ve Eklentiler:</strong> Mimari projelerdeki net/brüt metrekare oranları ile kapalı otopark, depo gibi eklenti kullanım hakları.</li>
+        </ul>
+
+        <div className="bg-amber-50 p-6 md:p-8 rounded-2xl border border-amber-200 mt-10">
+          <h4 className="text-2xl font-extrabold text-amber-900 mb-4">KD Ankara Bağımsız Şerefiye Analizi</h4>
+          <p className="text-amber-800 text-base mb-4">
+            Müteahhit sözleşmesine imza atmadan önce binanıza özel bağımsız bir <strong>Şerefiye Raporu</strong> ve <strong>Arsa Payı Uygunluk Analizi</strong> hazırlatmanız, kat malikleri arasındaki anlaşmazlıkları %100 oranında engeller.
+          </p>
+          <p className="text-amber-900 text-base font-semibold">
+            Müteahhitlerden tamamen bağımsız, tarafsız ve bilimsel verilere dayalı paylaşım raporu almak için hemen KD Ankara uzman ekibiyle iletişime geçin.
+          </p>
+        </div>
+      </div>
+    )
   }
 ];

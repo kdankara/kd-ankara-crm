@@ -3,6 +3,13 @@ import Link from 'next/link';
 import { Calendar, Clock, ArrowLeft, ShieldCheck } from 'lucide-react';
 import { BLOG_POSTS } from '@/data/blogData';
 
+// NEXT.JS STATİK DERLEME İÇİN GEREKLİ FONKSİYON (EKLENDİ)
+export async function generateStaticParams() {
+  return BLOG_POSTS.map((post) => ({
+    slug: post.slug,
+  }));
+}
+
 // Google ve SEO için Dinamik Meta Etiketler Üretici (Güncellendi)
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const resolvedParams = await params;
