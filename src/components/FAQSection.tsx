@@ -30,8 +30,28 @@ export default function FAQSection() {
         setOpenIndex(openIndex === index ? null : index);
     };
 
+    // Google ve Yapay Zekalar için JSON-LD FAQ Şeması
+    const faqSchema = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": faqs.map((faq) => ({
+            "@type": "Question",
+            "name": faq.question,
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.answer
+            }
+        }))
+    };
+
     return (
         <section className="py-24 bg-gray-50">
+            {/* ŞEMA BURADA SAYFAYA EKLENİYOR (Kullanıcılar görmez, sadece botlar okur) */}
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+            />
+
             <div className="container mx-auto px-4 max-w-4xl">
                 <div className="text-center mb-12">
                     <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Sıkça Sorulan Sorular</h2>
