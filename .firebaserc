@@ -1,5 +1,7 @@
 {
   "projects": {
     "default": "kdankara-efcb4"
-  }
+  },
+  "targets": {},
+  "etags": {}
 }
