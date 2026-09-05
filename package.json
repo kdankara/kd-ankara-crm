@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "deploy:hosting": "npm run build && firebase deploy --only hosting",
+    "deploy:firebase-static": "npm run deploy:hosting",
+    "deploy:apphosting": "firebase apphosting:rollouts:create kdankara -b main -f"
   },
   "dependencies": {
     "@hello-pangea/dnd": "^18.0.1",

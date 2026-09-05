@@ -288,7 +288,7 @@ export default function RootLayout({
                 {children}
                 <Toaster richColors position="top-right" />
 
-                {/* Google Analytics - Asenkron ve Sayfa Yüklenmesini Engellemeyen Strateji */}
+                {/* Google Analytics */}
                 <Script
                     src="https://www.googletagmanager.com/gtag/js?id=G-31TP8L19HS"
                     strategy="afterInteractive"
@@ -302,6 +302,16 @@ export default function RootLayout({
                         gtag('config', 'AW-17925410465');
                     `}
                 </Script>
+
+                {/* Botpress Webchat Entegrasyonu */}
+                <Script
+                    src="https://cdn.botpress.cloud/webchat/v5.0/inject.js"
+                    strategy="afterInteractive"
+                />
+                <Script
+                    src="https://files.bpcontent.cloud/2026/09/05/08/20260905083849-86EC5R7Z.js"
+                    strategy="afterInteractive"
+                />
             </body>
         </html>
     );
