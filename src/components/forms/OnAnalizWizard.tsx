@@ -114,14 +114,15 @@ export default function OnAnalizWizard() {
         }
     };
 
-    // Google ve Yapay Zekalar için "ConsultingService" Şeması
+    // Google ve Yapay Zekalar için "Service" Şeması
     const serviceSchema = {
         "@context": "https://schema.org",
-        "@type": "ConsultingService",
+        "@type": "Service",
         "name": "Ankara Kentsel Dönüşüm Ücretsiz Ön Analiz Hizmeti",
         "provider": {
             "@type": "HomeAndConstructionBusiness",
-            "name": "KD Ankara Strateji Merkezi"
+            "name": "KD Ankara Strateji Merkezi",
+            "url": "https://kdankara.com"
         },
         "areaServed": {
             "@type": "City",
