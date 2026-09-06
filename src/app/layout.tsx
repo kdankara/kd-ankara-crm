@@ -266,8 +266,6 @@ export default function RootLayout({
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
                 <link rel="preconnect" href="https://www.googletagmanager.com" />
-                <link rel="preconnect" href="https://cdn.botpress.cloud" />
-                <link rel="preconnect" href="https://files.bpcontent.cloud" />
                 <link rel="dns-prefetch" href="https://images.unsplash.com" />
                 <link rel="dns-prefetch" href="https://www.transparenttextures.com" />
                 <link rel="dns-prefetch" href="https://www.google.com" />
@@ -316,15 +314,6 @@ export default function RootLayout({
                     `}
                 </Script>
 
-                {/* Botpress Webchat Entegrasyonu */}
-                <Script
-                    src="https://cdn.botpress.cloud/webchat/v5.0/inject.js"
-                    strategy="afterInteractive"
-                />
-                <Script
-                    src="https://files.bpcontent.cloud/2026/09/05/08/20260905083849-86EC5R7Z.js"
-                    strategy="afterInteractive"
-                />
             </body>
         </html>
     );
