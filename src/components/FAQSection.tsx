@@ -1,7 +1,3 @@
-"use client";
-
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 
 const faqs = [
@@ -24,12 +20,6 @@ const faqs = [
 ];
 
 export default function FAQSection() {
-    const [openIndex, setOpenIndex] = useState<number | null>(0);
-
-    const toggleFaq = (index: number) => {
-        setOpenIndex(openIndex === index ? null : index);
-    };
-
     // Google ve Yapay Zekalar için JSON-LD FAQ Şeması
     const faqSchema = {
         "@context": "https://schema.org",
@@ -62,34 +52,21 @@ export default function FAQSection() {
 
                 <div className="space-y-4">
                     {faqs.map((faq, index) => (
-                        <div 
-                            key={index} 
-                            className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+                        <details
+                            key={index}
+                            open={index === 0}
+                            className="group bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow"
                         >
-                            <button
-                                className="w-full text-left px-6 py-5 flex items-center justify-between focus:outline-none"
-                                onClick={() => toggleFaq(index)}
-                            >
+                            <summary className="w-full list-none px-6 py-5 flex items-center justify-between focus:outline-none cursor-pointer [&::-webkit-details-marker]:hidden">
                                 <span className="font-semibold text-gray-900 pr-4">{faq.question}</span>
-                                <ChevronDown 
-                                    className={`w-5 h-5 text-accent shrink-0 transition-transform duration-300 ${openIndex === index ? 'rotate-180' : ''}`} 
+                                <ChevronDown
+                                    className="w-5 h-5 text-accent shrink-0 transition-transform duration-300 group-open:rotate-180"
                                 />
-                            </button>
-                            <AnimatePresence>
-                                {openIndex === index && (
-                                    <motion.div
-                                        initial={{ height: 0, opacity: 0 }}
-                                        animate={{ height: 'auto', opacity: 1 }}
-                                        exit={{ height: 0, opacity: 0 }}
-                                        transition={{ duration: 0.3 }}
-                                    >
-                                        <div className="px-6 pb-5 pt-0 text-gray-600 leading-relaxed border-t border-gray-50">
-                                            {faq.answer}
-                                        </div>
-                                    </motion.div>
-                                )}
-                            </AnimatePresence>
-                        </div>
+                            </summary>
+                            <div className="px-6 pb-5 pt-0 text-gray-600 leading-relaxed border-t border-gray-50">
+                                {faq.answer}
+                            </div>
+                        </details>
                     ))}
                 </div>
             </div>

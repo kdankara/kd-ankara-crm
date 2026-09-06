@@ -1,6 +1,7 @@
 "use client";
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { Menu, Phone, MessageCircle, MapPin, Facebook, Instagram, Linkedin, Mail, X } from 'lucide-react';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
@@ -41,7 +42,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 <div className="container mx-auto px-4">
                     <div className="flex items-center justify-between h-20">
                         <Link href="/" className="flex items-center gap-2 xl:gap-3 shrink-0">
-                            <img src="/assets/logo.png" alt="KD Ankara Logo" className="h-10 xl:h-12 w-auto" />
+                            <picture>
+                                <source srcSet="/assets/logo.avif" type="image/avif" />
+                                <source srcSet="/assets/logo.webp" type="image/webp" />
+                                <Image src="/assets/logo.png" alt="KD Ankara Logo" width={640} height={640} sizes="(min-width: 1280px) 48px, 40px" priority className="h-10 xl:h-12 w-auto" />
+                            </picture>
                             <div className="flex flex-col">
                                 <span className="text-lg xl:text-xl font-bold text-primary-900 leading-none">KD Ankara</span>
                                 <span className="text-[9px] xl:text-[10px] text-gray-500 font-medium tracking-wide">STRATEJİ MERKEZİ</span>
@@ -114,7 +119,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                         {/* Brand */}
                         <div className="col-span-1 md:col-span-1">
                             <div className="flex items-center gap-3 mb-6">
-                                <img src="/assets/logo.png" alt="KD Ankara Logo" className="h-12 w-auto" />
+                                <picture>
+                                    <source srcSet="/assets/logo.avif" type="image/avif" />
+                                    <source srcSet="/assets/logo.webp" type="image/webp" />
+                                    <Image src="/assets/logo.png" alt="KD Ankara Logo" width={640} height={640} sizes="48px" className="h-12 w-auto" />
+                                </picture>
                                 <div className="flex flex-col">
                                     <span className="text-xl font-bold leading-none">KD Ankara</span>
                                     <span className="text-[10px] text-gray-400 font-medium tracking-wide">STRATEJİ MERKEZİ</span>

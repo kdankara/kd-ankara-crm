@@ -1,6 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
 import {
     Building2,
     ArrowRight,
@@ -16,17 +13,13 @@ import {
 
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import OnAnalizWizard from "@/components/forms/OnAnalizWizard";
-import FAQSection from "@/components/FAQSection";
-import CaseStudies from "@/components/CaseStudies";
-import { trackWhatsAppClick } from "@/lib/gtag";
+import dynamic from "next/dynamic";
+import HomepageAnalysisForm from "@/components/forms/HomepageAnalysisForm";
+import Reveal from "@/components/Reveal";
+import TrackedWhatsAppLink from "@/components/TrackedWhatsAppLink";
 
-const fadeInUp = {
-    initial: { opacity: 0, y: 20 },
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true },
-    transition: { duration: 0.5 },
-};
+const FAQSection = dynamic(() => import("@/components/FAQSection"));
+const CaseStudies = dynamic(() => import("@/components/CaseStudies"));
 
 export default function Home() {
     return (
@@ -49,11 +42,7 @@ export default function Home() {
                 <div className="container mx-auto px-4 relative z-10">
                     <div className="grid lg:grid-cols-2 gap-16 items-center">
                         {/* Left Column */}
-                        <motion.div
-                            initial={{ opacity: 0, x: -30 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 0.7 }}
-                        >
+                        <Reveal immediate>
                             <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full text-sm font-medium text-accent-100 mb-8 border border-white/10">
                                 <span className="w-2 h-2 bg-accent rounded-full animate-pulse" />
                                 Ücretsiz Kentsel Dönüşüm Ön Analizi
@@ -86,12 +75,7 @@ export default function Home() {
                                     </Button>
                                 </Link>
 
-                                <a
-                                    href="https://wa.me/905336820942"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    onClick={() => trackWhatsAppClick()}
-                                >
+                                <TrackedWhatsAppLink>
                                     <Button
                                         size="lg"
                                         variant="outline"
@@ -99,7 +83,7 @@ export default function Home() {
                                     >
                                         WhatsApp'tan Bilgi Al
                                     </Button>
-                                </a>
+                                </TrackedWhatsAppLink>
                             </div>
 
                             <div className="mt-12 flex items-center gap-8 text-sm text-primary-300">
@@ -113,21 +97,13 @@ export default function Home() {
                                     <span>Şeffaf Süreç</span>
                                 </div>
                             </div>
-                        </motion.div>
+                        </Reveal>
 
                         {/* Right Column */}
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{
-                                duration: 0.7,
-                                delay: 0.2,
-                            }}
-                            className="relative"
-                        >
+                        <Reveal className="relative" delay={200} immediate>
                             <div className="absolute -inset-4 bg-accent/20 rounded-2xl blur-3xl -z-10" />
-                            <OnAnalizWizard />
-                        </motion.div>
+                            <HomepageAnalysisForm />
+                        </Reveal>
                     </div>
                 </div>
             </section>
@@ -180,10 +156,7 @@ export default function Home() {
             ====================================================== */}
             <section className="py-24 bg-gray-50">
                 <div className="container mx-auto px-4">
-                    <motion.div
-                        {...fadeInUp}
-                        className="text-center mb-16"
-                    >
+                    <Reveal className="text-center mb-16">
                         <span className="text-accent font-semibold tracking-wide uppercase text-sm">
                             Süreç Nasıl İşliyor?
                         </span>
@@ -199,7 +172,7 @@ export default function Home() {
                             değerlendirerek daha kontrollü ilerlemenize
                             yardımcı oluyoruz.
                         </p>
-                    </motion.div>
+                    </Reveal>
 
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {[
@@ -229,22 +202,9 @@ export default function Home() {
                                 desc: "Uygulama aşamasında işin planlanan kalite, zaman ve teknik şartlara uygun ilerlemesi takip edilir.",
                             },
                         ].map((item, index) => (
-                            <motion.div
+                            <Reveal
                                 key={index}
-                                initial={{
-                                    opacity: 0,
-                                    y: 20,
-                                }}
-                                whileInView={{
-                                    opacity: 1,
-                                    y: 0,
-                                }}
-                                viewport={{
-                                    once: true,
-                                }}
-                                transition={{
-                                    delay: index * 0.1,
-                                }}
+                                delay={index * 100}
                                 className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 relative group hover:shadow-md transition-shadow"
                             >
                                 <div className="text-6xl font-bold text-gray-100 absolute top-4 right-4 group-hover:text-accent/10 transition-colors">
@@ -260,7 +220,7 @@ export default function Home() {
                                         {item.desc}
                                     </p>
                                 </div>
-                            </motion.div>
+                            </Reveal>
                         ))}
                     </div>
                 </div>
@@ -271,10 +231,7 @@ export default function Home() {
             ====================================================== */}
             <section className="py-24 bg-white relative z-10 border-b border-gray-100">
                 <div className="container mx-auto px-4">
-                    <motion.div
-                        {...fadeInUp}
-                        className="text-center mb-16"
-                    >
+                    <Reveal className="text-center mb-16">
                         <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
                             Neden KD Ankara Danışmanlık?
                         </h2>
@@ -282,14 +239,11 @@ export default function Home() {
                         <p className="text-xl text-gray-600 font-medium">
                             Sürecinizi Şansa Değil, Uzmanına Bırakın
                         </p>
-                    </motion.div>
+                    </Reveal>
 
                     <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
                         {/* Card 1 */}
-                        <motion.div
-                            {...fadeInUp}
-                            className="bg-white p-8 rounded-2xl border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:-translate-y-2 hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] transition-all duration-300 group"
-                        >
+                        <Reveal className="bg-white p-8 rounded-2xl border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:-translate-y-2 hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] transition-all duration-300 group">
                             <div className="w-14 h-14 bg-primary-50 rounded-2xl flex items-center justify-center text-primary-700 mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
                                 <ShieldCheck className="w-7 h-7" />
                             </div>
@@ -307,13 +261,10 @@ export default function Home() {
                                 sürprizleri yaşamamanız için her aşamada
                                 şeffaf raporlama sunarız.
                             </p>
-                        </motion.div>
+                        </Reveal>
 
                         {/* Card 2 */}
-                        <motion.div
-                            {...fadeInUp}
-                            className="bg-white p-8 rounded-2xl border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:-translate-y-2 hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] transition-all duration-300 group"
-                        >
+                        <Reveal className="bg-white p-8 rounded-2xl border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:-translate-y-2 hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] transition-all duration-300 group">
                             <div className="w-14 h-14 bg-accent/10 rounded-2xl flex items-center justify-center text-accent mb-6 group-hover:bg-accent group-hover:text-white transition-colors">
                                 <Scale className="w-7 h-7" />
                             </div>
@@ -330,13 +281,10 @@ export default function Home() {
                                 kadar teknik ve hukuki süreçlerin
                                 koordinasyonunu sağlıyoruz.
                             </p>
-                        </motion.div>
+                        </Reveal>
 
                         {/* Card 3 */}
-                        <motion.div
-                            {...fadeInUp}
-                            className="bg-white p-8 rounded-2xl border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:-translate-y-2 hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] transition-all duration-300 group"
-                        >
+                        <Reveal className="bg-white p-8 rounded-2xl border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:-translate-y-2 hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] transition-all duration-300 group">
                             <div className="w-14 h-14 bg-primary-50 rounded-2xl flex items-center justify-center text-primary-700 mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
                                 <MapPin className="w-7 h-7" />
                             </div>
@@ -353,7 +301,7 @@ export default function Home() {
                                 daha kontrollü yürütülmesine yönelik
                                 teknik ve stratejik destek sağlıyoruz.
                             </p>
-                        </motion.div>
+                        </Reveal>
                     </div>
                 </div>
             </section>
@@ -364,10 +312,7 @@ export default function Home() {
             <section className="py-24">
                 <div className="container mx-auto px-4">
                     <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
-                        <motion.div
-                            {...fadeInUp}
-                            className="max-w-3xl"
-                        >
+                        <Reveal className="max-w-3xl">
                             <h2 className="text-3xl font-bold text-gray-900 mb-4">
                                 Size Hangi Aşamada Destek Oluyoruz?
                             </h2>
@@ -377,7 +322,7 @@ export default function Home() {
                                 ihtiyacınıza uygun doğru adımı birlikte
                                 netleştiriyoruz.
                             </p>
-                        </motion.div>
+                        </Reveal>
 
                         <Link href="/hizmetler">
                             <Button
@@ -675,19 +620,14 @@ export default function Home() {
                             </Button>
                         </Link>
 
-                        <a
-                            href="https://wa.me/905336820942"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            onClick={() => trackWhatsAppClick()}
-                        >
+                        <TrackedWhatsAppLink>
                             <Button
                                 size="lg"
                                 className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-accent transition-colors h-14 px-8 w-full sm:w-auto font-bold"
                             >
                                 WhatsApp’tan Bilgi Al
                             </Button>
-                        </a>
+                        </TrackedWhatsAppLink>
                     </div>
                 </div>
             </section>

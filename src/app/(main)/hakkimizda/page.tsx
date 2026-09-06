@@ -5,6 +5,7 @@ import { useSEO } from '@/hooks/useSEO';
 import { Target, Eye, Shield, Users, Building, Award } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const fadeInUp = {
     initial: { opacity: 0, y: 20 },
@@ -57,11 +58,27 @@ export default function About() {
                         </motion.div>
                         <motion.div {...fadeInUp} transition={{ delay: 0.2 }} className="relative">
                             <div className="aspect-square bg-primary-50 rounded-3xl overflow-hidden relative group shadow-2xl">
-                                <img 
-                                    src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070&auto=format&fit=crop" 
+                                <picture>
+                                    <source
+                                        type="image/avif"
+                                        srcSet="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=640&fm=avif&fit=crop 640w, https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=1280&fm=avif&fit=crop 1280w, https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070&fm=avif&fit=crop 2070w"
+                                        sizes="(min-width: 1024px) 50vw, 100vw"
+                                    />
+                                    <source
+                                        type="image/webp"
+                                        srcSet="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=640&fm=webp&fit=crop 640w, https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=1280&fm=webp&fit=crop 1280w, https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070&fm=webp&fit=crop 2070w"
+                                        sizes="(min-width: 1024px) 50vw, 100vw"
+                                    />
+                                    <Image
+                                        src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070&auto=format&fit=crop"
                                     alt="KD Ankara Ofis Çalışması" 
+                                    width={2070}
+                                    height={2070}
+                                    sizes="(min-width: 1024px) 50vw, 100vw"
+                                    unoptimized
                                     className="w-full h-full object-cover grayscale-[20%] group-hover:scale-105 transition-transform duration-700"
-                                />
+                                    />
+                                </picture>
                                 <div className="absolute inset-0 bg-primary-900/20 mix-blend-multiply" />
                                 <div className="absolute bottom-8 left-8 bg-white p-6 rounded-2xl shadow-xl max-w-[240px]">
                                     <div className="text-4xl font-bold text-accent mb-1">500+</div>

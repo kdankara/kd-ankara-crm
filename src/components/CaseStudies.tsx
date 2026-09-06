@@ -1,33 +1,21 @@
-"use client";
-
-import { motion } from 'framer-motion';
 import { AlertTriangle, Wrench, CheckCircle2, MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { trackWhatsAppClick } from '@/lib/gtag';
-
-
-const fadeInUp = {
-    initial: { opacity: 0, y: 20 },
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true },
-    transition: { duration: 0.5 }
-};
+import TrackedWhatsAppLink from '@/components/TrackedWhatsAppLink';
 
 export default function CaseStudies() {
     return (
         <section className="py-24 bg-gray-50 border-t border-gray-100">
             <div className="container mx-auto px-4 max-w-6xl">
-                <motion.div {...fadeInUp} className="text-center mb-16">
+                <div className="text-center mb-16">
                     <span className="text-accent font-semibold tracking-wide uppercase text-sm">Vaka Çalışmaları</span>
                     <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mt-2 mb-4">Örnek Süreç Analizleri</h2>
                     <p className="text-xl text-gray-600 font-medium">Sahadan gerçek sonuçlar ve başardığımız dönüşümler.</p>
-                </motion.div>
+                </div>
 
                 <div className="space-y-12 mb-20">
                     {/* Case 1 */}
-                    <motion.div 
-                        {...fadeInUp}
+                    <div
                         className="bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-100 flex flex-col md:flex-row"
                     >
                         <div className="md:w-1/3 bg-primary-950 p-8 text-white flex flex-col justify-center">
@@ -82,11 +70,10 @@ export default function CaseStudies() {
                                 </div>
                             </div>
                         </div>
-                    </motion.div>
+                    </div>
 
                     {/* Case 2 */}
-                    <motion.div 
-                        {...fadeInUp}
+                    <div
                         className="bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-100 flex flex-col md:flex-row-reverse"
                     >
                         <div className="md:w-1/3 bg-primary-950 p-8 text-white flex flex-col justify-center">
@@ -141,12 +128,11 @@ export default function CaseStudies() {
                                 </div>
                             </div>
                         </div>
-                    </motion.div>
+                    </div>
                 </div>
 
                 {/* CTA Area */}
-                <motion.div 
-                    {...fadeInUp}
+                <div
                     className="bg-white rounded-3xl p-8 md:p-12 text-center border-2 border-accent shadow-xl relative overflow-hidden"
                 >
                     <div className="absolute top-0 right-0 w-64 h-64 bg-accent/5 rounded-full blur-3xl -mr-10 -mt-10 pointer-events-none" />
@@ -157,12 +143,12 @@ export default function CaseStudies() {
                         <p className="text-xl text-gray-600 mb-8">Uzmanlarımızla ücretsiz değerlendirelim, en doğru kararı birlikte verelim.</p>
                         
                         <div className="flex flex-col sm:flex-row justify-center gap-4">
-                            <a href="https://wa.me/905336820942" target="_blank" rel="noopener noreferrer" onClick={() => trackWhatsAppClick()}>
+                            <TrackedWhatsAppLink>
                                 <Button size="lg" className="bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold h-14 px-8 w-full sm:w-auto shadow-lg shadow-green-500/30 gap-2">
                                     <MessageCircle className="w-5 h-5" />
                                     WhatsApp'tan Bize Ulaşın
                                 </Button>
-                            </a>
+                            </TrackedWhatsAppLink>
                             <Link href="/iletisim">
                                 <Button size="lg" variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 h-14 px-8 w-full sm:w-auto font-bold">
                                     İletişim Formunu Doldur
@@ -170,7 +156,7 @@ export default function CaseStudies() {
                             </Link>
                         </div>
                     </div>
-                </motion.div>
+                </div>
             </div>
         </section>
     );

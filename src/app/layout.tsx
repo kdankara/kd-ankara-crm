@@ -263,6 +263,19 @@ export default function RootLayout({
     return (
         <html lang="tr" className={inter.variable}>
             <head>
+                <link rel="preconnect" href="https://fonts.googleapis.com" />
+                <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+                <link rel="preconnect" href="https://www.googletagmanager.com" />
+                <link rel="preconnect" href="https://cdn.botpress.cloud" />
+                <link rel="preconnect" href="https://files.bpcontent.cloud" />
+                <link rel="dns-prefetch" href="https://images.unsplash.com" />
+                <link rel="dns-prefetch" href="https://www.transparenttextures.com" />
+                <link rel="dns-prefetch" href="https://www.google.com" />
+                <link rel="dns-prefetch" href="https://analytics.google.com" />
+                <link rel="dns-prefetch" href="https://www.googleadservices.com" />
+                <link rel="dns-prefetch" href="https://ad.doubleclick.net" />
+                <link rel="dns-prefetch" href="https://finans.truncgil.com" />
+
                 {/* Schema.org JSON-LD */}
                 <script
                     type="application/ld+json"
