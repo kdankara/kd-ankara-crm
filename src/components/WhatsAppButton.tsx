@@ -6,7 +6,7 @@ export default function WhatsAppButton() {
             href="https://wa.me/905336820942?text=Merhaba,%20KD%20Ankara%20%C3%BCzerinden%20%C3%BCcretsiz%20kentsel%20d%C3%B6n%C3%BC%C5%9F%C3%BCm%20%C3%B6n%20analizi%20talep%20ediyorum.%20Ada/Parsel%20bilgim:%20___"
             target="_blank"
             rel="noopener noreferrer"
-            className="fixed bottom-6 right-6 z-50 flex h-16 w-16 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg transition-transform hover:scale-110 hover:shadow-[#25D366]/40 border-2 border-white"
+            className="fixed bottom-6 right-6 z-50 hidden h-16 w-16 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg transition-transform hover:scale-110 hover:shadow-[#25D366]/40 border-2 border-white lg:flex"
             aria-label="WhatsApp üzerinden ücretsiz ön analiz talep et"
         >
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
