@@ -24,7 +24,16 @@ export default function About() {
         <div className="bg-gray-50/50 min-h-screen">
             {/* Hero Section */}
             <section className="relative py-24 bg-primary-950 text-white overflow-hidden">
-                <div className="absolute inset-0 opacity-15 bg-[url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center" />
+                <div className="absolute inset-0 opacity-15">
+                    <Image
+                        src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop"
+                        alt="KD Ankara Kentsel Dönüşüm Danışmanlığı"
+                        fill
+                        priority
+                        sizes="100vw"
+                        className="object-cover object-center"
+                    />
+                </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-primary-950/95 via-primary-950/80 to-transparent" />
                 
                 <div className="container mx-auto px-4 relative z-10 text-center">
@@ -58,27 +67,13 @@ export default function About() {
                         </motion.div>
                         <motion.div {...fadeInUp} transition={{ delay: 0.2 }} className="relative">
                             <div className="aspect-square bg-primary-50 rounded-3xl overflow-hidden relative group shadow-2xl">
-                                <picture>
-                                    <source
-                                        type="image/avif"
-                                        srcSet="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=640&fm=avif&fit=crop 640w, https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=1280&fm=avif&fit=crop 1280w, https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070&fm=avif&fit=crop 2070w"
-                                        sizes="(min-width: 1024px) 50vw, 100vw"
-                                    />
-                                    <source
-                                        type="image/webp"
-                                        srcSet="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=640&fm=webp&fit=crop 640w, https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=1280&fm=webp&fit=crop 1280w, https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070&fm=webp&fit=crop 2070w"
-                                        sizes="(min-width: 1024px) 50vw, 100vw"
-                                    />
-                                    <Image
-                                        src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070&auto=format&fit=crop"
-                                    alt="KD Ankara Ofis Çalışması" 
-                                    width={2070}
-                                    height={2070}
+                                <Image
+                                    src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=1280&auto=format&fit=crop"
+                                    alt="KD Ankara Ofis Çalışması"
+                                    fill
                                     sizes="(min-width: 1024px) 50vw, 100vw"
-                                    unoptimized
-                                    className="w-full h-full object-cover grayscale-[20%] group-hover:scale-105 transition-transform duration-700"
-                                    />
-                                </picture>
+                                    className="object-cover grayscale-[20%] group-hover:scale-105 transition-transform duration-700"
+                                />
                                 <div className="absolute inset-0 bg-primary-900/20 mix-blend-multiply" />
                                 <div className="absolute bottom-8 left-8 bg-white p-6 rounded-2xl shadow-xl max-w-[240px]">
                                     <div className="text-4xl font-bold text-accent mb-1">500+</div>

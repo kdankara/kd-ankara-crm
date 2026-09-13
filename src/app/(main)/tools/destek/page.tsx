@@ -92,7 +92,7 @@ export default function Destek() {
                                     value={values.il}
                                     onValueChange={(val) => updateField('il', val)}
                                 >
-                                    <SelectTrigger id="il" className="mt-1">
+                                    <SelectTrigger id="il" aria-label="İl seçin" className="mt-1">
                                         <SelectValue placeholder="İl seçin" />
                                     </SelectTrigger>
                                     <SelectContent>

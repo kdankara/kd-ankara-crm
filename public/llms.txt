@@ -1,29 +1,47 @@
-# KD Ankara - Kentsel Dönüşüm Danışmanlık Merkezi
+# KD Ankara - Kentsel Dönüşüm Strateji Merkezi
 
-Ankara'da kentsel dönüşüm süreçleri için uzman danışmanlık merkezi.
+> Ankara'da kentsel dönüşüm, emsal ve imar analizi, arsa payı değerlendirmesi ve müteahhit teklif karşılaştırma danışmanlığı.
 
-## İletişim
-- Adres: Konutkent Mahallesi 2987. Sokak No:18, Çankaya, Ankara 06810, Türkiye
+KD Ankara, mülk sahipleri, yatırımcılar ve yükleniciler için veriye dayalı, şeffaf kentsel dönüşüm danışmanlık hizmetleri sunar.
+
+## Sayfalar ve Rehberler
+
+- [Ana Sayfa](https://kdankara.com): KD Ankara genel tanıtımı ve kentsel dönüşüm hizmetleri
+- [Ücretsiz Ön Analiz](https://kdankara.com/on-analiz): Binanızın kentsel dönüşüm potansiyelini 24 saat içinde ücretsiz öğrenin
+- [Hakkımızda](https://kdankara.com/hakkimizda): Kurumsal kimliğimiz, vizyonumuz ve uzman teknik kadromuz
+- [Hizmetler](https://kdankara.com/hizmetler): Kentsel dönüşüm danışmanlığı, hukuki ve teknik süreç yönetimi
+- [Kentsel Dönüşüm Süreci](https://kdankara.com/surec): 5 adımda güvenli kentsel dönüşüm yol haritası
+- [Arsa Projeleri](https://kdankara.com/arsa): Arsa geliştirme, kat karşılığı ve emsal analizi
+- [Müteahhitler](https://kdankara.com/muteahhit): Kurumsal müteahhit ve yüklenici çözüm ortaklığı portalı
+- [Fırsat Havuzu](https://kdankara.com/firsatlar): Hazır kentsel dönüşüm ve kat karşılığı projeler
+- [İletişim](https://kdankara.com/iletisim): Çankaya ofis iletişim ve adres bilgileri
+
+## Hesaplama Araçları
+
+- [Hesaplama Merkezi](https://kdankara.com/tools): Kentsel dönüşüm hesaplama araçları
+- [Emsal Hesaplama](https://kdankara.com/tools/emsal): İmar emsal (KAKS) ve toplam inşaat alanı hesaplama
+- [Daire Paylaşım Hesaplama](https://kdankara.com/tools/daire): Kat ve daire paylaşımı hesaplayıcı
+- [İnşaat Maliyet Hesaplama](https://kdankara.com/tools/maliyet): Kentsel dönüşüm inşaat maliyeti tahmini
+- [Kira Yardımı Hesaplama](https://kdankara.com/tools/destek): Devlet kentsel dönüşüm kira yardımı sorgulama
+- [Arsa Payı Hesaplama](https://kdankara.com/tools/arsapayi): Arsa payı ve şerefiye oranları hesaplayıcı
+
+## Bilgi Bankası ve Mevzuat Rehberleri
+
+- [Bilgi Bankası](https://kdankara.com/blog): Güncel kentsel dönüşüm makaleleri ve mevzuat rehberleri
+- [Ankara Riskli Yapı Tespiti](https://kdankara.com/blog/ankara-riskli-yapi-tespiti-sureci): 6306 sayılı kanun ve riskli yapı tespiti yasal rehberi
+- [Müteahhit Sözleşmeleri Rehberi](https://kdankara.com/blog/muteahhit-sozlesmeleri-kiritik-hukuki-maddeler): Arsa sahiplerini koruyan kritik hukuki maddeler
+- [2026 Kira Yardımı Rehberi](https://kdankara.com/blog/2026-kentsel-donusum-kira-yardimi): Güncel kira yardımı başvuru şartları
+
+## Bölgesel Hizmet Sayfaları
+
+- [Çankaya Kentsel Dönüşüm](https://kdankara.com/cankaya-kentsel-donusum): Çankaya ilçesi kentsel dönüşüm danışmanlığı
+- [Yenimahalle Kentsel Dönüşüm](https://kdankara.com/yenimahalle-kentsel-donusum): Yenimahalle kentsel dönüşüm hizmetleri
+- [Keçiören Kentsel Dönüşüm](https://kdankara.com/kecioren-kentsel-donusum): Keçiören kentsel dönüşüm rehberi
+- [Sincan Kentsel Dönüşüm](https://kdankara.com/sincan-kentsel-donusum): Sincan kentsel dönüşüm danışmanlığı
+
+## İletişim Bilgileri
+
+- Adres: Konutkent Mahallesi 2987. Sokak No:18, Çankaya, Ankara, Türkiye
+- Telefon: +90 312 236 10 17
+- GSM / WhatsApp: +90 533 682 09 42
 - E-posta: info@kdankara.com
-- Telefon: 0312 236 10 17
-- GSM: 0533 682 09 42
-
-## Sosyal Medya
-- Instagram: https://www.instagram.com/kentsel_donusum_ankara/
-- Facebook: https://www.facebook.com/profile.php?id=61587153058423
-- LinkedIn: https://www.linkedin.com/in/g%C3%B6ktu%C4%9F-usta-2007993a8/
-
-## Hizmetler
-- Kentsel Dönüşüm Yol Haritası (5 Adım)
-- Riskli Yapı Tespiti ve Raporlama
-- Müteahhit Fizibilite Çalışmaları
-- Emsal ve Arsa Payı Hesaplama
-- Kira Yardımı Başvuruları
-- Ada Parsel Analizi
-- Arsa Payı ve Potansiyel Analizi
-
-## Hizmet Bölgesi
-Ankara, Türkiye (Çankaya, Yenimahalle, Mamak, Keçiören, Etimesgut, Sincan, Gölbaşı, Pursaklar)
-
-## URL
-https://kdankara.com

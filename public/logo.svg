@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" fill="none">
+  <rect width="100" height="100" rx="20" fill="#0f172a"/>
+  <!-- Modern Architectural Transformation Graphic -->
+  <path d="M25 75V45L45 30V75H25Z" fill="#f97316"/>
+  <path d="M48 75V25L75 40V75H48Z" fill="#ffffff" fill-opacity="0.95"/>
+  <path d="M32 52H38V58H32V52Z" fill="#0f172a"/>
+  <path d="M32 62H38V68H32V62Z" fill="#0f172a"/>
+  <path d="M56 38H65V44H56V38Z" fill="#0f172a"/>
+  <path d="M56 48H65V54H56V48Z" fill="#0f172a"/>
+  <path d="M56 58H65V64H56V58Z" fill="#0f172a"/>
+  <!-- Dynamic Growth Accent Line -->
+  <path d="M18 78L82 78" stroke="#f97316" stroke-width="4" stroke-linecap="round"/>
+</svg>

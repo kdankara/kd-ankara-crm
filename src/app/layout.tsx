@@ -5,7 +5,6 @@ import "./globals.css";
 import { Toaster } from "sonner";
 import WhatsAppButton from "@/components/WhatsAppButton";
 
-// Next.js Otomatik Font Optimizasyonu (Render-blocking önleyici)
 const inter = Inter({
     subsets: ["latin-ext"],
     display: "swap",
@@ -18,6 +17,7 @@ const SITE_NAME = "KD Ankara";
 const BUSINESS_ID = `${SITE_URL}/#business`;
 const WEBSITE_ID = `${SITE_URL}/#website`;
 const WEBPAGE_ID = `${SITE_URL}/#webpage`;
+const PERSON_ID = `${SITE_URL}/#goktug-usta`;
 
 export const metadata: Metadata = {
     metadataBase: new URL(SITE_URL),
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
         "ankara kentsel dönüşüm danışmanlığı",
         "çankaya riskli yapı tespiti",
         "yenimahalle kentsel dönüşüm kira yardımı",
-        "ankara",
+        "ankara kentsel dönüşüm",
         "emsal hesaplama",
         "inşaat maliyeti",
         "müteahhit fizibilite",
@@ -98,6 +98,21 @@ export const metadata: Metadata = {
     },
 };
 
+/* ===== SCHEMA.ORG: Person (Founder E-E-A-T) ===== */
+const personSchema = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": PERSON_ID,
+    name: "Göktuğ Usta",
+    jobTitle: "Kentsel Dönüşüm Stratejisti & Danışman",
+    worksFor: {
+        "@id": BUSINESS_ID,
+    },
+    sameAs: [
+        "https://www.linkedin.com/in/g%C3%B6ktu%C4%9F-usta-2007993a8/",
+    ],
+};
+
 /* ===== SCHEMA.ORG: WebPage ===== */
 const webpageSchema = {
     "@context": "https://schema.org",
@@ -116,10 +131,10 @@ const webpageSchema = {
     inLanguage: "tr-TR",
 };
 
-/* ===== SCHEMA.ORG: HomeAndConstructionBusiness ===== */
+/* ===== SCHEMA.ORG: Professional & Consulting Service ===== */
 const organizationSchema = {
     "@context": "https://schema.org",
-    "@type": "HomeAndConstructionBusiness",
+    "@type": ["ProfessionalService", "HomeAndConstructionBusiness"],
     "@id": BUSINESS_ID,
     name: "KD Ankara Strateji Merkezi",
     url: SITE_URL,
@@ -136,6 +151,9 @@ const organizationSchema = {
     telephone: ["+90 533 682 09 42", "+90 312 236 10 17"],
     email: "info@kdankara.com",
     priceRange: "₺₺",
+    founder: {
+        "@id": PERSON_ID,
+    },
     address: {
         "@type": "PostalAddress",
         streetAddress: "Konutkent Mahallesi 2987. Sokak No:18",
@@ -150,23 +168,25 @@ const organizationSchema = {
         longitude: "32.66279052508028",
     },
     openingHours: ["Mo-Fr 09:00-18:00", "Sa 10:00-14:00"],
-    areaServed: {
-        "@type": "City",
-        name: "Ankara",
-        sameAs: "https://www.wikidata.org/wiki/Q3640",
-    },
+    areaServed: [
+        {
+            "@type": "City",
+            name: "Ankara",
+            sameAs: "https://www.wikidata.org/wiki/Q3640",
+        },
+        { "@type": "AdministrativeArea", name: "Çankaya" },
+        { "@type": "AdministrativeArea", name: "Yenimahalle" },
+        { "@type": "AdministrativeArea", name: "Keçiören" },
+    ],
     knowsAbout: [
-        "Kentsel dönüşüm",
-        "Riskli yapı tespiti",
-        "İmar analizi",
-        "Emsal hesaplama",
+        "Kentsel dönüşüm danışmanlığı",
+        "Riskli yapı tespiti rehberliği",
+        "İmar analizi ve emsal hesaplama",
         "Arsa payı analizi",
-        "İnşaat maliyet analizi",
-        "Müteahhit teklif değerlendirme",
-        "Müteahhit fizibilitesi",
+        "İnşaat maliyet projeksiyonu",
+        "Müteahhit teklif değerlendirmesi",
         "Malik uzlaşma yönetimi",
-        "Teknik şartname",
-        "Kentsel dönüşüm süreç yönetimi",
+        "Teknik şartname hazırlığı",
     ],
     hasOfferCatalog: {
         "@type": "OfferCatalog",
@@ -194,15 +214,6 @@ const organizationSchema = {
                 "@type": "Offer",
                 itemOffered: {
                     "@type": "Service",
-                    name: "İnşaat Maliyet Analizi",
-                    provider: { "@id": BUSINESS_ID },
-                    areaServed: { "@type": "City", name: "Ankara" },
-                },
-            },
-            {
-                "@type": "Offer",
-                itemOffered: {
-                    "@type": "Service",
                     name: "Müteahhit Teklif Değerlendirme",
                     provider: { "@id": BUSINESS_ID },
                     areaServed: { "@type": "City", name: "Ankara" },
@@ -213,15 +224,6 @@ const organizationSchema = {
                 itemOffered: {
                     "@type": "Service",
                     name: "Malik Uzlaşma Yönetimi",
-                    provider: { "@id": BUSINESS_ID },
-                    areaServed: { "@type": "City", name: "Ankara" },
-                },
-            },
-            {
-                "@type": "Offer",
-                itemOffered: {
-                    "@type": "Service",
-                    name: "Teknik ve Hukuki Süreç Danışmanlığı",
                     provider: { "@id": BUSINESS_ID },
                     areaServed: { "@type": "City", name: "Ankara" },
                 },
@@ -264,18 +266,16 @@ export default function RootLayout({
     return (
         <html lang="tr" className={inter.variable}>
             <head>
-                <link rel="preconnect" href="https://fonts.googleapis.com" />
-                <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
                 <link rel="preconnect" href="https://www.googletagmanager.com" />
-                <link rel="dns-prefetch" href="https://images.unsplash.com" />
-                <link rel="dns-prefetch" href="https://www.transparenttextures.com" />
-                <link rel="dns-prefetch" href="https://www.google.com" />
-                <link rel="dns-prefetch" href="https://analytics.google.com" />
-                <link rel="dns-prefetch" href="https://www.googleadservices.com" />
-                <link rel="dns-prefetch" href="https://ad.doubleclick.net" />
-                <link rel="dns-prefetch" href="https://finans.truncgil.com" />
+                <link rel="dns-prefetch" href="https://www.google-analytics.com" />
 
                 {/* Schema.org JSON-LD */}
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify(personSchema),
+                    }}
+                />
                 <script
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{
@@ -300,7 +300,7 @@ export default function RootLayout({
                 {children}
                 <Toaster richColors position="top-right" />
 
-                {/* Google Analytics */}
+                {/* Google Analytics - afterInteractive ile hızlı aksiyon alan kullanıcıları kaçırmıyoruz */}
                 <Script
                     src="https://www.googletagmanager.com/gtag/js?id=G-31TP8L19HS"
                     strategy="afterInteractive"
@@ -316,7 +316,6 @@ export default function RootLayout({
                 </Script>
 
                 <WhatsAppButton />
-
             </body>
         </html>
     );

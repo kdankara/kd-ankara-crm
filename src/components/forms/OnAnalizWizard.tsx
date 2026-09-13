@@ -78,6 +78,15 @@ export default function OnAnalizWizard() {
             });
 
             if (result.success) {
+                // GA4 & Google Ads Lead Conversion Event
+                if (typeof window !== 'undefined' && typeof (window as any).gtag === 'function') {
+                    (window as any).gtag('event', 'generate_lead', {
+                        event_category: 'Form',
+                        event_label: formData.requestType,
+                        district: formData.district,
+                    });
+                }
+
                 setIsSubmitted(true);
                 setSubmissionId(result.submissionId || '');
                 toast.success('Talebiniz başarıyla alındı!');
@@ -145,7 +154,7 @@ export default function OnAnalizWizard() {
                         </div>
                         <h3 className="text-2xl font-bold text-gray-900 mb-3">Talebiniz Başarıyla Alındı</h3>
                         <p className="text-gray-600 mb-4 max-w-sm mx-auto leading-relaxed">
-                            KD Ankara bağımsız uzman ekibimiz, binanızın imar ve emsal potansiyelini inceleyerek **24 saat içinde** sizinle iletişime geçecektir.
+                            KD Ankara bağımsız uzman ekibimiz, binanızın imar ve emsal potansiyelini inceleyerek <strong>24 saat içinde</strong> sizinle iletişime geçecektir.
                         </p>
                         {submissionId && (
                             <p className="text-xs text-gray-500 mt-6 font-mono bg-gray-50 p-3 rounded">
@@ -200,7 +209,6 @@ export default function OnAnalizWizard() {
                 )}
 
                 <form onSubmit={handleSubmit} className="space-y-4">
-                    
                     <div className="space-y-1.5">
                         <Label htmlFor="fullname" className="text-xs font-bold text-slate-700">Ad Soyad <span className="text-amber-600">*</span></Label>
                         <div className="relative">
@@ -242,7 +250,7 @@ export default function OnAnalizWizard() {
                                 onValueChange={(value) => setFormData({ ...formData, district: value, neighborhood: '' })}
                                 disabled={isSubmitting}
                             >
-                                <SelectTrigger className="h-11 text-sm ring-offset-0 focus:ring-amber-500">
+                                <SelectTrigger aria-label="İlçe Seç" className="h-11 text-sm ring-offset-0 focus:ring-amber-500">
                                     <SelectValue placeholder="İlçe Seç" />
                                 </SelectTrigger>
                                 <SelectContent className="max-h-[200px]">
@@ -259,7 +267,7 @@ export default function OnAnalizWizard() {
                                 onValueChange={(value) => setFormData({ ...formData, neighborhood: value })}
                                 disabled={!formData.district || isSubmitting}
                             >
-                                <SelectTrigger className="h-11 text-sm ring-offset-0 focus:ring-amber-500">
+                                <SelectTrigger aria-label="Mahalle Seç" className="h-11 text-sm ring-offset-0 focus:ring-amber-500">
                                     <SelectValue placeholder="Mahalle Seç" />
                                 </SelectTrigger>
                                 <SelectContent className="max-h-[200px]">
@@ -293,7 +301,7 @@ export default function OnAnalizWizard() {
                             onValueChange={(value) => setFormData({ ...formData, requestType: value })}
                             disabled={isSubmitting}
                         >
-                            <SelectTrigger className="h-11 text-sm">
+                            <SelectTrigger aria-label="Talep Türü Seçin" className="h-11 text-sm">
                                 <SelectValue placeholder="Talebinizi Seçin" />
                             </SelectTrigger>
                             <SelectContent>
@@ -338,7 +346,6 @@ export default function OnAnalizWizard() {
                         <Lock className="w-3.5 h-3.5 text-slate-400" />
                         <span>Bilgileriniz %100 gizli tutulur, 3. şahıslarla paylaşılmaz.</span>
                     </div>
-
                 </form>
             </CardContent>
         </Card>

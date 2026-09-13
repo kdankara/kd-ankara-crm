@@ -9,8 +9,17 @@ const nextConfig = {
   trailingSlash: false,
   reactStrictMode: true,
   images: {
-    unoptimized: true,
     formats: ['image/avif', 'image/webp'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.transparenttextures.com',
+      },
+    ],
   },
   experimental: {
     optimizePackageImports: ['lucide-react', 'framer-motion'],

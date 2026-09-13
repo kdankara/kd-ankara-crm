@@ -59,17 +59,21 @@ export default function Home() {
                             </h1>
 
                             <p className="text-lg text-primary-200 mb-10 max-w-xl leading-relaxed">
-                                Ankara kentsel dönüşüm danışmanlığı ve
-                                Çankaya riskli yapı tespiti süreçlerinde
-                                duygusal değil, veriye dayalı ön analizle
-                                hareket edin.
+                                Ankara kentsel dönüşüm danışmanlığı ve{" "}
+                                <Link
+                                    href="/cankaya-kentsel-donusum"
+                                    className="text-white font-semibold underline decoration-accent underline-offset-4 hover:text-accent-300 transition-colors"
+                                >
+                                    Çankaya riskli yapı tespiti
+                                </Link>{" "}
+                                süreçlerinde duygusal değil, veriye dayalı ön analizle hareket edin.
                             </p>
 
                             <div className="flex flex-col sm:flex-row gap-4">
                                 <Link href="/on-analiz">
                                     <Button
                                         size="lg"
-                                        className="bg-accent hover:bg-accent-600 text-white font-bold h-14 px-8 shadow-xl shadow-accent/20"
+                                        className="bg-accent hover:bg-accent-600 text-white font-bold h-14 px-8 shadow-xl shadow-accent/20 w-full sm:w-auto"
                                     >
                                         Ücretsiz Ön Analiz Al
                                     </Button>
@@ -114,39 +118,25 @@ export default function Home() {
             <div className="bg-white border-b border-gray-100 py-12 relative z-20 -mt-8 mx-auto w-[calc(100%-2rem)] md:w-[calc(100%-4rem)] max-w-6xl rounded-xl shadow-lg">
                 <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
                     {[
-                        {
-                            icon: FileSearch,
-                            title: "İmar & Emsal",
-                        },
-                        {
-                            icon: BarChart3,
-                            title: "Maliyet Analizi",
-                        },
-                        {
-                            icon: Building2,
-                            title: "Gelir Tahmini",
-                        },
-                        {
-                            icon: Users,
-                            title: "Paylaşım Oranı",
-                        },
-                        {
-                            icon: Shield,
-                            title: "Yasal Güvence",
-                        },
+                        { icon: FileSearch, title: "İmar & Emsal", href: "/tools/emsal" },
+                        { icon: BarChart3, title: "Maliyet Analizi", href: "/tools/maliyet" },
+                        { icon: Building2, title: "Gelir Tahmini", href: "/tools/daire" },
+                        { icon: Users, title: "Paylaşım Oranı", href: "/tools/paylasim" },
+                        { icon: Shield, title: "Yasal Güvence", href: "/surec" },
                     ].map((item, i) => (
-                        <div
+                        <Link
                             key={i}
-                            className="flex flex-col items-center text-center gap-3"
+                            href={item.href}
+                            className="flex flex-col items-center text-center gap-3 group transition-transform hover:-translate-y-1"
                         >
-                            <div className="w-12 h-12 bg-primary-50 rounded-full flex items-center justify-center text-primary-700">
+                            <div className="w-12 h-12 bg-primary-50 rounded-full flex items-center justify-center text-primary-700 group-hover:bg-accent group-hover:text-white transition-colors">
                                 <item.icon className="w-6 h-6" />
                             </div>
 
-                            <span className="font-semibold text-gray-700 text-sm">
+                            <span className="font-semibold text-gray-700 text-sm group-hover:text-accent transition-colors">
                                 {item.title}
                             </span>
-                        </div>
+                        </Link>
                     ))}
                 </div>
             </div>
@@ -166,11 +156,15 @@ export default function Home() {
                         </h2>
 
                         <p className="text-gray-600 max-w-2xl mx-auto">
-                            KD Ankara olarak, Yenimahalle'den Çankaya'ya
-                            Ankara genelinde kentsel dönüşüm sürecini
-                            teknik, hukuki ve stratejik açıdan
-                            değerlendirerek daha kontrollü ilerlemenize
-                            yardımcı oluyoruz.
+                            KD Ankara olarak,{" "}
+                            <Link href="/yenimahalle-kentsel-donusum" className="text-primary-800 font-semibold underline decoration-accent/40 hover:text-accent">
+                                Yenimahalle
+                            </Link
+                            >'den{" "}
+                            <Link href="/cankaya-kentsel-donusum" className="text-primary-800 font-semibold underline decoration-accent/40 hover:text-accent">
+                                Çankaya
+                            </Link
+                            >'ya Ankara genelinde kentsel dönüşüm sürecini teknik, hukuki ve stratejik açıdan değerlendirerek daha kontrollü ilerlemenize yardımcı oluyoruz.
                         </p>
                     </Reveal>
 
@@ -242,64 +236,41 @@ export default function Home() {
                     </Reveal>
 
                     <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
-                        {/* Card 1 */}
                         <Reveal className="bg-white p-8 rounded-2xl border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:-translate-y-2 hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] transition-all duration-300 group">
                             <div className="w-14 h-14 bg-primary-50 rounded-2xl flex items-center justify-center text-primary-700 mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
                                 <ShieldCheck className="w-7 h-7" />
                             </div>
-
                             <h3 className="text-xl font-bold text-gray-900 mb-4">
                                 Tamamen Şeffaf ve Tarafsız Yönetim
                             </h3>
-
                             <p className="text-gray-600 leading-relaxed">
-                                Biz müteahhit değil,{" "}
-                                <strong>sizin tarafınızdaki</strong>{" "}
-                                danışmanlarız. Görüşmelerde mülk
-                                sahiplerinin hak ve menfaatlerini
-                                gözetir, gizli maliyetler veya son dakika
-                                sürprizleri yaşamamanız için her aşamada
-                                şeffaf raporlama sunarız.
+                                Biz müteahhit değil, <strong>sizin tarafınızdaki</strong> danışmanlarız. Görüşmelerde mülk sahiplerinin hak ve menfaatlerini gözetir, gizli maliyetler veya son dakika sürprizleri yaşamamanız için her aşamada şeffaf raporlama sunarız.
                             </p>
                         </Reveal>
 
-                        {/* Card 2 */}
                         <Reveal className="bg-white p-8 rounded-2xl border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:-translate-y-2 hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] transition-all duration-300 group">
                             <div className="w-14 h-14 bg-accent/10 rounded-2xl flex items-center justify-center text-accent mb-6 group-hover:bg-accent group-hover:text-white transition-colors">
                                 <Scale className="w-7 h-7" />
                             </div>
-
                             <h3 className="text-xl font-bold text-gray-900 mb-4">
                                 Uçtan Uca Teknik ve Hukuki Kalkan
                             </h3>
-
                             <p className="text-gray-600 leading-relaxed">
-                                Süreciniz sadece inşaattan ibaret
-                                değildir. Zemin etüdünden karot alımına,
-                                <strong> hak kaybını önlemeye yönelik</strong>{" "}
-                                sözleşme kontrollerinden ruhsat takibine
-                                kadar teknik ve hukuki süreçlerin
-                                koordinasyonunu sağlıyoruz.
+                                Süreciniz sadece inşaattan ibaret değildir. Zemin etüdünden karot alımına, <strong>hak kaybını önlemeye yönelik</strong> sözleşme kontrollerinden ruhsat takibine kadar teknik ve hukuki süreçlerin koordinasyonunu sağlıyoruz.
                             </p>
                         </Reveal>
 
-                        {/* Card 3 */}
                         <Reveal className="bg-white p-8 rounded-2xl border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:-translate-y-2 hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] transition-all duration-300 group">
                             <div className="w-14 h-14 bg-primary-50 rounded-2xl flex items-center justify-center text-primary-700 mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
                                 <MapPin className="w-7 h-7" />
                             </div>
-
                             <h3 className="text-xl font-bold text-gray-900 mb-4">
                                 Ankara İmar Mevzuatına Hakimiyet
                             </h3>
-
                             <p className="text-gray-600 leading-relaxed">
-                                Çankaya, Yenimahalle, Keçiören gibi
-                                ilçelerdeki imar yapısını ve bölgesel
-                                farklılıkları dikkate alarak değerlendirme
-                                yapıyoruz. Belediyelerdeki resmi süreçlerin
-                                daha kontrollü yürütülmesine yönelik
-                                teknik ve stratejik destek sağlıyoruz.
+                                <Link href="/cankaya-kentsel-donusum" className="text-primary-900 font-semibold underline decoration-accent/50 hover:text-accent">Çankaya</Link>,{" "}
+                                <Link href="/yenimahalle-kentsel-donusum" className="text-primary-900 font-semibold underline decoration-accent/50 hover:text-accent">Yenimahalle</Link>,{" "}
+                                <Link href="/kecioren-kentsel-donusum" className="text-primary-900 font-semibold underline decoration-accent/50 hover:text-accent">Keçiören</Link> gibi ilçelerdeki imar yapısını ve bölgesel farklılıkları dikkate alarak değerlendirme yapıyoruz.
                             </p>
                         </Reveal>
                     </div>
@@ -318,9 +289,7 @@ export default function Home() {
                             </h2>
 
                             <p className="text-gray-600 text-lg">
-                                Kentsel dönüşüm sürecinin her aşamasında,
-                                ihtiyacınıza uygun doğru adımı birlikte
-                                netleştiriyoruz.
+                                Kentsel dönüşüm sürecinin her aşamasında, ihtiyacınıza uygun doğru adımı birlikte netleştiriyoruz.
                             </p>
                         </Reveal>
 
@@ -347,12 +316,12 @@ export default function Home() {
                             </h3>
 
                             <p className="text-gray-600 text-sm leading-relaxed grow">
-                                Binanızın mevcut imar durumu, arsa payı
-                                dağılımı ve yapısal risklerinin veriye
-                                dayalı ilk değerlendirmesini sunuyoruz.
-                                Ankara'nın güncel imar yapısı ışığında
-                                mülkünüzün potansiyelini değerlendirin.
+                                Binanızın mevcut imar durumu, arsa payı dağılımı ve yapısal risklerinin veriye dayalı ilk değerlendirmesini sunuyoruz. Ankara'nın güncel imar yapısı ışığında mülkünüzün potansiyelini değerlendirin.
                             </p>
+
+                            <Link href="/on-analiz" className="mt-4 text-xs font-bold text-accent uppercase tracking-wider flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                                Analiz Al <ArrowRight className="w-3 h-3" />
+                            </Link>
                         </div>
 
                         {/* Service 2 */}
@@ -366,12 +335,12 @@ export default function Home() {
                             </h3>
 
                             <p className="text-gray-600 text-sm leading-relaxed grow">
-                                Müteahhitlerden gelen teklifleri sadece m²
-                                bazında değil; malzeme kalitesi,
-                                teminatlar, teknik şartname ve finansal
-                                sürdürülebilirlik açısından tarafsız bir
-                                gözle analiz ediyoruz.
+                                Müteahhitlerden gelen teklifleri sadece m² bazında değil; malzeme kalitesi, teminatlar, teknik şartname ve finansal sürdürülebilirlik açısından tarafsız bir gözle analiz ediyoruz.
                             </p>
+
+                            <Link href="/muteahhit" className="mt-4 text-xs font-bold text-accent uppercase tracking-wider flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                                Detaylı İncele <ArrowRight className="w-3 h-3" />
+                            </Link>
                         </div>
 
                         {/* Service 3 */}
@@ -385,12 +354,12 @@ export default function Home() {
                             </h3>
 
                             <p className="text-gray-600 text-sm leading-relaxed grow">
-                                Malikler arasındaki iletişim ve uzlaşma
-                                sorunlarını profesyonel bir koordinasyon
-                                yaklaşımıyla yönetiyor, karar alma
-                                sürecinin daha sağlıklı ilerlemesine
-                                yardımcı oluyoruz.
+                                Malikler arasındaki iletişim ve uzlaşma sorunlarını profesyonel bir koordinasyon yaklaşımıyla yönetiyor, karar alma sürecinin daha sağlıklı ilerlemesine yardımcı oluyoruz.
                             </p>
+
+                            <Link href="/hizmetler" className="mt-4 text-xs font-bold text-accent uppercase tracking-wider flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                                Rehberi Okuyun <ArrowRight className="w-3 h-3" />
+                            </Link>
                         </div>
 
                         {/* Service 4 */}
@@ -404,58 +373,50 @@ export default function Home() {
                             </h3>
 
                             <p className="text-gray-600 text-sm leading-relaxed grow">
-                                Kentsel dönüşüm sözleşmelerinden tahliye
-                                süreçlerine, devlet desteği başvurularından
-                                ruhsat takibine kadar ilgili teknik ve
-                                hukuki süreçlerde mülk sahiplerine
-                                koordinasyon desteği sağlıyoruz.
+                                Kentsel dönüşüm sözleşmelerinden tahliye süreçlerine, devlet desteği başvurularından ruhsat takibine kadar ilgili teknik ve hukuki süreçlerde mülk sahiplerine koordinasyon desteği sağlıyoruz.
                             </p>
+
+                            <Link href="/surec" className="mt-4 text-xs font-bold text-accent uppercase tracking-wider flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                                Süreç Detayları <ArrowRight className="w-3 h-3" />
+                            </Link>
                         </div>
                     </div>
                 </div>
             </section>
 
             {/* =====================================================
-                ANKARA CONTEXT
+                ANKARA CONTEXT (SEMANTIC SEO LINKS ADDED)
             ====================================================== */}
             <section className="py-24 bg-white border-t border-gray-100">
                 <div className="container mx-auto px-4">
                     <div className="max-w-4xl mx-auto space-y-12">
                         <div className="prose prose-lg prose-slate max-w-none">
                             <h2 className="text-3xl font-bold text-primary-900 mb-8 italic">
-                                Ankara'da Kentsel Dönüşümün Yeni Vizyonu:
-                                KD Ankara
+                                Ankara'da Kentsel Dönüşümün Yeni Vizyonu: KD Ankara
                             </h2>
 
                             <p>
-                                Ankara kentsel dönüşüm süreci, değişen imar
-                                koşulları ve artan yapı güvenliği ihtiyacıyla
-                                birlikte daha teknik bir değerlendirme
-                                gerektirir. Çankaya'nın köklü mahallelerinden
-                                Yenimahalle'nin gelişen bölgelerine kadar
-                                farklı bölgelerde farklı dönüşüm modelleri
-                                gündeme gelebilir. KD Ankara olarak,
-                                mülk sahiplerinin karar sürecini daha
-                                anlaşılır ve veriye dayalı hale getirmeyi
-                                amaçlıyoruz.
+                                Ankara kentsel dönüşüm süreci, değişen imar koşulları ve artan yapı güvenliği ihtiyacıyla birlikte daha teknik bir değerlendirme gerektirir.{" "}
+                                <Link href="/cankaya-kentsel-donusum" className="text-primary-900 font-semibold underline decoration-accent/50 underline-offset-4 hover:text-accent transition-colors">
+                                    Çankaya kentsel dönüşüm
+                                </Link>{" "}
+                                projelerinden{" "}
+                                <Link href="/yenimahalle-kentsel-donusum" className="text-primary-900 font-semibold underline decoration-accent/50 underline-offset-4 hover:text-accent transition-colors">
+                                    Yenimahalle kentsel dönüşüm
+                                </Link>{" "}
+                                bölgelerine kadar farklı imar ve emsal modelleri gündeme gelebilir. KD Ankara olarak, mülk sahiplerinin karar sürecini veriye dayalı hale getirmeyi amaçlıyoruz.
                             </p>
 
                             <h3 className="text-2xl font-bold text-primary-800 mt-10 mb-4">
-                                Mahalle Bazlı Uzmanlık: Çankaya'dan
-                                Keçiören'e
+                                Mahalle Bazlı Uzmanlık: Çankaya'dan Keçiören'e
                             </h3>
 
                             <p>
-                                Binanızın değeri yalnızca mevcut yapı
-                                özellikleriyle değil, bulunduğu bölgenin
-                                imar yapısı ve dönüşüm potansiyeliyle de
-                                ilişkilidir. Ayrancı gibi merkezi bölgelerde
-                                farklı proje yaklaşımları öne çıkabilirken,
-                                Batıkent gibi bölgelerde ada bazlı
-                                değerlendirmeler gündeme gelebilir.
-                                Bu nedenle her mülkü kendi konumu ve
-                                mevcut verileri üzerinden değerlendirmek
-                                gerekir.
+                                Binanızın değeri yalnızca mevcut yapı özellikleriyle değil, bulunduğu bölgenin imar yapısı ve dönüşüm potansiyeliyle de ilişkilidir. Ayrancı gibi merkezi bölgelerde farklı proje yaklaşımları öne çıkabilirken, Batıkent veya{" "}
+                                <Link href="/kecioren-kentsel-donusum" className="text-primary-900 font-semibold underline decoration-accent/50 underline-offset-4 hover:text-accent transition-colors">
+                                    Keçiören kentsel dönüşüm
+                                </Link>{" "}
+                                alanlarında ada bazlı değerlendirmeler gündeme gelebilir. Bu nedenle her mülkü kendi konumu ve mevcut verileri üzerinden değerlendirmek gerekir.
                             </p>
 
                             <div className="bg-primary-50 p-10 rounded-[3rem] my-12 border-l-8 border-accent">
@@ -464,15 +425,15 @@ export default function Home() {
                                 </h4>
 
                                 <p className="text-gray-700 leading-relaxed mb-0">
-                                    Ücretsiz ön analiz sonrasında talep
-                                    edilmesi halinde; imar analizi, maliyet
-                                    projeksiyonu, paylaşım simülasyonu ve
-                                    müteahhit değerlendirme kriterlerini
-                                    içeren kapsamlı bir{" "}
-                                    <strong>
-                                        "Stratejik Dönüşüm Raporu"
-                                    </strong>{" "}
-                                    hazırlanabilir.
+                                    Ücretsiz ön analiz sonrasında talep edilmesi halinde;{" "}
+                                    <Link href="/tools/emsal" className="text-primary-900 font-bold underline hover:text-accent">
+                                        imar ve emsal analizi
+                                    </Link>
+                                    ,{" "}
+                                    <Link href="/tools/maliyet" className="text-primary-900 font-bold underline hover:text-accent">
+                                        maliyet projeksiyonu
+                                    </Link>
+                                    , paylaşım simülasyonu ve müteahhit değerlendirme kriterlerini içeren kapsamlı bir <strong>"Stratejik Dönüşüm Raporu"</strong> hazırlanabilir.
                                 </p>
                             </div>
 
@@ -481,13 +442,7 @@ export default function Home() {
                             </h3>
 
                             <p>
-                                Kentsel dönüşümde en önemli konulardan biri
-                                belirsizliklerin önceden görünür hale
-                                getirilmesidir. Müteahhit tekliflerinin
-                                yalnızca paylaşım oranı üzerinden değil;
-                                teknik şartname, teminat, süre, sözleşme
-                                hükümleri ve proje uygulanabilirliği
-                                açısından değerlendirilmesi gerekir.
+                                Kentsel dönüşümde en önemli konulardan biri belirsizliklerin önceden görünür hale getirilmesidir. Müteahhit tekliflerinin yalnızca paylaşım oranı üzerinden değil; teknik şartname, teminat, süre, sözleşme hükümleri ve proje uygulanabilirliği açısından değerlendirilmesi gerekir.
                             </p>
 
                             <h3 className="text-2xl font-bold text-primary-800 mt-10 mb-4">
@@ -495,13 +450,7 @@ export default function Home() {
                             </h3>
 
                             <p>
-                                Dönüşüm yalnızca yapının yenilenmesi değil,
-                                aynı zamanda yaşam kalitesi ve mülkün
-                                gelecekteki kullanım değerinin geliştirilmesi
-                                açısından da ele alınabilir. Modern yapı
-                                standartları, enerji verimliliği ve çağdaş
-                                mimari yaklaşım birlikte değerlendirildiğinde
-                                daha nitelikli yaşam alanları oluşturulabilir.
+                                Dönüşüm yalnızca yapının yenilenmesi değil, aynı zamanda yaşam kalitesi ve mülkün gelecekteki kullanım değerinin geliştirilmesi açısından da ele alınabilir. Modern yapı standartları, enerji verimliliği ve çağdaş mimari yaklaşım birlikte değerlendirildiğinde daha nitelikli yaşam alanları oluşturulabilir.
                             </p>
                         </div>
                     </div>
@@ -524,9 +473,7 @@ export default function Home() {
                             </h2>
 
                             <p className="text-primary-200 mb-8 leading-relaxed">
-                                Kentsel dönüşüm sürecinde yalnızca teklif
-                                değil; haklarınızı, potansiyelinizi ve
-                                olası riskleri birlikte değerlendiriyoruz.
+                                Kentsel dönüşüm sürecinde yalnızca teklif değil; haklarınızı, potansiyelinizi ve olası riskleri birlikte değerlendiriyoruz.
                             </p>
 
                             <Link href="/on-analiz">
@@ -562,9 +509,7 @@ export default function Home() {
                                 <div
                                     key={i}
                                     className={`flex items-start gap-4 bg-primary-800/50 p-5 rounded-lg border border-primary-700 hover:bg-primary-800 transition-all group ${
-                                        i === 4
-                                            ? "sm:col-span-2"
-                                            : ""
+                                        i === 4 ? "sm:col-span-2" : ""
                                     }`}
                                 >
                                     <CheckCircle className="w-6 h-6 text-accent shrink-0 mt-0.5 group-hover:scale-110 transition-transform" />
@@ -605,9 +550,7 @@ export default function Home() {
                     </h2>
 
                     <p className="text-accent-100 mb-8 max-w-2xl mx-auto text-lg">
-                        Binanızın mevcut durumu, dönüşüm potansiyeli veya
-                        teklif süreciyle ilgili ön değerlendirme almak için
-                        bizimle iletişime geçin.
+                        Binanızın mevcut durumu, dönüşüm potansiyeli veya teklif süreciyle ilgili ön değerlendirme almak için bizimle iletişime geçin.
                     </p>
 
                     <div className="flex flex-col sm:flex-row justify-center gap-4">

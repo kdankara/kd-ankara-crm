@@ -1,6 +1,7 @@
 "use client";
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 import { MapPin, CheckCircle } from 'lucide-react';
@@ -15,7 +16,16 @@ export default function Land() {
         <div className="min-h-screen bg-gray-50/50">
             {/* Hero Section */}
             <section className="bg-primary-950 text-white py-24 relative overflow-hidden">
-                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1516156008625-3a9d60da9205?q=80&w=2074&auto=format&fit=crop')] bg-cover bg-center opacity-15 grayscale"></div>
+                <div className="absolute inset-0 opacity-15 grayscale">
+                    <Image
+                        src="https://images.unsplash.com/photo-1516156008625-3a9d60da9205?q=80&w=2074&auto=format&fit=crop"
+                        alt="Arsa Projeleri Ankara"
+                        fill
+                        priority
+                        sizes="100vw"
+                        className="object-cover object-center"
+                    />
+                </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-primary-950 via-primary-950/40 to-transparent"></div>
                 
                 <div className="container mx-auto px-4 relative z-10 text-center">

@@ -29,9 +29,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                     <div className="flex items-center gap-4">
                         <span className="opacity-75">Takip Edin:</span>
                         <div className="flex gap-3">
-                            <a href="https://www.instagram.com/kentsel_donusum_ankara/" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors"><Instagram className="w-3 h-3" /></a>
-                            <a href="https://www.linkedin.com/in/g%C3%B6ktu%C4%9F-usta-2007993a8/" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors"><Linkedin className="w-3 h-3" /></a>
-                            <a href="https://www.facebook.com/profile.php?id=61587153058423" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors"><Facebook className="w-3 h-3" /></a>
+                            <a href="https://www.instagram.com/kentsel_donusum_ankara/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-accent transition-colors"><Instagram className="w-3 h-3" /></a>
+                            <a href="https://www.linkedin.com/in/g%C3%B6ktu%C4%9F-usta-2007993a8/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:text-accent transition-colors"><Linkedin className="w-3 h-3" /></a>
+                            <a href="https://www.facebook.com/profile.php?id=61587153058423" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="hover:text-accent transition-colors"><Facebook className="w-3 h-3" /></a>
                         </div>
                     </div>
                 </div>
@@ -42,11 +42,14 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 <div className="container mx-auto px-4">
                     <div className="flex items-center justify-between h-20">
                         <Link href="/" className="flex items-center gap-2 xl:gap-3 shrink-0">
-                            <picture>
-                                <source srcSet="/assets/logo.avif" type="image/avif" />
-                                <source srcSet="/assets/logo.webp" type="image/webp" />
-                                <Image src="/assets/logo.png" alt="KD Ankara Logo" width={640} height={640} sizes="(min-width: 1280px) 48px, 40px" priority className="h-10 xl:h-12 w-auto" />
-                            </picture>
+                            <Image
+                                src="/assets/logo.svg"
+                                alt="KD Ankara Logo"
+                                width={48}
+                                height={48}
+                                priority
+                                className="h-10 xl:h-12 w-auto"
+                            />
                             <div className="flex flex-col">
                                 <span className="text-lg xl:text-xl font-bold text-primary-900 leading-none">KD Ankara</span>
                                 <span className="text-[9px] xl:text-[10px] text-gray-500 font-medium tracking-wide">STRATEJİ MERKEZİ</span>
@@ -80,6 +83,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                         <button
                             className="xl:hidden p-2 rounded-md text-gray-700 hover:bg-gray-100"
                             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                            aria-label="Menüyü Aç/Kapat"
                         >
                             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
                         </button>
@@ -119,11 +123,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                         {/* Brand */}
                         <div className="col-span-1 md:col-span-1">
                             <div className="flex items-center gap-3 mb-6">
-                                <picture>
-                                    <source srcSet="/assets/logo.avif" type="image/avif" />
-                                    <source srcSet="/assets/logo.webp" type="image/webp" />
-                                    <Image src="/assets/logo.png" alt="KD Ankara Logo" width={640} height={640} sizes="48px" className="h-12 w-auto" />
-                                </picture>
+                                <Image
+                                    src="/assets/logo.svg"
+                                    alt="KD Ankara Logo"
+                                    width={48}
+                                    height={48}
+                                    className="h-12 w-auto"
+                                />
                                 <div className="flex flex-col">
                                     <span className="text-xl font-bold leading-none">KD Ankara</span>
                                     <span className="text-[10px] text-gray-400 font-medium tracking-wide">STRATEJİ MERKEZİ</span>
@@ -133,9 +139,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                                 Ankara'nın kentsel dönüşüm sürecinde veriye dayalı, şeffaf ve güvenilir çözüm ortağı.
                             </p>
                             <div className="flex gap-4">
-                                <a href="https://www.instagram.com/kentsel_donusum_ankara/" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center hover:bg-accent transition-colors"><Instagram className="w-4 h-4" /></a>
-                                <a href="https://www.linkedin.com/in/g%C3%B6ktu%C4%9F-usta-2007993a8/" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center hover:bg-accent transition-colors"><Linkedin className="w-4 h-4" /></a>
-                                <a href="https://www.facebook.com/profile.php?id=61587153058423" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center hover:bg-accent transition-colors"><Facebook className="w-4 h-4" /></a>
+                                <a href="https://www.instagram.com/kentsel_donusum_ankara/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center hover:bg-accent transition-colors"><Instagram className="w-4 h-4" /></a>
+                                <a href="https://www.linkedin.com/in/g%C3%B6ktu%C4%9F-usta-2007993a8/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center hover:bg-accent transition-colors"><Linkedin className="w-4 h-4" /></a>
+                                <a href="https://www.facebook.com/profile.php?id=61587153058423" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center hover:bg-accent transition-colors"><Facebook className="w-4 h-4" /></a>
                             </div>
                         </div>
 

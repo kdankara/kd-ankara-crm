@@ -1,5 +1,6 @@
 "use client";
 
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -19,7 +20,16 @@ export default function Contractors() {
         <div className="min-h-screen bg-gray-50/50">
             {/* Header Section */}
             <section className="bg-primary-950 text-white pt-24 pb-20 relative overflow-hidden">
-                <div className="absolute inset-0 z-0 opacity-10 bg-[url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center"></div>
+                <div className="absolute inset-0 z-0 opacity-10">
+                    <Image
+                        src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070&auto=format&fit=crop"
+                        alt="Müteahhit Çözüm Ortaklığı"
+                        fill
+                        priority
+                        sizes="100vw"
+                        className="object-cover object-center"
+                    />
+                </div>
                 <div className="absolute inset-0 bg-gradient-to-r from-primary-950 via-primary-950/80 to-transparent"></div>
                 
                 <div className="container mx-auto px-4 relative z-10">

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { MapPin, Building2, Calendar, Filter, ArrowRight, Lock } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -55,7 +56,16 @@ export default function LeadPool() {
         <div className="min-h-screen bg-slate-50 pt-20 pb-20">
             {/* Header */}
             <div className="bg-primary-950 text-white py-24 lg:py-28 relative overflow-hidden">
-                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center opacity-10"></div>
+                <div className="absolute inset-0 opacity-10">
+                    <Image
+                        src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop"
+                        alt="Kentsel Dönüşüm Fırsat Havuzu"
+                        fill
+                        priority
+                        sizes="100vw"
+                        className="object-cover object-center"
+                    />
+                </div>
                 <div className="container mx-auto px-4 relative z-10">
                     <div className="max-w-4xl">
                         <div className="inline-flex items-center gap-2 bg-accent text-primary-950 px-4 py-1.5 rounded-full text-sm font-bold mb-8">
@@ -108,7 +118,7 @@ export default function LeadPool() {
                         <div className="w-full md:w-1/3 space-y-2">
                             <Label className="text-primary-950 font-bold ml-1">📍 Bölge Seçin</Label>
                             <Select value={filterDistrict} onValueChange={setFilterDistrict}>
-                                <SelectTrigger className="h-14 rounded-xl bg-slate-50 border-slate-200">
+                                <SelectTrigger aria-label="Bölge Seçin" className="h-14 rounded-xl bg-slate-50 border-slate-200">
                                     <SelectValue placeholder="Tüm Ankara" />
                                 </SelectTrigger>
                                 <SelectContent>
@@ -122,7 +132,7 @@ export default function LeadPool() {
                         <div className="w-full md:w-1/3 space-y-2">
                             <Label className="text-primary-950 font-bold ml-1">🏗️ Proje Kategorisi</Label>
                             <Select value={filterType} onValueChange={setFilterType}>
-                                <SelectTrigger className="h-14 rounded-xl bg-slate-50 border-slate-200">
+                                <SelectTrigger aria-label="Proje Kategorisi" className="h-14 rounded-xl bg-slate-50 border-slate-200">
                                     <SelectValue placeholder="Tüm Tipler" />
                                 </SelectTrigger>
                                 <SelectContent>
