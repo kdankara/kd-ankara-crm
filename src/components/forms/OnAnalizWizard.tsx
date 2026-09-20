@@ -12,6 +12,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { toast } from 'sonner';
 import ankaraData from '@/data/ankara-locations.json';
 import { submitToGoogleSheets } from '@/lib/googleSheets';
+import { trackFormSubmission } from '@/lib/gtag';
 
 // Get sorted districts from JSON
 const districts = Object.keys(ankaraData).sort((a, b) => a.localeCompare(b, 'tr'));
@@ -48,7 +49,6 @@ export default function OnAnalizWizard() {
             formData.name && 
             formData.phone && 
             formData.district && 
-            formData.neighborhood && 
             formData.requestType &&
             formData.kvkkConsent
         );
@@ -78,14 +78,7 @@ export default function OnAnalizWizard() {
             });
 
             if (result.success) {
-                // GA4 & Google Ads Lead Conversion Event
-                if (typeof window !== 'undefined' && typeof (window as any).gtag === 'function') {
-                    (window as any).gtag('event', 'generate_lead', {
-                        event_category: 'Form',
-                        event_label: formData.requestType,
-                        district: formData.district,
-                    });
-                }
+                trackFormSubmission(`Ön Analiz Formu - ${formData.district}`);
 
                 setIsSubmitted(true);
                 setSubmissionId(result.submissionId || '');
@@ -232,6 +225,7 @@ export default function OnAnalizWizard() {
                             <Input
                                 id="phone"
                                 type="tel"
+                                inputMode="tel"
                                 placeholder="05XX XXX XX XX"
                                 className="pl-10 h-11 text-sm"
                                 value={formData.phone}

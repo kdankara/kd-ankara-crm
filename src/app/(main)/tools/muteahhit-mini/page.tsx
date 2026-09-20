@@ -18,6 +18,7 @@ import {
 } from 'lucide-react';
 import CalculatorLayout from '@/components/calculator/CalculatorLayout';
 import CalculatorHeader from '@/components/calculator/CalculatorHeader';
+import { trackPhoneClick } from '@/lib/gtag';
 import ResultCard from '@/components/calculator/ResultCard';
 import LegalDisclaimer from '@/components/calculator/LegalDisclaimer';
 import LeadModal from '@/components/calculator/LeadModal';
@@ -384,7 +385,7 @@ export default function MuteahhitMini() {
                         </Button>
                         <Button 
                             variant="outline"
-                            onClick={() => window.location.href = 'tel:+905000000000'}
+                            onClick={() => { trackPhoneClick(); window.location.href = 'tel:+905336820942'; }}
                             className="border-primary-900 text-primary-900 px-12 h-14 rounded-2xl font-bold text-lg hover:bg-primary-50 transition-all"
                         >
                             Teknik Ekibe Bağlan

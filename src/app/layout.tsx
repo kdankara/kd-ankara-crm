@@ -134,7 +134,7 @@ const webpageSchema = {
 /* ===== SCHEMA.ORG: Professional & Consulting Service ===== */
 const organizationSchema = {
     "@context": "https://schema.org",
-    "@type": ["ProfessionalService", "HomeAndConstructionBusiness"],
+    "@type": ["Organization", "ProfessionalService", "LocalBusiness"],
     "@id": BUSINESS_ID,
     name: "KD Ankara Strateji Merkezi",
     url: SITE_URL,
@@ -177,6 +177,8 @@ const organizationSchema = {
         { "@type": "AdministrativeArea", name: "Çankaya" },
         { "@type": "AdministrativeArea", name: "Yenimahalle" },
         { "@type": "AdministrativeArea", name: "Keçiören" },
+        { "@type": "AdministrativeArea", name: "Sincan" },
+        { "@type": "AdministrativeArea", name: "Etimesgut" },
     ],
     knowsAbout: [
         "Kentsel dönüşüm danışmanlığı",

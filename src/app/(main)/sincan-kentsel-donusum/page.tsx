@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import OnAnalizWizard from '@/components/forms/OnAnalizWizard';
 import FAQSection from '@/components/FAQSection';
+import TrackedPhoneLink from '@/components/TrackedPhoneLink';
 import { Building2, ShieldCheck, MapPin, CheckCircle, PhoneCall } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -65,12 +66,18 @@ export default function SincanPage() {
                 </div>
               </div>
               <div className="flex flex-wrap gap-4">
-                <a href="tel:+905336820942" className="bg-amber-500 hover:bg-amber-600 text-slate-900 font-bold px-6 py-3 rounded-xl flex items-center gap-2 transition">
+                <TrackedPhoneLink className="bg-amber-500 hover:bg-amber-600 text-slate-900 font-bold px-6 py-3 rounded-xl flex items-center gap-2 transition">
                   <PhoneCall className="w-5 h-5" /> 7/24 Direkt Arayın
+                </TrackedPhoneLink>
+                <a
+                  href="#on-analiz-form"
+                  className="border border-slate-700 hover:bg-slate-800 text-white font-semibold px-6 py-3.5 rounded-xl transition flex items-center gap-2"
+                >
+                  Ücretsiz Analiz İsteyin
                 </a>
               </div>
             </div>
-            <div className="bg-white rounded-2xl p-6 shadow-2xl text-slate-900">
+            <div id="on-analiz-form" className="bg-white rounded-2xl p-6 shadow-2xl text-slate-900">
               <h2 className="text-xl font-bold mb-2 text-center">Sincan Ücretsiz Ön Analiz</h2>
               <p className="text-sm text-slate-600 text-center mb-6">Binanızın dönüşüm potansiyeli ve sürecin maliyetleri için form doldurun.</p>
               <OnAnalizWizard />

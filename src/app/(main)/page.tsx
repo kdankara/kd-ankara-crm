@@ -49,33 +49,20 @@ export default function Home() {
                             </div>
 
                             <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight mb-6 text-white max-w-2xl">
-                                Binanız için en doğru{" "}
-                                <br />
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-400 to-accent-200">
-                                    kentsel dönüşüm
-                                </span>{" "}
-                                <br className="md:hidden" />
-                                kararını verin.
+                                Ankara Kentsel Dönüşüm Danışmanlığı | Haklarınızı Güvenceye Alın
                             </h1>
 
                             <p className="text-lg text-primary-200 mb-10 max-w-xl leading-relaxed">
-                                Ankara kentsel dönüşüm danışmanlığı ve{" "}
-                                <Link
-                                    href="/cankaya-kentsel-donusum"
-                                    className="text-white font-semibold underline decoration-accent underline-offset-4 hover:text-accent-300 transition-colors"
-                                >
-                                    Çankaya riskli yapı tespiti
-                                </Link>{" "}
-                                süreçlerinde duygusal değil, veriye dayalı ön analizle hareket edin.
+                                Binanızın kat karşılığı oranını, arsa payı değerini ve müteahhit sözleşme şartlarını bağımsız uzmanlarımızla ücretsiz analiz edin.
                             </p>
 
                             <div className="flex flex-col sm:flex-row gap-4">
-                                <Link href="/on-analiz">
+                                <Link href="#hero-analysis-form">
                                     <Button
                                         size="lg"
                                         className="bg-accent hover:bg-accent-600 text-white font-bold h-14 px-8 shadow-xl shadow-accent/20 w-full sm:w-auto"
                                     >
-                                        Ücretsiz Ön Analiz Al
+                                        Ücretsiz Ön Analiz Başlat
                                     </Button>
                                 </Link>
 
@@ -88,6 +75,21 @@ export default function Home() {
                                         WhatsApp'tan Bilgi Al
                                     </Button>
                                 </TrackedWhatsAppLink>
+                            </div>
+
+                            <div className="mt-8 flex flex-wrap gap-3 text-xs text-primary-100">
+                                <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-3 py-2">
+                                    <ShieldCheck className="h-4 w-4 text-accent" />
+                                    <span>✓ %100 Bağımsız Danışmanlık</span>
+                                </div>
+                                <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-3 py-2">
+                                    <FileSearch className="h-4 w-4 text-accent" />
+                                    <span>✓ Ücretsiz Ön Analiz Raporu</span>
+                                </div>
+                                <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-3 py-2">
+                                    <Scale className="h-4 w-4 text-accent" />
+                                    <span>✓ Hukuki ve Teknik Sözleşme Desteği</span>
+                                </div>
                             </div>
 
                             <div className="mt-12 flex items-center gap-8 text-sm text-primary-300">
@@ -106,7 +108,9 @@ export default function Home() {
                         {/* Right Column */}
                         <Reveal className="relative" delay={200} immediate>
                             <div className="absolute -inset-4 bg-accent/20 rounded-2xl blur-3xl -z-10" />
-                            <HomepageAnalysisForm />
+                            <div id="hero-analysis-form" className="scroll-mt-24">
+                                <HomepageAnalysisForm />
+                            </div>
                         </Reveal>
                     </div>
                 </div>
@@ -429,7 +433,7 @@ export default function Home() {
                                     <Link href="/tools/emsal" className="text-primary-900 font-bold underline hover:text-accent">
                                         imar ve emsal analizi
                                     </Link>
-                                    ,{" "}
+                           Z         ,{" "}
                                     <Link href="/tools/maliyet" className="text-primary-900 font-bold underline hover:text-accent">
                                         maliyet projeksiyonu
                                     </Link>

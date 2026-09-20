@@ -22,7 +22,7 @@ export const pageview = (url: string) => {
   }
 };
 
-// Track specific events (conversions)
+// Track specific custom events
 export const event = (action: string, category: string, label: string, value?: number) => {
   if (typeof window.gtag !== 'undefined') {
     window.gtag('event', action, {
@@ -33,39 +33,63 @@ export const event = (action: string, category: string, label: string, value?: n
   }
 };
 
-// Track Google Ads conversions specifically (Legacy/Label based)
+// Track Google Ads conversions specifically (Label based)
 export const conversion = (sendTo: string, transactionId?: string) => {
-    if (typeof window.gtag !== 'undefined') {
-        window.gtag('event', 'conversion', {
-            'send_to': `${ADS_TRACKING_ID}/${sendTo}`,
-            'transaction_id': transactionId
-        });
-        console.log(`[GTAG] Conversion tracked (label): ${sendTo}`);
-    }
+  if (typeof window.gtag !== 'undefined') {
+    window.gtag('event', 'conversion', {
+      'send_to': `${ADS_TRACKING_ID}/${sendTo}`,
+      'transaction_id': transactionId
+    });
+    console.log(`[GTAG] Ads Conversion tracked: ${sendTo}`);
+  }
 };
 
 /**
  * Track WhatsApp button clicks (generate_lead)
  */
 export const trackWhatsAppClick = () => {
-    if (typeof window.gtag !== 'undefined') {
-        window.gtag('event', 'generate_lead', {
-            'event_category': 'Contact',
-            'event_label': 'WhatsApp'
-        });
-        console.log('[GTAG] Event tracked: generate_lead (WhatsApp)');
-    }
+  if (typeof window.gtag !== 'undefined') {
+    window.gtag('event', 'generate_lead', {
+      'event_category': 'Contact',
+      'event_label': 'WhatsApp',
+      'method': 'whatsapp'
+    });
+    console.log('[GTAG] Event tracked: generate_lead (WhatsApp)');
+  }
 };
 
 /**
- * Track Form submissions (submit_lead_form)
+ * Track Phone call button clicks (generate_lead)
  */
-export const trackFormSubmission = () => {
-    if (typeof window.gtag !== 'undefined') {
-        window.gtag('event', 'submit_lead_form', {
-            'event_category': 'Engagement',
-            'event_label': 'Lead Form'
-        });
-        console.log('[GTAG] Event tracked: submit_lead_form');
-    }
+export const trackPhoneClick = () => {
+  if (typeof window.gtag !== 'undefined') {
+    window.gtag('event', 'generate_lead', {
+      'event_category': 'Contact',
+      'event_label': 'Phone Call',
+      'method': 'phone'
+    });
+    window.gtag('event', 'phone_click', {
+      'event_category': 'Contact',
+      'event_label': 'Phone Call'
+    });
+    console.log('[GTAG] Event tracked: generate_lead (Phone)');
+  }
+};
+
+/**
+ * Track Form submissions (generate_lead)
+ */
+export const trackFormSubmission = (formName: string = 'Ön Analiz Formu') => {
+  if (typeof window.gtag !== 'undefined') {
+    window.gtag('event', 'generate_lead', {
+      'event_category': 'Engagement',
+      'event_label': formName,
+      'method': 'form'
+    });
+    window.gtag('event', 'submit_lead_form', {
+      'event_category': 'Engagement',
+      'event_label': formName
+    });
+    console.log(`[GTAG] Event tracked: generate_lead (${formName})`);
+  }
 };

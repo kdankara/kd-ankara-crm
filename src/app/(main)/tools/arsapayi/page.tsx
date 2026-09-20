@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import CalculatorLayout from '@/components/calculator/CalculatorLayout';
 import CalculatorHeader from '@/components/calculator/CalculatorHeader';
+import { trackPhoneClick, trackWhatsAppClick } from '@/lib/gtag';
 import LegalDisclaimer from '@/components/calculator/LegalDisclaimer';
 import LeadModal from '@/components/calculator/LeadModal';
 import { Button } from '@/components/ui/button';
@@ -74,8 +75,26 @@ export default function ArsaPayi() {
         updateField('bagimsisBolumler', newUnits);
     };
 
+    const jsonLd = {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Arsa Payı Dağılımı Hesaplama Aracı | KD Ankara",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "All",
+        "description": "Bağımsız bölümlerin büyüklüklerine göre matematiksel arsa payı dağılımını hesaplama aracı.",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "TRY"
+        }
+    };
+
     return (
         <CalculatorLayout>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
             <CalculatorHeader
                 title="Arsa Payı Dağılımı"
                 description="Bağımsız bölümlerin büyüklüklerine göre matematiksel arsa payı dağılımını hesaplayın."
@@ -226,12 +245,13 @@ export default function ArsaPayi() {
                                         className="w-full bg-accent hover:bg-accent/90 h-14 text-lg font-bold"
                                         size="lg"
                                     >
-                                        Raporu Almak İçin Numaranızı Bırakın
+                                        Ücretsiz İnceleme Raporu Al
                                         <Calculator className="w-5 h-5 ml-2" />
                                     </Button>
 
                                     <Button
                                         onClick={() => {
+                                            trackWhatsAppClick();
                                             const summary = generateResultSummary('arsapayi', results);
                                             openWhatsApp({
                                                 ilce: 'Ankara',
@@ -311,7 +331,7 @@ export default function ArsaPayi() {
                             </p>
 
                             <div className="bg-primary-950 text-white p-10 rounded-[3rem] my-12 text-center">
-                                <h4 className="text-xl font-bold text-accent mb-4 italic italic">Arsa Payınızın Doğruluğundan Emin Misiniz?</h4>
+                                <h4 className="text-xl font-bold text-accent mb-4 italic">Arsa Payınızın Doğruluğundan Emin Misiniz?</h4>
                                 <p className="text-primary-100 mb-8 max-w-2xl mx-auto">
                                     Tapu kaydınızdaki oranlar, binanızın gerçek değerini yansıtmıyor olabilir. Teknik ve hukuki inceleme için uzmanlarımızla iletişime geçin.
                                 </p>
@@ -324,7 +344,7 @@ export default function ArsaPayi() {
                                     </Button>
                                     <Button 
                                         variant="outline"
-                                        onClick={() => window.location.href = 'tel:+905000000000'}
+                                        onClick={() => { trackPhoneClick(); window.location.href = 'tel:+905336820942'; }}
                                         className="border-white text-white hover:bg-white/10 px-10 h-14 rounded-2xl font-bold transition-all"
                                     >
                                         Uzmanla Görüşün

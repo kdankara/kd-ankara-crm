@@ -14,6 +14,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { useCalculatorState } from '@/hooks/useCalculatorState';
+import { trackPhoneClick } from '@/lib/gtag';
 import { useSEO } from '@/hooks/useSEO';
 import { calculatePaylasim, validatePaylasimInputs } from '@/lib/calculators/paylasim';
 import { formatCurrency, formatPercentage } from '@/lib/calculators/utils';
@@ -525,7 +526,7 @@ export default function Paylasim() {
                         </Button>
                         <Button 
                             variant="outline"
-                            onClick={() => window.location.href = 'tel:+905000000000'}
+                            onClick={() => { trackPhoneClick(); window.location.href = 'tel:+905336820942'; }}
                             className="border-primary-900 text-primary-900 px-12 h-14 rounded-2xl font-bold text-lg hover:bg-primary-50 transition-all"
                         >
                             Uzmana Sorun

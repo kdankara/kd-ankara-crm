@@ -2,11 +2,8 @@
 
 import type { EmsalInputs, EmsalResults } from '@/types/calculator';
 
-/**
- * Calculate construction area from KAKS/Emsal
- */
 export function calculateEmsal(inputs: EmsalInputs): EmsalResults {
-    const { arsaAlani, kaks, taks } = inputs;
+    const { arsaAlani, kaks, taks, katYuksekligi = 3 } = inputs;
 
     // Total construction area = Land area × KAKS
     const toplamInsaatAlani = kaks ? arsaAlani * kaks : 0;
@@ -17,8 +14,12 @@ export function calculateEmsal(inputs: EmsalInputs): EmsalResults {
     // Estimated floor count (if TAKS provided)
     let tahminiKatSayisi: number | undefined;
     if (tabanOturumu && tabanOturumu > 0) {
-        tahminiKatSayisi = Math.floor(toplamInsaatAlani / tabanOturumu);
+        // HATA DÜZELTMESİ: 1.625 gibi değerler 2 kata ihtiyaç duyar. Her zaman yukarı yuvarlanmalı.
+        tahminiKatSayisi = Math.ceil(toplamInsaatAlani / tabanOturumu);
     }
+
+    // Total building height (m)
+    const toplamBinaYuksekligi = tahminiKatSayisi ? tahminiKatSayisi * katYuksekligi : undefined;
 
     return {
         timestamp: new Date().toISOString(),
@@ -26,13 +27,11 @@ export function calculateEmsal(inputs: EmsalInputs): EmsalResults {
         toplamInsaatAlani,
         tabanOturumu,
         tahminiKatSayisi,
+        toplamBinaYuksekligi,
         inputs,
-    };
+    } as any;
 }
 
-/**
- * Validate Emsal inputs
- */
 export function validateEmsalInputs(inputs: Partial<EmsalInputs>): string[] {
     const errors: string[] = [];
 

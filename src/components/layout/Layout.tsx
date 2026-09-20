@@ -43,7 +43,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                     <div className="flex items-center justify-between h-20">
                         <Link href="/" className="flex items-center gap-2 xl:gap-3 shrink-0">
                             <Image
-                                src="/assets/logo.svg"
+                                src="/logo.svg"
                                 alt="KD Ankara Logo"
                                 width={48}
                                 height={48}
@@ -124,7 +124,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                         <div className="col-span-1 md:col-span-1">
                             <div className="flex items-center gap-3 mb-6">
                                 <Image
-                                    src="/assets/logo.svg"
+                                    src="/logo.svg"
                                     alt="KD Ankara Logo"
                                     width={48}
                                     height={48}

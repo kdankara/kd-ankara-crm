@@ -25,6 +25,7 @@ import { useSEO } from '@/hooks/useSEO';
 import { calculateMaliyet, validateMaliyetInputs, BASE_COSTS } from '@/lib/calculators/maliyet';
 import { formatCurrency } from '@/lib/calculators/utils';
 import { openWhatsApp, generateResultSummary } from '@/lib/whatsapp';
+import { trackPhoneClick, trackWhatsAppClick } from '@/lib/gtag';
 import type { MaliyetInputs, MaliyetResults, EmsalResults, KaliteSeviyesi } from '@/types/calculator';
 
 export default function Maliyet() {
@@ -32,6 +33,17 @@ export default function Maliyet() {
         '2026 Kentsel Dönüşüm İnşaat Maliyeti Hesaplama | KD Ankara',
         '2026 güncel verileriyle metrekare bazlı inşaat maliyeti ve toplam proje bedeli tahmini yapın. Bakanlık birim maliyetleri bazlı hesaplayıcı.'
     );
+
+    const jsonLd = {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "2026 Kentsel Dönüşüm İnşaat Maliyeti Hesaplama | KD Ankara",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "All",
+        "description": "Bakanlık birim maliyetleri ve güncel piyasa verileriyle inşaat maliyeti ve bütçe hesaplama aracı.",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "TRY" }
+    };
+
     const navigate = useRouter();
     const [showLeadModal, setShowLeadModal] = useState(false);
     const [errors, setErrors] = useState<string[]>([]);
@@ -94,6 +106,10 @@ export default function Maliyet() {
 
     return (
         <CalculatorLayout>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
             <CalculatorHeader
                 title="Maliyet Bandı"
                 description="İnşaat maliyetlerini kalite seviyesine göre tahmin edin."
@@ -289,12 +305,13 @@ export default function Maliyet() {
                                         className="w-full bg-accent hover:bg-accent/90 h-14 text-lg font-bold shadow-lg shadow-accent/20"
                                         size="lg"
                                     >
-                                        Raporu Almak İçin Numaranızı Bırakın
+                                        2026 Detaylı Maliyet & Bütçe Raporu İste
                                         <ArrowRight className="w-5 h-5 ml-2" />
                                     </Button>
 
                                     <Button
                                         onClick={() => {
+                                            trackWhatsAppClick();
                                             const summary = generateResultSummary('maliyet', results);
                                             openWhatsApp({
                                                 ilce: 'Ankara',

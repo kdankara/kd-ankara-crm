@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import OnAnalizWizard from '@/components/forms/OnAnalizWizard';
 import FAQSection from '@/components/FAQSection';
+import TrackedPhoneLink from '@/components/TrackedPhoneLink';
 import { Building2, ShieldCheck, MapPin, CheckCircle, PhoneCall, Scale, AlertTriangle, FileCheck } from 'lucide-react';
 import Link from 'next/link';
 
@@ -98,17 +99,17 @@ export default function CankayaPage() {
               </div>
 
               <div className="flex flex-wrap gap-4">
-                <a
-                  href="tel:+905336820942"
-                  className="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-6 py-3.5 rounded-xl flex items-center gap-2 transition shadow-lg hover:scale-105"
-                >
+                <TrackedPhoneLink className="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-6 py-3.5 rounded-xl flex items-center gap-2 transition shadow-lg hover:scale-105">
                   <PhoneCall className="w-5 h-5" /> Doğrudan Uzmanla Görüşün
+                </TrackedPhoneLink>
+                <a href="#on-analiz-form" className="border border-slate-700 hover:bg-slate-800 text-white font-semibold px-6 py-3.5 rounded-xl transition">
+                  Ücretsiz Analiz İsteyin
                 </a>
               </div>
             </div>
 
             {/* Lead Formu */}
-            <div className="w-full">
+            <div id="on-analiz-form" className="w-full">
               <OnAnalizWizard />
             </div>
           </div>
