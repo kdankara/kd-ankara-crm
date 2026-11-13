@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "kdankara-efcb4",
     "public": "out",
     "ignore": [
       "firebase.json",
