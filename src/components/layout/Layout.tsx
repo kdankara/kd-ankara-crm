@@ -6,6 +6,7 @@ import { Menu, Phone, MessageCircle, MapPin, Facebook, Instagram, Linkedin, Mail
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { trackWhatsAppClick } from '@/lib/gtag';
+import TrackedPhoneLink from '@/components/TrackedPhoneLink';
 
 
 export default function Layout({ children }: { children: React.ReactNode }) {
@@ -102,11 +103,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                         <Link href="/blog" className="p-3 rounded-lg hover:bg-gray-50 font-medium text-gray-700" onClick={() => setIsMobileMenuOpen(false)}>Bilgi Bankası</Link>
                         <Link href="/iletisim" className="p-3 rounded-lg hover:bg-gray-50 font-medium text-gray-700" onClick={() => setIsMobileMenuOpen(false)}>İletişim</Link>
                         <div className="h-px bg-gray-100 my-2" />
-                        <Link href="/on-analiz" className="w-full mt-2" onClick={() => setIsMobileMenuOpen(false)}>
+                        <TrackedPhoneLink className="w-full mt-2">
                             <Button className="w-full bg-accent hover:bg-accent-600 text-white justify-center">
-                                Ücretsiz Ön Analiz Başlat
+                                <Phone className="w-4 h-4 mr-2" />
+                                Bizi Arayın
                             </Button>
-                        </Link>
+                        </TrackedPhoneLink>
                     </div>
                 )}
             </header>
@@ -211,11 +213,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                     <MessageCircle className="w-5 h-5" />
                     WhatsApp
                 </a>
-                <Link href="/on-analiz" className="flex-1">
+                <TrackedPhoneLink className="flex-1">
                     <Button className="w-full h-full bg-accent hover:bg-accent-600 text-white font-bold py-3">
-                        Ön Analiz
+                        <Phone className="w-5 h-5 mr-2" />
+                        Bizi Arayın
                     </Button>
-                </Link>
+                </TrackedPhoneLink>
             </div>
         </div>
     );

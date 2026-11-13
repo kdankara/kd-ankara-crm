@@ -9,6 +9,7 @@ import {
     ShieldCheck,
     Scale,
     MapPin,
+    Phone,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -17,6 +18,7 @@ import dynamic from "next/dynamic";
 import HomepageAnalysisForm from "@/components/forms/HomepageAnalysisForm";
 import Reveal from "@/components/Reveal";
 import TrackedWhatsAppLink from "@/components/TrackedWhatsAppLink";
+import TrackedPhoneLink from "@/components/TrackedPhoneLink";
 
 const FAQSection = dynamic(() => import("@/components/FAQSection"));
 const CaseStudies = dynamic(() => import("@/components/CaseStudies"));
@@ -57,7 +59,7 @@ export default function Home() {
                             </p>
 
                             <div className="flex flex-col sm:flex-row gap-4">
-                                <Link href="#hero-analysis-form">
+                                <Link href="#hero-analysis-form" className="hidden sm:block">
                                     <Button
                                         size="lg"
                                         className="bg-accent hover:bg-accent-600 text-white font-bold h-14 px-8 shadow-xl shadow-accent/20 w-full sm:w-auto"
@@ -65,6 +67,16 @@ export default function Home() {
                                         Ücretsiz Ön Analiz Başlat
                                     </Button>
                                 </Link>
+
+                                <TrackedPhoneLink className="sm:hidden">
+                                    <Button
+                                        size="lg"
+                                        className="bg-accent hover:bg-accent-600 text-white font-bold h-14 px-8 shadow-xl shadow-accent/20 w-full"
+                                    >
+                                        <Phone className="w-5 h-5 mr-2" />
+                                        Bizi Arayın
+                                    </Button>
+                                </TrackedPhoneLink>
 
                                 <TrackedWhatsAppLink>
                                     <Button
